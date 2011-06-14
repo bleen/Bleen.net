@@ -1,0 +1,72 @@
+/**
+ * Generic HTML elements
+ */
+* {
+  outline: 0;
+}
+body {
+  line-height: 1.5;
+  font-size: 87.5%;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: #fff;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin:0;
+  padding:0;
+}
+ol, ul { /* Dont add li here because then you cannot add bullets. */
+  margin:0;
+  padding:0;
+}
+p {
+  margin:0 0 10px 0;
+  padding:0;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a img {
+  border: none;
+  vertical-align: middle;
+}
+
+/**
+ * Messages
+ */
+.messages {
+  margin: 0 0 20px 0;
+  padding: 0 10px;
+  border: 1px solid #fff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(50, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 5px rgba(50, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 5px rgba(50, 0, 0, 0.5);
+}
+.messages.status {
+  background-color: #b6fab5;
+}
+.messages.warning {
+  background-color: #fff992;
+}
+.messages.error {
+  background-color: #fcc;
+}
+
+/**
+ * Devel
+ */
+li.krumo-footnote span.krumo-call {
+  font-size: 8px !important;
+}
+li.krumo-footnote {
+  overflow: hidden;
+}

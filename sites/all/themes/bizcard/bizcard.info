@@ -1,0 +1,14 @@
+
+name = BizCard
+description = A theme that looks like two hands holding a business card.
+version = VERSION
+core = 7.x
+
+stylesheets[all][] = css/reset.css
+stylesheets[all][] = css/layout.css
+stylesheets[all][] = css/style.css
+stylesheets[print][] = css/print.css
+
+regions[content] = Content
+
+settings[shortcut_module_link] = 0
