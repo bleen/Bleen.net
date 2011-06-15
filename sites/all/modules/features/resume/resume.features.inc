@@ -22,7 +22,7 @@ function resume_node_info() {
     'resume' => array(
       'name' => t('Resume'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('Use <em>resume</em> to create a basic resume page.'),
       'has_title' => '1',
       'title_label' => t('Name'),
       'help' => '',
