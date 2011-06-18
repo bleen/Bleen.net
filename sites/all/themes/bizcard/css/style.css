@@ -13,16 +13,91 @@ body {
 
 /* ----------------- Regions ----------------- */
 #card {
-  width: 600px;
+  width: 540px;
   background: url(../images/card_bg.png);
   margin: 50px auto;
-  padding: 20px;
-  -webkit-box-shadow: 0px 0px 15px 0px #000000;
-  -moz-box-shadow: 0px 0px 15px 0px #000000;
-  box-shadow: 0px 0px 15px 0px #000000;}
+  padding: 140px 100px 20px 100px;
+  position: relative;
+  -webkit-box-shadow: 0 0 15px 0 #000;
+  -moz-box-shadow: 0 0 15px 0 #000;
+  box-shadow: 0 0 15px 0 #000;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 15px;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-radius: 0 15px 0 0;
+  border-radius: 0 15px 0 0;
+}
+.logo {
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 41px;
+  left: 20px;
+  top: 20px;
+}
+.hand {
+  position: absolute;
+  top: 125px;
+  background: url(../images/hand.png) no-repeat;
+  height: 321px;
+  width: 195px;
+}
+.left.hand {
+  background-position: -321px 0;
+  left: -93px;
+}
+.right.hand {
+  background-position: -514px 0;
+  right: -93px;
+}
+
+/* --------------- Navigation --------------- */
+.ribbon {
+  position: absolute;
+  top: 80px;
+  left: -10px;
+  width: 600px;
+  height: 47px;
+  background: url(../images/nav_bg.png) no-repeat left top;
+}
+.ribbon .links {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  list-style: none;
+  padding: 7px 0 0 25px;
+}
+.ribbon .links a {
+  color: #fff;
+}
+.ribbon .links a:hover {
+  text-decoration: none;
+}
+.ribbon .links li {
+  display: inline-block;
+  padding: 0 20px;
+  margin: 0 15px;
+}
+.ribbon .links li.active,
+.ribbon .links li:hover {
+  text-decoration: none;
+  text-shadow: 2px 2px 5px #666;
+  filter: dropshadow(color=#666, offx=2, offy=2);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #999; /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(204,204,204,0.65) 0%, rgba(204,204,204,0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,204,204,0.65)), color-stop(100%,rgba(204,204,204,0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(204,204,204,0.65) 0%,rgba(204,204,204,0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(204,204,204,0.65) 0%,rgba(204,204,204,0) 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, rgba(204,204,204,0.65) 0%,rgba(204,204,204,0) 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6cccccc', endColorstr='#00cccccc',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, rgba(204,204,204,0.65) 0%,rgba(204,204,204,0) 100%); /* W3C */
+}
 
 /* --------------- System Tabs --------------- */
-
 .tabs {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 20px;

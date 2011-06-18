@@ -2,6 +2,7 @@
 
   <?php 
     print $logo;
+    print $main_menu;
     print $messages;
   ?>
 
@@ -17,4 +18,7 @@
     </div>
   <?php endif; ?>
 
+  <?php
+    print $hands;
+  ?>
 </div>
