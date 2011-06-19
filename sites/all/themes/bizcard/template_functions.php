@@ -93,9 +93,9 @@ function bizcard_build_node_attributes($node, $classes, $attributes) {
 function bizcard_build_node_title($node, $vars) {
   $title = '';
 
-  if ($vars['page']) {
+  if (!$vars['page']) {
     $title .= render($title_prefix);
-    $title .= bizcard_markup_tag('h2', l($vars['title'], $vars['node_url']), $vars['title_attributes_array']);
+    $title .= bizcard_markup_tag('h2', $vars['title'], $vars['title_attributes_array']);
     $title .= render($title_suffix);
   }
 

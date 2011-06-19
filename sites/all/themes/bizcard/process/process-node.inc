@@ -1,7 +1,14 @@
 <?php
 $node = $vars['node'];
 
-if ($vars['view_mode'] == 'full' && node_is_page($vars['node'])) {
+// Add Node-specific styles & js.
+switch ($node->nid) {
+  case 1:
+    drupal_add_css(drupal_get_path('theme', 'bizcard') . '/css/resume.css');
+    break;
+}
+
+if ($vars['view_mode'] == 'full' && $vars['page']) {
   $vars['classes_array'][] = 'node-full';
 }
 
