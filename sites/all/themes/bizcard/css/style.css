@@ -15,7 +15,7 @@ body {
 #card {
   width: 540px;
   background: url(../images/card_bg.png);
-  margin: 50px auto;
+  margin: 50px auto 20px auto;
   padding: 140px 100px 20px 100px;
   position: relative;
   -webkit-box-shadow: 0 0 15px 0 #000;
@@ -50,6 +50,15 @@ body {
 .right.hand {
   background-position: -514px 0;
   right: -93px;
+}
+#content {
+  position: relative;
+}
+.copyright {
+  font-size: 10px;
+  color: #999;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* --------------- Navigation --------------- */

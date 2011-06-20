@@ -1,4 +1,4 @@
-<div id="card">
+<div id="card" class="clearfix">
 
   <?php 
     print $logo;
@@ -22,3 +22,5 @@
     print $hands;
   ?>
 </div>
+
+<div class="copyright">&copy; <?php print date('Y'); ?> Alex Ross</div>

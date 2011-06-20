@@ -1,13 +1,87 @@
-h1 {
+.node-type-resume h1 {
+  font-size: 48px;
+}
+.node-type-resume h3 {
   font-size: 18px;
 }
 
-.left {
+.node-type-resume .region-content {
+  margin-top: 10px;
+}
+.node-type-resume .left-col {
   width: 370px;
   float: left;
   margin-right: 20px;
 }
-.right {
-  width: 150px;
+.node-type-resume .right-col {
+  width: 140px;
   float: right;
+}
+
+.node-type-resume .field-name-field-email {
+  position: absolute;
+  top: 190px;
+  right: 275px;
+}
+.node-type-resume .field-name-field-employer,
+.node-type-resume .field-name-field-school {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.node-type-resume .field-name-field-job-dates {
+  font-style: italic;
+}
+.node-type-resume .field-name-field-job-responsibilities ul {
+  margin-left: 20px;
+}
+.node-type-resume .field-name-field-info-list {
+  text-align: right;
+}
+.node-type-resume .field-name-field-info-title {
+  font-weight: bold;
+}
+.node-type-resume .field-name-field-info-items li {
+  font-size: 11px;
+}
+.node-type-resume .field-name-field-info-items ul {
+  list-style: none;
+}
+.node-type-resume .field-name-field-info-items ul ul {
+  margin-right: 10px;
+  padding-right: 5px;
+  border-right: 1px dotted #666;
+}
+.node-type-resume .field-name-field-info-items .drupal {
+  background: url(../images/drupalicon_mini.png) right top no-repeat;
+  padding-right: 15px;
+  position: relative;
+  right: -15px;
+}
+.node-type-resume .field-name-field-info-list .field-item {
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #ccc;
+}
+.node-type-resume .field-name-field-info-list .field-item:last-child {
+  padding: 0;
+  border: none;
+}
+
+.node-type-resume .field-collection-item-field-experience {
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, .25);
+  padding: 10px;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 2px 2px 5px 0 rgba(50, 0, 0, 0.5);
+  -moz-box-shadow: 2px 2px 5px 0 rgba(50, 0, 0, 0.5);
+  box-shadow: 2px 2px 5px 0 rgba(50, 0, 0, 0.5);
+}
+.node-type-resume .field-collection-view {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.node-type-resume .field-collection-container {
+  border: none;
 }

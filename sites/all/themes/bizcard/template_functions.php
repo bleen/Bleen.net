@@ -102,6 +102,18 @@ function bizcard_build_node_title($node, $vars) {
   return $title;
 }
 
+function bizcard_build_node_date($node) {
+  switch ($node->nid) {
+    case 1:
+      $date = '';
+      break;
+    default: 
+      $date = format_date($node->created);
+  }
+
+  return $date;
+}
+
 function bizcard_build_node_content_attributes($attributes) {
   $attributes['class'][] = 'content';
   $attributes['class'][] = 'clearfix';
@@ -119,14 +131,14 @@ function bizcard_build_node_content($node, $vars) {
       // Rejigger the render array for "resume".
       $content['#sorted'] = TRUE;
       $content['left'] = array(
-        '#prefix'   => '<div class="left">',
+        '#prefix'   => '<div class="left-col">',
         '#suffix'   => '</div>',
       );
       $content['left']['field_experience'] = $content['field_experience'];
       $content['left']['field_education'] = $content['field_education'];
 
       $content['right'] = array(
-        '#prefix'   => '<div class="right">',
+        '#prefix'   => '<div class="right-col">',
         '#suffix'   => '</div>',
       );
       $content['right']['field_info_list'] = $content['field_info_list'];

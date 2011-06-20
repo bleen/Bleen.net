@@ -16,3 +16,4 @@ $vars['node_attributes']        = bizcard_build_node_attributes($node, $vars['cl
 $vars['title']                  = bizcard_build_node_title($node, $vars);
 $vars['content_attributes']     = bizcard_build_node_content_attributes($vars['content_attributes_array']);
 $vars['content']                = bizcard_build_node_content($node, $vars);
+$vars['date']                   = bizcard_build_node_date($node);
