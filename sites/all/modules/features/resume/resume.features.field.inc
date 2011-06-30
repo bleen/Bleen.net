@@ -45,11 +45,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -67,7 +67,7 @@ function resume_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '0',
       ),
     ),
   );
@@ -102,7 +102,7 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -113,7 +113,7 @@ function resume_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -141,7 +141,7 @@ function resume_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_text',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -181,11 +181,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -243,11 +243,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -300,7 +300,7 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
             'format_type' => 'long',
@@ -311,7 +311,7 @@ function resume_field_default_fields() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -339,7 +339,7 @@ function resume_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_text',
-        'weight' => '3',
+        'weight' => '2',
       ),
     ),
   );
@@ -377,11 +377,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -399,7 +399,7 @@ function resume_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '4',
+        'weight' => '3',
       ),
     ),
   );
@@ -439,11 +439,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -461,7 +461,7 @@ function resume_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '2',
+        'weight' => '0',
       ),
     ),
   );
@@ -499,11 +499,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -561,11 +561,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -624,11 +624,10 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'addressfield',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'addressfield_default',
-          'weight' => 5,
+          'type' => 'hidden',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -692,7 +691,7 @@ function resume_field_default_fields() {
             'edit' => 'Edit',
           ),
           'type' => 'field_collection_view',
-          'weight' => 1,
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -740,11 +739,11 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => NULL,
+          'label' => 'hidden',
+          'module' => 'email',
           'settings' => array(),
-          'type' => 'default',
-          'weight' => 4,
+          'type' => 'email_plain',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -796,7 +795,7 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'field_collection',
           'settings' => array(
             'add' => 'Add',
@@ -805,7 +804,7 @@ function resume_field_default_fields() {
             'edit' => 'Edit',
           ),
           'type' => 'field_collection_view',
-          'weight' => 2,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -855,7 +854,7 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'field_collection',
           'settings' => array(
             'add' => 'Add',
@@ -864,7 +863,7 @@ function resume_field_default_fields() {
             'edit' => 'Edit',
           ),
           'type' => 'field_collection_view',
-          'weight' => 6,
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -925,11 +924,10 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 3,
+          'type' => 'hidden',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
