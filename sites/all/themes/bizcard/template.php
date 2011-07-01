@@ -16,6 +16,9 @@ function bizcard_process(&$vars, $hook){
   _bizcard_include_preprocess_process_file($vars, $hook, 'process');
 }
 
+/**
+ * Implementation of hook_form_alter().
+ */
 function bizcard_form_alter(&$form, &$form_state, $form_id) {
   switch($form_id) {
     case 'comment_node_article_form':
@@ -23,7 +26,6 @@ function bizcard_form_alter(&$form, &$form_state, $form_id) {
       break;
   }
 }
-
 
 /**
  * Inlucde a file for the given preprocess or process hook.
