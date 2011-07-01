@@ -6,9 +6,9 @@ files[] = field_collection.test
 files[] = field_collection.info.inc
 configure = admin/structure/field-collections
 
-; Information added by drupal.org packaging script on 2011-06-10
+; Information added by drupal.org packaging script on 2011-06-28
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "field_collection"
-datestamp = "1307664834"
+datestamp = "1309219920"
 
