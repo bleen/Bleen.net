@@ -86,7 +86,7 @@ body {
 .ribbon .links li {
   display: inline-block;
   padding: 0 20px;
-  margin: 0 15px;
+  margin: 0 5px;
 }
 .ribbon .links li.active,
 .ribbon .links li:hover {
