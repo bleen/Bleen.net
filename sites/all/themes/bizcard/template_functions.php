@@ -46,11 +46,9 @@ function bizcard_build_page_logo($logo) {
 function bizcard_build_hands() {
   $output = '';
 
-  if (!drupal_is_front_page()) {
-    $left_hand = bizcard_markup_tag('div', '&nbsp;', array('class' => 'hand left'));
-    $right_hand = bizcard_markup_tag('div', '&nbsp;', array('class' => 'hand right'));
-    $output .= $left_hand . $right_hand;
-  }
+  $left_hand = bizcard_markup_tag('div', '&nbsp;', array('class' => 'hand left'));
+  $right_hand = bizcard_markup_tag('div', '&nbsp;', array('class' => 'hand right'));
+  $output .= $left_hand . $right_hand;
 
   return $output;
 }
