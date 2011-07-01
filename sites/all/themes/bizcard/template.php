@@ -16,6 +16,15 @@ function bizcard_process(&$vars, $hook){
   _bizcard_include_preprocess_process_file($vars, $hook, 'process');
 }
 
+function bizcard_form_alter(&$form, &$form_state, $form_id) {
+  switch($form_id) {
+    case 'comment_node_article_form':
+      $form['author']['homepage']['#access'] = FALSE;
+      break;
+  }
+}
+
+
 /**
  * Inlucde a file for the given preprocess or process hook.
  * We cache the existance of the files to avoid excess disk IO which is slow.
