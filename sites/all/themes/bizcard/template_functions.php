@@ -93,7 +93,7 @@ function bizcard_build_node_title($node, $vars) {
 
   if (!$vars['page']) {
     $title .= render($title_prefix);
-    $title .= bizcard_markup_tag('h2', $vars['title'], $vars['title_attributes_array']);
+    $title .= bizcard_markup_tag('h2', l($vars['title'], 'node/' . $node->nid, array('html' => TRUE)), $vars['title_attributes_array']);
     $title .= render($title_suffix);
   }
 
@@ -106,7 +106,7 @@ function bizcard_build_node_date($node) {
       $date = '';
       break;
     default: 
-      $date = format_date($node->created);
+      $date = bizcard_markup_tag('span', format_date($node->created), array('class' => array('date')));
   }
 
   return $date;
@@ -147,3 +147,4 @@ function bizcard_build_node_content($node, $vars) {
 
   return $content;
 }
+
