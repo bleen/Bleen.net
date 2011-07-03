@@ -4,6 +4,10 @@
 .node-type-resume h3 {
   font-size: 18px;
 }
+.node-type-resume ul,
+.node-type-resume ol {
+  margin: 0;
+}
 
 .node-type-resume .region-content {
   margin-top: 10px;

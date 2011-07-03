@@ -18,23 +18,11 @@ body {
 #sidebar-second,
 .navigation,
 #toolbar,
-#footer-wrapper,
 .tabs,
-.add-or-remove-shortcuts {
+.add-or-remove-shortcuts,
+.ribbon,
+.hand {
   display: none;
-}
-.one-sidebar #content,
-.two-sidebars #content {
-  width: 100%;
-}
-#triptych-wrapper {
-  width: 960px;
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-#triptych-first, #triptych-middle, #triptych-last {
-  width: 250px;
 }
 
 /* ---------- Node Pages ---------- */
@@ -43,4 +31,34 @@ body {
 #comments form,
 .comment_forbidden {
   display: none;
+}
+
+/* ---------- Resume ------------*/
+.node-type-resume .logo {
+  display: none;
+}
+.node-type-resume #card {
+  width: 750px;
+  margin: 0px;
+  padding: 20px;
+  background: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.node-type-resume .left-col {
+  width: 515px;
+}
+.node-type-resume .field-name-field-email {
+  top: 75px;
+  right: 350px;
+}
+.node-type-resume .field-collection-item-field-experience {
+  padding-bottom: 20px;
+  padding-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px dotted #ccc;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
