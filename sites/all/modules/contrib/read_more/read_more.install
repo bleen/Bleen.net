@@ -75,7 +75,8 @@ function ed_readmore_update_7000() {
   variable_del('ed_readmore_readmore_inline');
   variable_del('ed_readmore_readmore_remove');
 
-  // TODO: Disable old ed_readmore module if it's enabled.
+  // Disable old ed_readmore module if it's enabled.
+  module_disable(array('ed_readmore'));
 
   // Must return an array.
   return array();

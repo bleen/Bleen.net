@@ -102,8 +102,8 @@ class FieldCollectionItemEntity extends Entity {
 
   public function __construct(array $values = array(), $entityType = NULL) {
     parent::__construct($values, 'field_collection_item');
-    $this->fieldInfo = field_info_field($this->field_name);
-    if (!$this->fieldInfo || $this->fieldInfo['type'] != 'field_collection') {
+    $field_info = $this->fieldInfo();
+    if (!$field_info || $field_info['type'] != 'field_collection') {
       throw new Exception("Invalid field name given.");
     }
   }
@@ -113,7 +113,7 @@ class FieldCollectionItemEntity extends Entity {
    * field-collection item.
    */
   public function fieldInfo() {
-    return $this->fieldInfo;
+    return field_info_field($this->field_name);
   }
 
   /**
@@ -151,7 +151,7 @@ class FieldCollectionItemEntity extends Entity {
    */
   public function path() {
     if ($this->item_id) {
-      return field_collection_field_get_path($this->fieldInfo) . '/' . $this->item_id;
+      return field_collection_field_get_path($this->fieldInfo()) . '/' . $this->item_id;
     }
   }
 
@@ -169,8 +169,7 @@ class FieldCollectionItemEntity extends Entity {
    *
    * @param $create_link
    *   (optional) Whether a field-item linking the host entity to the field
-   *   collection item should be created. Should be only disabled if the link
-   *   is created manually.
+   *   collection item should be created.
    */
   public function setHostEntity($entity_type, $entity, $langcode = LANGUAGE_NONE, $create_link = TRUE) {
     if (!empty($this->is_new)) {
@@ -336,6 +335,32 @@ class FieldCollectionItemEntity extends Entity {
       }
       entity_save($this->hostEntityType(), $entity);
     }
+  }
+
+  /**
+   * Magic method to only serialize what's necessary.
+   */
+  public function __sleep() {
+    $vars = get_object_vars($this);
+    unset($vars['entityInfo'], $vars['idKey'], $vars['nameKey'], $vars['statusKey']);
+    unset($vars['fieldInfo']);
+    // Also do not serialize the host entity, but only if it has already an id.
+    if ($this->hostEntity && $this->hostEntityId) {
+      unset($vars['hostEntity']);
+    }
+
+    // Also key the returned array with the variable names so the method may
+    // be easily overridden and customized.
+    return drupal_map_assoc(array_keys($vars));
+  }
+
+  /**
+   * Magic method to invoke setUp() on unserialization.
+   *
+   * @todo: Remove this once it appears in a released entity API module version.
+   */
+  public function __wakeup() {
+    $this->setUp();
   }
 }
 
@@ -528,7 +553,9 @@ function field_collection_field_presave($entity_type, $entity, $field, $instance
   foreach ($items as &$item) {
     // In case the entity has been loaded / created, save it and set the id.
     if (isset($item['entity'])) {
-      $item['entity']->setHostEntity($entity_type, $entity, LANGUAGE_NONE, FALSE);
+      if (!empty($item['entity']->is_new)) {
+        $item['entity']->setHostEntity($entity_type, $entity, LANGUAGE_NONE, FALSE);
+      }
       $item['entity']->save(TRUE);
       $item = array('value' => $item['entity']->item_id);
     }
@@ -634,31 +661,31 @@ function field_collection_field_formatter_settings_form($field, $instance, $view
   $display = $instance['display'][$view_mode];
   $settings = $display['settings'];
 
-  $form['edit'] = array(
+  $elements['edit'] = array(
     '#type' => 'textfield',
     '#title' => t('Edit link title'),
     '#default_value' => $settings['edit'],
     '#description' => t('Leave the title empty, to hide the link.'),
   );
-  $form['delete'] = array(
+  $elements['delete'] = array(
     '#type' => 'textfield',
     '#title' => t('Delete link title'),
     '#default_value' => $settings['delete'],
     '#description' => t('Leave the title empty, to hide the link.'),
   );
-  $form['add'] = array(
+  $elements['add'] = array(
     '#type' => 'textfield',
     '#title' => t('Add link title'),
     '#default_value' => $settings['add'],
     '#description' => t('Leave the title empty, to hide the link.'),
   );
-  $form['description'] = array(
+  $elements['description'] = array(
     '#type' => 'checkbox',
     '#title' => t('Show the field description beside the add link.'),
     '#default_value' => $settings['description'],
-    '#description' => t('If enabeld adn the add link is shown, the field description is shown in front of the add link.'),
+    '#description' => t('If enabled and the add link is shown, the field description is shown in front of the add link.'),
   );
-  return $form;
+  return $elements;
 }
 
 /**
@@ -732,6 +759,17 @@ function field_collection_field_formatter_view($entity_type, $entity, $field, $i
       }
       break;
   }
+
+  field_collection_field_formatter_links($element, $entity_type, $entity, $field, $instance, $langcode, $items, $display);
+
+  return $element;
+}
+
+/**
+ * Helper function to add links to a field collection field.
+ */
+function field_collection_field_formatter_links(&$element, $entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $settings = $display['settings'];
 
   if ($settings['add'] && ($field['cardinality'] == FIELD_CARDINALITY_UNLIMITED || count($items) < $field['cardinality'])) {
     // Check whether the current is allowed to create a new item.

@@ -90,6 +90,11 @@ function read_more_admin_settings() {
       '#title' => t('Replace Read More link in RSS feeds'),
       '#default_value' => variable_get('read_more_rss', TRUE),
     );
+    $form['read_more_behavior']['read_more_require_body_field'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Do not display if the body text is empty'),
+      '#default_value' => variable_get('read_more_require_body_field', FALSE),
+    );
     $form['read_more_behavior']['read_more_anchor'] = array(
       '#type' => 'checkbox',
       '#title' => t('Skip to unread content (SEE WARNING BELOW)'),
@@ -205,15 +210,21 @@ function read_more_node_view($node, $view_mode, $langcode) {
       $elements_array = variable_get('read_more_elements', array('p'));
       $elements = '(?:' . implode('|', $elements_array) . ')';
 
-      // Get last position of the last closing marker in teaser.
-      if (preg_match('!</?' . $elements . '[^>]*>\s*$!i', $node->content['body'][0]['#markup'], $match, PREG_OFFSET_CAPTURE)) {
-        // Recalculate the position in $teaser. We do this because there may be extra CCK fields appended to the teaser.
-        $insert_point = strpos($view_mode, $node->content['body'][0]['#markup']) + $match[0][1];
-        // Insert the link.
-        $node->content['body'][0]['#markup'] = substr_replace($node->content['body'][0]['#markup'], drupal_render($read_more_link), $insert_point, 0);
-      }
-      else {
-        $display = 'after';
+      // Only add a link if there's a body field.
+      if (!variable_get('read_more_require_body_field', FALSE) || isset($node->content['body'])) {
+        // Get last position of the last closing marker in teaser, if the body
+        // field exists.
+        if (isset($node->content['body']) && preg_match('!</?' . $elements . '[^>]*>\s*$!i', $node->content['body'][0]['#markup'], $match, PREG_OFFSET_CAPTURE)) {
+          // Recalculate the position in $teaser. We do this because there may be extra CCK fields appended to the teaser.
+          $insert_point = strpos($view_mode, $node->content['body'][0]['#markup']) + $match[0][1];
+          // Insert the link.
+          $node->content['body'][0]['#markup'] = substr_replace($node->content['body'][0]['#markup'], drupal_render($read_more_link), $insert_point, 0);
+        }
+
+        // Display the link after the rest of the content.
+        else {
+          $display = 'after';
+        }
       }
     }
 
@@ -327,23 +338,3 @@ function theme_read_more_link($vars) {
   return $separator . '<' . $element . ' class="read-more">' . l($link_text, 'node/' . $node->nid, $link_options) . '</' . $element . '>';
 }
 
-
-
-  //Read more<span class="element-invisible"> about Imputo Nobis Ulciscor</span>
-  
-  /*
-
-  if ($view_mode == 'teaser') {
-    $node_title_stripped = strip_tags($node->title);
-    $links['node-readmore'] = array(
-      'title' => t('Read more<span class="element-invisible"> about @title</span>', array('@title' => $node_title_stripped)), 
-      'href' => 'node/' . $node->nid, 
-      'html' => TRUE, 
-      'attributes' => array(
-        'rel' => 'tag',
-        'title' => $node_title_stripped,
-      ),
-    );
-  }
-
-  */

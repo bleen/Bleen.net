@@ -5,10 +5,11 @@ dependencies[] = entity
 files[] = field_collection.test
 files[] = field_collection.info.inc
 configure = admin/structure/field-collections
+package = Fields
 
-; Information added by drupal.org packaging script on 2011-06-28
-version = "7.x-1.x-dev"
+; Information added by drupal.org packaging script on 2011-08-18
+version = "7.x-1.0-beta2"
 core = "7.x"
 project = "field_collection"
-datestamp = "1309219920"
+datestamp = "1313670125"
 

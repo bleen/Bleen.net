@@ -349,6 +349,9 @@ function spamicide_delete_confirm_submit($form, &$form_state) {
  * @param $form
  */
 function spamicide_form_alter(&$form, &$form_state, $form_id) {
+  if(strpos($form_id, 'search') !== FALSE) {//ignore the search forms
+    return;
+  }
   module_load_include('inc', 'spamicide');
     $spamicide_field = _spamicide_get_field($form_id);
     if ($spamicide_field) {
@@ -419,7 +422,7 @@ function spamicide_validate($form, &$form_state) {
       drupal_goto($_GET['q']);
     }
     else {
-      drupal_goto($form_state['values']['#post']['destination']);
+      drupal_goto($form_state['values']['destination']);
     }
   }
 }
