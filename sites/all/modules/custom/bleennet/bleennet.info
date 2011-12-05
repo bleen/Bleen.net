@@ -1,0 +1,4 @@
+name = Bleen.net
+description = A generic settings module for bleen.net.
+package = Bleen.net
+core = 7.x
