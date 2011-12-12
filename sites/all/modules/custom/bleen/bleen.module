@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function bleen_block_info() {
+  $blocks = array();
+  $blocks['bleen_definition'] = array(
+    'info'    => t('Definition of Bleen'),
+    'cache'   => DRUPAL_CACHE_GLOBAL,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function bleen_block_view($delta) {
+  $block = array();
+  switch ($delta) {
+    case 'bleen_definition':
+      $block['subject'] = t('What is Bleen?');
+      $block['content'] = array('#markup' => variable_get('bleen_definition', ''));
+      break;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function bleen_form_system_site_information_settings_alter(&$form, $form_state) {
+  $form['site_information']['site_slogan']['#access'] = FALSE;
+  $form['site_information']['bleen_definition'] = array(
+    '#type'           => 'text_format',
+    '#title'          => t('Definition of Bleen'),
+    '#default_value'  => variable_get('bleen_definition', ''),
+    '#description'    => t('Define the word "Bleen".'),
+  );
+  $form['#submit'][] = 'bleen_form_system_site_information_submit';
+}
+
+/**
+ * Form submit function.
+ */
+function bleen_form_system_site_information_submit($form, $form_state) {
+  variable_set('bleen_definition', $form_state['values']['bleen_definition']['value']);
+}
+
