@@ -1,5 +1,7 @@
 <?php
 
+include_once('bleen.features.inc');
+
 /**
  * Implements hook_block_info().
  */
