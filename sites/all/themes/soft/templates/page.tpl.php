@@ -12,6 +12,7 @@
   <?php if (isset($page['content'])) : ?>
     <?php print render($page['content']); ?>
   <?php endif; ?>
+  <div id="hand"></div>
 </div>
 
 <?php if (isset($page['footer'])) : ?>

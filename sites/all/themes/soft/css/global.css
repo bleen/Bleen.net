@@ -52,7 +52,8 @@ a, a:hover, a:link, a:visited {
 
 #page {
   background: #fff;
-  margin: 3% auto 5px auto;
+  position: relative;
+  margin: 35px auto 5px auto;
   width: 320px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -62,9 +63,19 @@ a, a:hover, a:link, a:visited {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
 }
 
+#hand {
+  background: url(../images/hand.png) no-repeat center center;
+  background-size: contain;
+  height: 62px;
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  width: 100px;
+}
+
 #main-menu {
-  padding: 5px 10px;
-  width: 20%;
+  padding: 5px 20px;
+  width: 7.3em;
   font-size: 1.5em;
   background: #c0c0c0; /* Old browsers */
   background: -moz-linear-gradient(top, #c0c0c0 0%, #919191 100%); /* FF3.6+ */
@@ -87,12 +98,15 @@ a, a:hover, a:link, a:visited {
 #main-menu a:link,
 #main-menu a:visited {
   color: #fff;
+  padding: 0 2px;
+  margin-right: 20px;
 }
 #main-menu a:hover {
   border-bottom: 1px dotted #fff;
 }
-
-
+#main-menu a:last-child {
+  margin-right: 0;
+}
 /**
  * Messages
  */

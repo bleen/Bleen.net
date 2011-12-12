@@ -1,3 +1,11 @@
 #page {
   width: 960px;
+  margin-top: 70px;
+}
+
+#hand {
+  height: 125px;
+  right: 50px;
+  top: -60px;
+  width: 200px;
 }
