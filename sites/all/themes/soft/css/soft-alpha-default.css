@@ -1,1 +1,22 @@
-/* This file will hold styles that are loaded using the same media query as the narrow grid. */
+#page {
+  margin-top: 70px;
+}
+
+#main-menu {
+  padding: 5px 20px;
+  width: 7.3em;
+  font-size: 1.5em;
+}
+#main-menu a,
+#main-menu a:hover,
+#main-menu a:link,
+#main-menu a:visited {
+  margin-right: 20px;
+}
+
+#hand {
+  height: 125px;
+  right: 50px;
+  top: -60px;
+  width: 200px;
+}

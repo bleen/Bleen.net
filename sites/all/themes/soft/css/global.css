@@ -73,10 +73,14 @@ a, a:hover, a:link, a:visited {
   width: 100px;
 }
 
+#section-header {
+  margin-bottom: 20px;
+}
+
 #main-menu {
-  padding: 5px 20px;
-  width: 7.3em;
-  font-size: 1.5em;
+  padding: 3px 10px;
+  width: 6.5em;
+  font-size: 1em;
   background: #c0c0c0; /* Old browsers */
   background: -moz-linear-gradient(top, #c0c0c0 0%, #919191 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c0c0c0), color-stop(100%,#919191)); /* Chrome,Safari4+ */
@@ -99,7 +103,7 @@ a, a:hover, a:link, a:visited {
 #main-menu a:visited {
   color: #fff;
   padding: 0 2px;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 #main-menu a:hover {
   border-bottom: 1px dotted #fff;
