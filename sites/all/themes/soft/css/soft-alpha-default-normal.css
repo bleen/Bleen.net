@@ -7,3 +7,12 @@
   width: 7.3em;
   font-size: 1.5em;
 }
+
+#block-bleen-bleen-definition {
+  width: 325px;
+  font-size: 1em;
+  padding-bottom: 36px;
+}
+#block-bleen-bleen-definition .block-inner {
+  padding: 10px;
+}

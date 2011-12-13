@@ -26,6 +26,23 @@ function bleen_block_view($delta) {
       $block['content'] = array('#markup' => variable_get('bleen_definition', ''));
       break;
   }
+
+  return $block;
+}
+
+function bleen_contextual_links_view_alter(&$element, &$items) {
+  // This hook is called for EVERY set of contextual links on a page.  We first
+  // want to check the $element to make sure we are adding a link to the correct
+  // list of contextual links. In this case we only want to add a link to blocks
+  // created by the "search" module. We just add links using the same array
+  // structure as is used by theme_links.
+  // Note: changed $element to $element['#element'] and make URLs absolute.
+  if (isset($element['#element']['#block']) && $element['#element']['#block']->module == "bleen" && $element['#element']['#block']->delta == "bleen_definition"){
+    $element['#links']['bleen'] = array(
+      'title' => 'Edit definition',
+      'href' => url('/admin/config/system/site-information', array('absolute' => TRUE)),
+    );
+  }
 }
 
 /**

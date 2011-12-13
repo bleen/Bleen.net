@@ -20,3 +20,32 @@
   top: -60px;
   width: 200px;
 }
+
+#block-bleen-bleen-definition {
+  display: block;
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  width: 250px;
+  font-size: .85em;
+  background: url(../images/fold-shadow.png) no-repeat center bottom;
+  background-size: contain;
+  padding-bottom: 24px;
+  -moz-transform: rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+#block-bleen-bleen-definition .block-inner {
+  border: 1px solid #f4f4f4;
+  padding: 30px 10px 10px 10px;
+  background: #fafafa; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover,  #fafafa 30%, #efefef 100%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(30%,#fafafa), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* IE10+ */
+  background: radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#efefef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
