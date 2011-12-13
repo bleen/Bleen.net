@@ -650,6 +650,9 @@ function resume_field_default_fields() {
           'available_countries' => array(
             'US' => 'US',
           ),
+          'format_handlers' => array(
+             0 => 'address',
+          ),
           'name_format' => 'name_line',
         ),
         'type' => 'addressfield_standard',
