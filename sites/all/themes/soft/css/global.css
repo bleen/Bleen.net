@@ -39,7 +39,18 @@
 /* General tag definitions. */
 body {
   font: 13px/1.5 MyriadProLight, Helvetica, Arial, sans-serif;
-  background: #aacbcd url('../images/bg.png');
+  background: #778f90 url('../images/bg.png');
+  -webkit-transition: background-color 45s ease;
+  -moz-transition: background-color 45s ease;
+  -o-transition: background-color 45s ease;
+  transition: background-color 45s ease;
+}
+body:hover {
+  background-color: #aacbcd;
+  -webkit-transition: background-color 4s ease;
+  -moz-transition: background-color 4s ease;
+  -o-transition: background-color 4s ease;
+  transition: background-color 4s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -130,9 +141,9 @@ p:last-child {
   background: #eee;
   padding: 10px;
   margin-bottom: 20px;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
-  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25);
 }
 #block-bleen-bleen-definition {
   display: none;
@@ -161,7 +172,7 @@ input[type="text"] {
 }
 
 input[type="search"] {
-  width: 180px;
+  width: 195px;
   margin-right: 10px;
   border: 1px solid #ddd;
   color: #666;
@@ -175,6 +186,7 @@ input[type="button"] {
   padding: 6px 15px;
   font-weight: normal;
   color: #fff;
+  margin: 0;
   text-shadow: -1px -1px 1px #ccc;
   filter: dropshadow(color=#ccc, offx=-1, offy=-1);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);

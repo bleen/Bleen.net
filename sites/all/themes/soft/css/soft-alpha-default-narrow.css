@@ -4,3 +4,6 @@
 #main-menu {
   font-size: 1.25em;
 }
+input[type="search"] {
+  width: 115px;
+}

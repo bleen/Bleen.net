@@ -21,11 +21,18 @@
   width: 200px;
 }
 
+#region-sidebar {
+  margin-top: 20em;
+}
+input[type="search"] {
+  width: 195px;
+}
+
 #block-bleen-bleen-definition {
   display: block;
   position: absolute;
   top: 25px;
-  right: 10px;
+  right: 0;
   width: 250px;
   font-size: .85em;
   background: url(../images/fold-shadow.png) no-repeat center bottom;
