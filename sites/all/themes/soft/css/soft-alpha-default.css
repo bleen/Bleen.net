@@ -22,10 +22,14 @@
 }
 
 #region-sidebar {
-  margin-top: 20em;
+  margin-top: 22em;
 }
 input[type="search"] {
   width: 195px;
+}
+
+h2.node-title {
+  font-size: 2.75em;
 }
 
 #block-bleen-bleen-definition {

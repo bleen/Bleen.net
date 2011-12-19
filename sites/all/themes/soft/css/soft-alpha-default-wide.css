@@ -7,13 +7,14 @@
   width: 7.3em;
   font-size: 1.5em;
 }
-
-#block-bleen-bleen-definition {
-  width: 325px;
-  font-size: 1em;
+#region-sidebar {
+  margin-top: 19em;
+}
+input[type="search"] {
+  width: 275px;
 }
 #block-bleen-bleen-definition {
-  width: 325px;
+  width: 400px;
   font-size: 1em;
   padding-bottom: 36px;
 }
