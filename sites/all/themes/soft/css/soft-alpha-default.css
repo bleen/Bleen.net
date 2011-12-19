@@ -31,6 +31,15 @@ input[type="search"] {
 h2.node-title {
   font-size: 2.75em;
 }
+.node .terms {
+  border-left: 1px dotted #ccc;
+  padding-left: 10px;
+  float: left;
+}
+.node .pubdate {
+  float: left;
+  margin-right: 10px;
+}
 
 #block-bleen-bleen-definition {
   display: block;

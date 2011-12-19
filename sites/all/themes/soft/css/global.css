@@ -161,7 +161,7 @@ h2.block-title {
  * Nodes
  */
 .node-teaser {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 h2.node-title {
   font-family: MyriadProLight, Helvetica, Arial, sans-serif;
@@ -173,22 +173,29 @@ h2.node-title {
 .node .pubdate {
   display: block;
   color: #ccc;
-  margin-bottom: 20px;
 }
 .node .terms {
-  margin: 15px 0;
-  padding: 5px 0;
-  border-top: 1px dotted #ccc;
-  border-bottom: 1px dotted #ccc;
+  margin-bottom: 20px;
+}
+.node .terms label {
+  color: #ccc;
+}
+.node .terms a:first-child {
+  padding-left: 0;
 }
 .node .terms a {
   padding: 0 10px;
+}
+.node .node-body {
+  clear: both;
+  margin-bottom: 20px;
 }
 
 /**
  * Form elements
  */
 input[type="search"],
+input[type="password"],
 input[type="text"] {
   padding: 0 15px;
   min-height: 30px;
@@ -215,10 +222,9 @@ input[type="submit"],
 input[type="button"] {
   border: 1px solid #c1e6e9;
   padding: 6px 15px;
-  font-weight: normal;
+  font: normal 13px/1.5 MyriadProLight, Helvetica, Arial, sans-serif;
   color: #fff;
   margin: 0;
-  text-shadow: -1px -1px 1px #ccc;
   filter: dropshadow(color=#ccc, offx=-1, offy=-1);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .5);

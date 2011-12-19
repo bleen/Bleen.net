@@ -49,14 +49,14 @@ function bleen_ds_field_settings_info() {
     'body' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
+        'ow' => TRUE,
+        'ow-el' => 'div',
+        'ow-cl' => 'node-body',
       ),
     ),
     'field_tags' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
-        'lb' => 'Filed under',
-        'lb-el' => 'label',
-        'lb-cl' => 'lbl',
         'ow' => TRUE,
         'ow-el' => 'div',
         'ow-cl' => 'terms',
@@ -108,16 +108,16 @@ function bleen_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title',
         1 => 'post_date',
-        2 => 'body',
-        3 => 'field_tags',
+        2 => 'field_tags',
+        3 => 'body',
         4 => 'read_on',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'post_date' => 'ds_content',
-      'body' => 'ds_content',
       'field_tags' => 'ds_content',
+      'body' => 'ds_content',
       'read_on' => 'ds_content',
     ),
     'classes' => array(),
