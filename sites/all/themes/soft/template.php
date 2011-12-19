@@ -35,3 +35,15 @@ function soft_links__system_main_menu($variables) {
 
   return $output;
 }
+
+/**
+ * Define display suite preprocess fields defined in preprocess-node.inc
+ */
+function soft_ds_fields_info($entity_type) {
+  $fields = array();
+  $fields['read_on'] = array(
+    'title' => t('Read on button'),
+    'field_type' => DS_FIELD_TYPE_PREPROCESS,
+  );
+  return array('node' => $fields);
+}
