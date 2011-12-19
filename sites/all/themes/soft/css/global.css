@@ -287,19 +287,22 @@ input[type="button"]:hover {
 }
 
 /**
- * pager
+ * Pagers
  */
+.pager .button {
+  padding: 5px 10px;
+}
 .pager li {
   font: 13px/1.5 MyriadProLight, Helvetica, Arial, sans-serif;
   background-image: none;
   margin-left: 1em;
 }
+.pager li.pager-previous{
+  margin-left: 0;
+}
 .pager li.pager-previous a,
 .pager li.pager-next a {
   color: #999;
-}
-.pager .button {
-  padding: 5px 10px;
 }
 .pager li.pager-current {
   border: 1px solid #eee;
