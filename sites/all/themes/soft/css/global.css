@@ -128,9 +128,19 @@ p:last-child {
   color: #fff;
   padding: 0 2px;
   margin-right: 5px;
+  top: 0;
+  position: relative;
+  -webkit-transition: top 250ms ease;
+  -moz-transition: top 250ms ease;
+  -o-transition: top 250ms ease;
+  transition: top 250ms ease;
 }
 #main-menu a:hover {
-  border-bottom: 1px dotted #fff;
+  top: -2px;
+  -webkit-transition: top 50ms ease;
+  -moz-transition: top 50ms ease;
+  -o-transition: top 50ms ease;
+  transition: top 50ms ease;
 }
 #main-menu a:last-child {
   margin-right: 0;
@@ -185,10 +195,15 @@ h2.node-title {
 }
 .node .terms a {
   padding: 0 10px;
+  display: inline-block;
+  white-space: nowrap;
 }
 .node .node-body {
   clear: both;
   margin-bottom: 20px;
+}
+.node .node-body img {
+  max-width: 100%;
 }
 
 /**
