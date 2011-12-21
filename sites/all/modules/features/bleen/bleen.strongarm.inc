@@ -30,6 +30,16 @@ function bleen_strongarm() {
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'bleen_social_networks';
+  $strongarm->value = 'Facebook|http://www.facebook.com/bleen
+Twitter|http://www.twitter.com/bleen18
+LinkedIn|http://www.linkedin.com/in/bleen18
+RSS|/feed';
+  $export['bleen_social_networks'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'date_format_long';
   $strongarm->value = 'l, F j, Y - H:i';
   $export['date_format_long'] = $strongarm;

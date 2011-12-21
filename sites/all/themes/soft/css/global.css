@@ -55,8 +55,7 @@ body:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: normal;
-  font-family: MyriadProSemibold, Helvetica, Arial, sans-serif;
+  font-family: MyriadProLight, Helvetica, Arial, sans-serif;
 }
 
 a, a:hover, a:link, a:visited {
@@ -165,8 +164,32 @@ p:last-child {
 }
 h2.block-title {
   margin-bottom: 10px;
+  font-size: 2em;
   text-shadow: -1px -1px 1px #ccc;
   filter: dropshadow(color=#ccc, offx=-1, offy=-1);
+}
+.tweet-wrap:first-child {
+  padding-top: 0;
+}
+.tweet-wrap {
+  border-bottom: 1px solid #666;
+  padding: 10px 5px;
+}
+.tweet-wrap .pubdate {
+  width: 40px;
+  float: left;
+  margin: 0 10px 0 0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2em;
+  line-height: .75em;
+}
+.tweet-wrap .pubdate span {
+  display: block;
+  font-size: .6em;
+}
+.tweet-wrap .tweet {
+  padding-left: 50px;
 }
 
 /**
@@ -176,7 +199,6 @@ h2.block-title {
   margin-bottom: 50px;
 }
 h2.node-title {
-  font-family: MyriadProLight, Helvetica, Arial, sans-serif;
   font-size: 2em;
   font-weight: bold;
   line-height: 1.25em;

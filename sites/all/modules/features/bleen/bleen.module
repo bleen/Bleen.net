@@ -37,11 +37,25 @@ function bleen_contextual_links_view_alter(&$element, &$items) {
   // created by the "search" module. We just add links using the same array
   // structure as is used by theme_links.
   // Note: changed $element to $element['#element'] and make URLs absolute.
-  if (isset($element['#element']['#block']) && $element['#element']['#block']->module == "bleen" && $element['#element']['#block']->delta == "bleen_definition"){
-    $element['#links']['bleen'] = array(
-      'title' => 'Edit definition',
-      'href' => url('/admin/config/system/site-information', array('absolute' => TRUE)),
-    );
+  if (isset($element['#element']['#block'])) {
+    switch ($element['#element']['#block']->module) {
+      case 'bleen':
+        if ($element['#element']['#block']->delta == "bleen_definition") {
+          $element['#links']['bleen'] = array(
+            'title' => 'Edit definition',
+            'href' => url('/admin/config/system/site-information', array('absolute' => TRUE)),
+          );
+        }
+        break;
+      case 'views':
+        if ($element['#element']['#block']->delta == "site_tweets-site_tweets_block") {
+          $element['#links']['bleen'] = array(
+            'title' => 'Edit social network links',
+            'href' => url('/admin/config/system/site-information', array('absolute' => TRUE)),
+          );
+        }
+        break;
+    }
   }
 }
 
@@ -49,13 +63,25 @@ function bleen_contextual_links_view_alter(&$element, &$items) {
  * Implements hook_form_FORM_ID_alter().
  */
 function bleen_form_system_site_information_settings_alter(&$form, $form_state) {
+  // Hide the site slogan field.
   $form['site_information']['site_slogan']['#access'] = FALSE;
+
+  // Allow site administrator to edit the definition of bleen.
   $form['site_information']['bleen_definition'] = array(
     '#type'           => 'text_format',
     '#title'          => t('Definition of Bleen'),
     '#default_value'  => variable_get('bleen_definition', ''),
-    '#description'    => t('Define the word "Bleen".'),
   );
+
+  // Allow site administrator to add or edit the social network links associated
+  // with bleen.net.
+  $form['site_information']['bleen_social_networks'] = array(
+    '#type'           => 'textarea',
+    '#title'          => t('Social network links'),
+    '#default_value'  => variable_get('bleen_social_networks', ''),
+    '#description'    => t('Enter one social network link per line.') . '<br/>' . t('Ex: Title|http://www.link.com'),
+  );
+
   $form['#submit'][] = 'bleen_form_system_site_information_submit';
 }
 
