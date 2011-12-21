@@ -38,6 +38,12 @@ function bleen_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-10',
         ),
+        'views-site_tweets-site_tweets_block' => array(
+          'module' => 'views',
+          'delta' => 'site_tweets-site_tweets_block',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
