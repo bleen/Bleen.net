@@ -3,6 +3,17 @@
 include_once('bleen.features.inc');
 
 /**
+ * Implements hook_theme().
+ */
+function bleen_theme() {
+  return array(
+    'bleen_social_network_links' => array(
+      'variables' => array('links' => array(), 'attributes' => array()),
+    ),
+  );
+}
+
+/**
  * Implements hook_block_info().
  */
 function bleen_block_info() {
@@ -90,5 +101,60 @@ function bleen_form_system_site_information_settings_alter(&$form, $form_state) 
  */
 function bleen_form_system_site_information_submit($form, $form_state) {
   variable_set('bleen_definition', $form_state['values']['bleen_definition']['value']);
+}
+
+/**
+ * Implements hook_block_view_alter().
+ */
+function bleen_block_view_alter(&$data, $block) {
+  switch ($block->module) {
+    case 'views':
+      if ($block->delta == 'site_tweets-site_tweets_block') {
+        $data['content'] = array(
+          'content' => $data['content'],
+          'social_network_links' => array(
+            '#theme' => 'bleen_social_network_links',
+            '#links' => _bleen_get_social_network_links(),
+            '#attributes' => array('class' => array('social-network-links')),
+          ),
+        );
+      }
+      break;
+  }
+}
+
+/**
+ * Themes a list of social network links.
+ */
+function theme_bleen_social_network_links($variables) {
+  $output = '';
+  if (count($variables['links'])) {
+    $output .= '<div' . drupal_attributes($variables['attributes']) . '>';
+    foreach($variables['links'] as $link) {
+      $output .= l($link['title'], $link['href'], array('attributes' => $link['attributes']));
+    }
+    $output .= '</div>';
+  }
+
+  return $output;
+}
+
+/**
+ * Helper function to format the list of social network links.
+ */
+function _bleen_get_social_network_links() {
+  $links = array();
+
+  $lines = preg_split( '/\r\n|\r|\n/', variable_get('bleen_social_networks', ''));
+  foreach($lines as $line) {
+    list($title, $href) = explode('|', $line);
+    $links[] = array(
+      'title' => $title,
+      'href' => $href,
+      'attributes' => array('class' => array(drupal_html_class($title))),
+    );
+  }
+
+  return $links;
 }
 

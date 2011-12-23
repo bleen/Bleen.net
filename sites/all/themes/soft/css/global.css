@@ -191,6 +191,45 @@ h2.block-title {
 .tweet-wrap .tweet {
   padding-left: 50px;
 }
+.social-network-links {
+  margin-top: 3px;
+  text-align: right;
+}
+.social-network-links a {
+  position: relative;
+  top: 0;
+  display: inline-block;
+  width: 4em;
+  height: 4em;
+  margin: .5em;
+  text-indent: 10000px;
+  overflow: hidden;
+  background: no-repeat center center;
+  background-size: contain;
+  -webkit-transition: top 250ms ease;
+  -moz-transition: top 250ms ease;
+  -o-transition: top 250ms ease;
+  transition: top 250ms ease;
+}
+.social-network-links a:hover {
+  top: -5px;
+  -webkit-transition: top 250ms ease;
+  -moz-transition: top 250ms ease;
+  -o-transition: top 250ms ease;
+  transition: top 250ms ease;
+}
+.social-network-links a.facebook{
+  background-image: url(../images/logo_facebook.png);
+}
+.social-network-links a.twitter{
+  background-image: url(../images/logo_twitter.png);
+}
+.social-network-links a.linkedin{
+  background-image: url(../images/logo_linkedin.png);
+}
+.social-network-links a.rss{
+  background-image: url(../images/logo_rss.png);
+}
 
 /**
  * Nodes
