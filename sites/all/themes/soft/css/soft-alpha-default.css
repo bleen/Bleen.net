@@ -20,7 +20,10 @@
   top: -60px;
   width: 200px;
 }
-
+.social-network-links a {
+  width: 4em;
+  height: 4em;
+}
 #region-sidebar {
   margin-top: 22em;
 }

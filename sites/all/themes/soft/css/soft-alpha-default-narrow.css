@@ -7,4 +7,7 @@
 input[type="search"] {
   width: 115px;
 }
-
+.social-network-links a {
+  width: 2.5em;
+  height: 2.5em;
+}
