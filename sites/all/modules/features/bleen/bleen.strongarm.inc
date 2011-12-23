@@ -61,6 +61,44 @@ RSS|feed';
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'disable_breadcrumbs_all';
+  $strongarm->value = 1;
+  $export['disable_breadcrumbs_all'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'disable_breadcrumbs_node_paths';
+  $strongarm->value = '';
+  $export['disable_breadcrumbs_node_paths'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'disable_breadcrumbs_node_types';
+  $strongarm->value = array(
+    'article' => 0,
+    'page' => 0,
+    'project' => 0,
+    'resume' => 0,
+  );
+  $export['disable_breadcrumbs_node_types'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'disable_breadcrumbs_node_types_all';
+  $strongarm->value = array(
+    'article' => 0,
+    'page' => 0,
+    'project' => 0,
+    'resume' => 0,
+  );
+  $export['disable_breadcrumbs_node_types_all'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'ds_extras_contextual';
   $strongarm->value = 1;
   $export['ds_extras_contextual'] = $strongarm;

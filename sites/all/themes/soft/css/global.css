@@ -58,6 +58,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: MyriadProLight, Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  color: #919191;
+  line-height: 1.25em;
+}
+
 a, a:hover, a:link, a:visited {
   color: #cd9684;
   text-decoration: none;
@@ -234,15 +239,6 @@ h2.block-title {
 /**
  * Nodes
  */
-.node-teaser {
-  margin-bottom: 50px;
-}
-h2.node-title {
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 1.25em;
-  margin-bottom: 0;
-}
 .node .pubdate {
   display: block;
   color: #ccc;
@@ -267,6 +263,22 @@ h2.node-title {
 }
 .node .node-body img {
   max-width: 100%;
+}
+.node-teaser {
+  margin-bottom: 50px;
+}
+.node-teaser .node-title {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.25em;
+  margin-bottom: 0;
+}
+.node-title {
+  font-size: 2em;
+  margin: 0;
+}
+.node.view-mode-full .pubdate {
+  margin-bottom: 20px;
 }
 
 /**
@@ -387,6 +399,42 @@ input[type="button"]:hover {
   background: -ms-linear-gradient(top,  #c0c0c0 0%,#919191 100%); /* IE10+ */
   background: linear-gradient(top,  #c0c0c0 0%,#919191 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c0c0c0', endColorstr='#919191',GradientType=0 ); /* IE6-9 */
+}
+
+/**
+ * Admin styles
+ */
+.tabs.primary {
+  margin-bottom: 10px;
+  font-size: .75em;
+  opacity: .25;
+  -webkit-transition: opacity 250ms ease;
+  -moz-transition: opacity 250ms ease;
+  -o-transition: opacity 250ms ease;
+  transition: opacity 250ms ease;
+}
+.tabs.primary:hover {
+  opacity: 1;
+  -webkit-transition: opacity 250ms ease;
+  -moz-transition: opacity 250ms ease;
+  -o-transition: opacity 250ms ease;
+  transition: opacity 250ms ease;
+}
+.tabs.primary li {
+  margin-right: 10px;
+}
+.tabs.primary li a{
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid #ccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #eee;
+}
+.tabs.primary li.active a,
+.tabs.primary li a:hover {
+  background: #fff;
 }
 
 /**

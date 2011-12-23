@@ -16,7 +16,7 @@
 
 #hand {
   height: 125px;
-  right: 50px;
+  right: 25px;
   top: -60px;
   width: 200px;
 }
@@ -31,15 +31,15 @@ input[type="search"] {
   width: 195px;
 }
 
-h2.node-title {
+.node-title {
   font-size: 2.75em;
 }
-.node .terms {
+.node-teaser .terms {
   border-left: 1px dotted #ccc;
   padding-left: 10px;
   float: left;
 }
-.node .pubdate {
+.node-teaser .pubdate {
   float: left;
   margin-right: 10px;
 }
@@ -71,4 +71,7 @@ h2.node-title {
   background: -ms-radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* IE10+ */
   background: radial-gradient(center, ellipse cover,  #fafafa 30%,#efefef 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#efefef',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.tabs.primary {
+  font-size: 1em;
 }
