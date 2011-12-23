@@ -1,6 +1,10 @@
 
 Libraries 7.x-2.x, xxxx-xx-xx
 -----------------------------
+
+
+Libraries 7.x-2.0-alpha2, 2011-12-15
+------------------------------------
 #1299076 by tstoeckler: Improve testing of JS, CSS, and PHP files.
 #1347214 by rfay: Improve update function 7200.
 #1323530 by tstoeckler: Document libraries_get_version() pattern matching.
