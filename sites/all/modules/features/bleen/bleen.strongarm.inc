@@ -41,7 +41,7 @@ RSS|feed';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_long';
-  $strongarm->value = 'l, F j, Y - H:i';
+  $strongarm->value = 'l, F m, Y';
   $export['date_format_long'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -55,14 +55,14 @@ RSS|feed';
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_short';
-  $strongarm->value = 'Y-m-d H:i';
+  $strongarm->value = 'M m <\\sp\\a\\n>g:ia</\\sp\\a\\n>';
   $export['date_format_short'] = $strongarm;
 
   $strongarm = new stdClass;
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'disable_breadcrumbs_all';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['disable_breadcrumbs_all'] = $strongarm;
 
   $strongarm = new stdClass;
@@ -89,10 +89,10 @@ RSS|feed';
   $strongarm->api_version = 1;
   $strongarm->name = 'disable_breadcrumbs_node_types_all';
   $strongarm->value = array(
-    'article' => 0,
-    'page' => 0,
-    'project' => 0,
-    'resume' => 0,
+    'article' => 'article',
+    'page' => 'page',
+    'project' => 'project',
+    'resume' => 'resume',
   );
   $export['disable_breadcrumbs_node_types_all'] = $strongarm;
 

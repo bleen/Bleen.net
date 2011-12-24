@@ -183,6 +183,13 @@ function soft_pager_link($variables) {
 }
 
 /**
+ * Alter the comments form.
+ */
+function soft_form_comment_form_alter(&$form, &$form_state) {
+  $form['author']['homepage']['#access'] = FALSE;
+}
+
+/**
  * Define display suite preprocess fields defined in preprocess-node.inc
  */
 function soft_ds_fields_info($entity_type) {

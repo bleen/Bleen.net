@@ -282,6 +282,61 @@ h2.block-title {
 }
 
 /**
+ * Comments
+ */
+.comment {
+  position: relative;
+  background: #eee;
+  padding: 5px 5px 20px 5px;
+  margin-bottom: 20px;
+  border: 1px dotted #ccc;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+.comment-by-author {
+  background: #aacbcd;
+  border-color: #778f90;
+}
+.comment .left {
+  width: 50px;
+  float: left;
+  margin-right: 8px;
+  text-align: center;
+  overflow: hidden;
+}
+.comment .right {
+  padding-left: 60px;
+}
+.comment time[pubdate] {
+  display: block;
+  color: #fff;
+  font-size: 2em;
+  font-family: 'MyriadProSemibold', 'Arial Black';
+  text-transform: uppercase;
+  line-height: 1em;
+}
+.comment time[pubdate] span {
+  font-size: .4em;
+  display: block;
+  text-transform: lowercase;
+}
+.comment .comment-title {
+  margin: 0;
+  font-size: 1.25em;
+}
+.comment .username {
+  display: block;
+  margin: 0 0 10px 10px;
+  color: #666;
+}
+.comment .links {
+  position: absolute;
+  bottom: -15px;
+  right: 10px;
+}
+
+/**
  * Form elements
  */
 input[type="search"],

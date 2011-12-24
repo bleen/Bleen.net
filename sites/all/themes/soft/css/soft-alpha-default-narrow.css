@@ -4,6 +4,10 @@
 #main-menu {
   font-size: 1.25em;
 }
+#region-content .region-inner {
+  padding: 0 20px;
+}
+
 input[type="search"] {
   width: 115px;
 }
