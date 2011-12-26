@@ -21,3 +21,7 @@ input[type="search"] {
 #block-bleen-bleen-definition .block-inner {
   padding: 10px;
 }
+
+.comment-form {
+  width: 720px;
+}

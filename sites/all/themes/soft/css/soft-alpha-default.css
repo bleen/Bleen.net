@@ -44,17 +44,10 @@ input[type="search"] {
   margin-right: 10px;
 }
 
-.comment .left {
-  width: 80px;
-}
-.comment .right {
-  padding-left: 90px;
-}
-.comment time[pubdate] {
-  font-size: 3.5em;
-}
-.comment .comment-title {
-  font-size: 1.75em;
+.comment-form {
+  padding: 10px 10px 10px 40px;
+  left: -30px;
+  width: 400px;
 }
 
 #block-bleen-bleen-definition {

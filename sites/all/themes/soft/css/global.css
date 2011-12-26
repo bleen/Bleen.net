@@ -335,6 +335,32 @@ h2.block-title {
   bottom: -15px;
   right: 10px;
 }
+.comment-form {
+  position: relative;
+  background: #909090;
+  color: #fff;
+  padding: 10px 10px 10px 20px;
+  left: -10px;
+  width: 280px;
+  margin-bottom: 20px;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-radius: 0 10px 10px 0;
+  border-radius: 0 10px 10px 0;
+}
+.comment-form input[type="text"] {
+  padding: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  min-height: 0;
+  -webkit-box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, .2);
+  -moz-box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, .2);
+  box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, .2);
+}
+
 
 /**
  * Form elements
