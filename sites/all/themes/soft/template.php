@@ -187,6 +187,16 @@ function soft_pager_link($variables) {
  */
 function soft_form_comment_form_alter(&$form, &$form_state) {
   $form['author']['homepage']['#access'] = FALSE;
+  $form['author']['mail']['#description'] = '';
+  $form['comment_body']['#after_build'][] = 'soft_form_comment_form_afterbuild';
+}
+
+/**
+ * Comment form afterbuild function.
+ */
+function soft_form_comment_form_afterbuild(&$form) {
+  $form[LANGUAGE_NONE][0]['format']['#access'] = FALSE;
+  return $form;
 }
 
 /**
