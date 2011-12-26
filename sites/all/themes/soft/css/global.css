@@ -491,6 +491,9 @@ input[type="button"]:hover {
 .label-inline {
   display: inline;
 }
+.edit-feed-me-wrapper {
+  display: none;
+}
 
 /**
  * Pagers
