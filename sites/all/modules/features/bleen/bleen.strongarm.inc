@@ -34,7 +34,7 @@ function bleen_strongarm() {
   $strongarm->value = 'Facebook|http://www.facebook.com/bleen
 Twitter|http://www.twitter.com/bleen18
 LinkedIn|http://www.linkedin.com/in/bleen18
-RSS|feed';
+RSS|rss.xml';
   $export['bleen_social_networks'] = $strongarm;
 
   $strongarm = new stdClass;
