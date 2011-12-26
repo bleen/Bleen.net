@@ -50,6 +50,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   color: #919191;
   line-height: 1.25em;
+  margin-bottom: 0;
 }
 
 a, a:hover, a:link, a:visited {
@@ -277,6 +278,30 @@ h2.block-title {
 .node.view-mode-full .pubdate {
   margin-bottom: 20px;
 }
+.node-type-resume h3 {
+  margin: 0;
+  font-size: 1em;
+}
+.node-type-resume h4 {
+  margin: 0;
+  font-size: 1.25em;
+  font-weight: normal;
+}
+.node-type-resume .degree {
+  font-weight: bold;
+}
+.node-type-resume .dates-of-employment,
+.node-type-resume .graduation-date {
+  display: block;
+  color: #999;
+  font-size: .75em;
+  margin-bottom: 10px;
+}
+.node-type-resume label {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 
 /**
  * Comments

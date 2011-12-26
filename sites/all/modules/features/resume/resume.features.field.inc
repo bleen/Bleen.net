@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_field_default_fields().
+ * Implements hook_field_default_fields().
  */
 function resume_field_default_fields() {
   $fields = array();
@@ -45,6 +45,13 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -110,7 +117,19 @@ function resume_field_default_fields() {
             'multiple_from' => '',
             'multiple_number' => '',
             'multiple_to' => '',
-            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'month_and_year',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
           ),
           'type' => 'date_default',
           'weight' => '2',
@@ -132,6 +151,7 @@ function resume_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => 1,
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => 'Y-m',
@@ -181,6 +201,13 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -249,6 +276,13 @@ function resume_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
       ),
       'entity_type' => 'field_collection_item',
       'field_name' => 'field_employer',
@@ -303,12 +337,24 @@ function resume_field_default_fields() {
           'label' => 'hidden',
           'module' => 'date',
           'settings' => array(
-            'format_type' => 'long',
+            'format_type' => 'month_and_year',
             'fromto' => 'both',
             'multiple_from' => '',
             'multiple_number' => '',
             'multiple_to' => '',
-            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'month_and_year',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
           ),
           'type' => 'date_default',
           'weight' => '2',
@@ -330,6 +376,7 @@ function resume_field_default_fields() {
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => 1,
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => 'Y-m',
@@ -377,6 +424,13 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '3',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -439,6 +493,13 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
@@ -629,6 +690,12 @@ function resume_field_default_fields() {
           'type' => 'hidden',
           'weight' => '0',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '11',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -651,7 +718,7 @@ function resume_field_default_fields() {
             'US' => 'US',
           ),
           'format_handlers' => array(
-             0 => 'address',
+            0 => 'address',
           ),
           'name_format' => 'name_line',
         ),
@@ -695,6 +762,18 @@ function resume_field_default_fields() {
           ),
           'type' => 'field_collection_view',
           'weight' => '4',
+        ),
+        'full' => array(
+          'label' => 'above',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => 'Add',
+            'delete' => 'Delete',
+            'description' => TRUE,
+            'edit' => 'Edit',
+          ),
+          'type' => 'field_collection_view',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -747,6 +826,12 @@ function resume_field_default_fields() {
           'settings' => array(),
           'type' => 'email_plain',
           'weight' => '2',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -809,6 +894,18 @@ function resume_field_default_fields() {
           'type' => 'field_collection_view',
           'weight' => '3',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => 'Add',
+            'delete' => 'Delete',
+            'description' => TRUE,
+            'edit' => 'Edit',
+          ),
+          'type' => 'field_collection_view',
+          'weight' => '0',
+        ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
@@ -867,6 +964,18 @@ function resume_field_default_fields() {
           ),
           'type' => 'field_collection_view',
           'weight' => '5',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'field_collection',
+          'settings' => array(
+            'add' => 'Add',
+            'delete' => 'Delete',
+            'description' => TRUE,
+            'edit' => 'Edit',
+          ),
+          'type' => 'field_collection_view',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -931,6 +1040,12 @@ function resume_field_default_fields() {
           'settings' => array(),
           'type' => 'hidden',
           'weight' => '1',
+        ),
+        'full' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
