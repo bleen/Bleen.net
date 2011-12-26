@@ -11,6 +11,30 @@ function soft_css_alter(&$css) {
 }
 
 /**
+ * Alter the comments form.
+ */
+function soft_form_comment_form_alter(&$form, &$form_state) {
+  $form['author']['homepage']['#access'] = FALSE;
+  $form['author']['name']['#required'] = TRUE;
+  $form['author']['mail']['#description'] = '';
+  $form['#after_build'][] = 'soft_form_comment_form_afterbuild';
+}
+
+/**
+ * Comment form afterbuild function.
+ */
+function soft_form_comment_form_afterbuild(&$form, $form_state) {
+  $form['comment_body'][LANGUAGE_NONE][0]['format']['#access'] = FALSE;
+
+  $form['title'] = array(
+    '#markup' => '<h2 class="form-title">' . t('Leave a comment') . '</h3>',
+    '#weight' => -100,
+  );
+
+  return $form;
+}
+
+/**
  * Theme override function.
  */
 function soft_links__system_main_menu($variables) {
@@ -183,20 +207,16 @@ function soft_pager_link($variables) {
 }
 
 /**
- * Alter the comments form.
+ * Theme override function.
  */
-function soft_form_comment_form_alter(&$form, &$form_state) {
-  $form['author']['homepage']['#access'] = FALSE;
-  $form['author']['mail']['#description'] = '';
-  $form['comment_body']['#after_build'][] = 'soft_form_comment_form_afterbuild';
-}
+function soft_captcha(&$variables) {
+  $element = $variables['element'];
 
-/**
- * Comment form afterbuild function.
- */
-function soft_form_comment_form_afterbuild(&$form) {
-  $form[LANGUAGE_NONE][0]['format']['#access'] = FALSE;
-  return $form;
+  if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
+    $element['captcha_widgets']['captcha_response']['#title'] = $element['#description'];
+  }
+
+  return '<div class="captcha clearfix">' . drupal_render_children($element) . '</div>';
 }
 
 /**

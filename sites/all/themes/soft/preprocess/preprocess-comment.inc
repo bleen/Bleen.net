@@ -1,5 +1,4 @@
 <?php
-kpr($vars);
 
   // Mark author comments as special.
   if ($vars['comment']->uid == $vars['node']->uid) {
