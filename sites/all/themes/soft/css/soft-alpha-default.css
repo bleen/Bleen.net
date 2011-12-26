@@ -43,6 +43,19 @@ input[type="search"] {
   float: left;
   margin-right: 10px;
 }
+.node-type-resume .group-left {
+  float: left;
+  width: 70%;
+}
+.node-type-resume .group-right {
+  float: right;
+  width: 30%;
+}
+.node-type-resume .group-right .field-collection-view,
+.node-type-resume .group-right .field-collection-container {
+  border: none;
+}
+
 
 .comment-form {
   padding: 10px 10px 10px 40px;

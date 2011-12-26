@@ -566,6 +566,13 @@ function resume_field_default_fields() {
           'type' => 'text_default',
           'weight' => '1',
         ),
+        'full' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '1',
+        ),
       ),
       'entity_type' => 'field_collection_item',
       'field_name' => 'field_info_items',
@@ -622,6 +629,13 @@ function resume_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => '0',
+        ),
+        'full' => array(
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),

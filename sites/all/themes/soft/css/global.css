@@ -301,7 +301,21 @@ h2.block-title {
   font-size: 1.5em;
   font-weight: bold;
 }
-
+.node-type-resume .field-collection-item-field-info-list ul {
+  list-style: none;
+  margin: 0;
+}
+.node-type-resume .group-left,
+.node-type-resume .group-right {
+  float: none;
+  width: 100%;
+}
+.node-type-resume .drupal {
+  background: url(../images/drupalicon_mini.png) left top no-repeat;
+  padding-left: 15px;
+  position: relative;
+  left: -15px;
+}
 
 /**
  * Comments

@@ -276,21 +276,23 @@ function resume_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'resume';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'ds_2col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 1,
-    'hide_sidebars' => 0,
+    'hide_sidebars' => 1,
     'regions' => array(
-      'ds_content' => array(
+      'left' => array(
         0 => 'field_experience',
         1 => 'field_education',
-        2 => 'field_info_list',
+      ),
+      'right' => array(
+        0 => 'field_info_list',
       ),
     ),
     'fields' => array(
-      'field_experience' => 'ds_content',
-      'field_education' => 'ds_content',
-      'field_info_list' => 'ds_content',
+      'field_experience' => 'left',
+      'field_education' => 'left',
+      'field_info_list' => 'right',
     ),
     'classes' => array(),
     'hide_page_title' => '0',
