@@ -57,14 +57,6 @@ a, a:hover, a:link, a:visited {
   color: #cd9684;
   text-decoration: none;
 }
-a:hover {
-  color: #fff;
-  background-color: #cd9684;
-  -webkit-transition: color 250ms ease, background-color 2s ease;
-  -moz-transition: color 250ms ease, background-color 2s ease;
-  -o-transition: color 250ms ease, background-color 2s ease;
-  transition: color 250ms ease, background-color 2s ease;
-}
 
 p:last-child {
   margin-bottom: 0;

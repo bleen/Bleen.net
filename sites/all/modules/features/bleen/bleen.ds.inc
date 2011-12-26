@@ -290,7 +290,7 @@ function bleen_ds_layout_settings_info() {
   $ds_layout->view_mode = 'teaser';
   $ds_layout->layout = 'html5_1col';
   $ds_layout->settings = array(
-    'hide_empty_regions' => 0,
+    'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
