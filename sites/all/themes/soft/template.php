@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Implimentats hook_css_alter().
- */
-function soft_css_alter(&$css) {
-  // Turn off some styles from the system module.
-  unset($css[drupal_get_path('module', 'system') . '/system.messages.css']);
-  unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);
-  unset($css[drupal_get_path('theme', 'omega') . '/css/omega-visuals.css']);
-}
-
-/**
  * Alter the comments form.
  */
 function soft_form_comment_form_alter(&$form, &$form_state) {
