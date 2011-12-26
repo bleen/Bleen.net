@@ -56,6 +56,14 @@ a, a:hover, a:link, a:visited {
   color: #cd9684;
   text-decoration: none;
 }
+a:hover {
+  color: #fff;
+  background-color: #cd9684;
+  -webkit-transition: color 250ms ease, background-color 2s ease;
+  -moz-transition: color 250ms ease, background-color 2s ease;
+  -o-transition: color 250ms ease, background-color 2s ease;
+  transition: color 250ms ease, background-color 2s ease;
+}
 
 p:last-child {
   margin-bottom: 0;
@@ -353,6 +361,9 @@ h2.block-title {
 .comment-form input[type="submit"] {
   margin-right: 10px;
 }
+.comment-form .form-item-name {
+  margin-top: 0;
+}
 .comment-form .captcha {
   margin-bottom: 10px;
 }
@@ -367,9 +378,6 @@ h2.block-title {
 /**
  * Form elements
  */
-.form-required {
-  color: #aacbcd;
-}
 input[type="search"],
 input[type="password"],
 input[type="text"] {
@@ -439,6 +447,12 @@ input[type="button"]:hover {
   background: -o-linear-gradient(top,  #aed0d2 0%,#778f90 80%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top,  #aed0d2 0%,#778f90 80%); /* IE10+ */
   background: linear-gradient(top,  #aed0d2 0%,#778f90 80%); /* W3C */
+}
+.form-required {
+  color: #aacbcd;
+}
+.form-title {
+  margin-bottom: 0;
 }
 .read-on {
   color: #fff;
