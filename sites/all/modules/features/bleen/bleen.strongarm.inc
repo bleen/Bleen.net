@@ -737,15 +737,16 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'syntaxhighlighter_enabled_languages';
   $strongarm->value = array(
+    'shBrushBash.js' => 'shBrushBash.js',
     'shBrushCss.js' => 'shBrushCss.js',
     'shBrushDiff.js' => 'shBrushDiff.js',
     'shBrushJScript.js' => 'shBrushJScript.js',
     'shBrushPhp.js' => 'shBrushPhp.js',
+    'shBrushPlain.js' => 'shBrushPlain.js',
     'shBrushSql.js' => 'shBrushSql.js',
     'shBrushXml.js' => 'shBrushXml.js',
     'shBrushAS3.js' => 0,
     'shBrushAppleScript.js' => 0,
-    'shBrushBash.js' => 0,
     'shBrushCSharp.js' => 0,
     'shBrushColdFusion.js' => 0,
     'shBrushCpp.js' => 0,
@@ -755,7 +756,6 @@ user/*/*';
     'shBrushJava.js' => 0,
     'shBrushJavaFX.js' => 0,
     'shBrushPerl.js' => 0,
-    'shBrushPlain.js' => 0,
     'shBrushPowerShell.js' => 0,
     'shBrushPython.js' => 0,
     'shBrushRuby.js' => 0,
