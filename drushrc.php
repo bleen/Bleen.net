@@ -256,12 +256,15 @@ $dev_settings = array(
   'permissions' => array(
     'anonymous user' => array(
       'access environment indicator' => '1',
+      'access devel information' => '1',
     ),
     'authenticated user' => array(
       'access environment indicator' => '1',
+      'access devel information' => '1',
     ),
     'administrator' => array(
       'access environment indicator' => '1',
+      'access devel information' => '1',
     ),
   ),
 );
@@ -282,12 +285,15 @@ $prod_settings = array(
   'permissions' => array(
     'anonymous user' => array(
       'access environment indicator' => '0',
+      'access devel information' => '0',
     ),
     'authenticated user' => array(
       'access environment indicator' => '0',
+      'access devel information' => '0',
     ),
     'administrator' => array(
       'access environment indicator' => '1',
+      'access devel information' => '1',
     ),
   ),
 );
