@@ -81,15 +81,6 @@ function bleen_user_default_permissions() {
     'module' => 'disable_breadcrumbs',
   );
 
-  // Exported permission: administer empty page callbacks
-  $permissions['administer empty page callbacks'] = array(
-    'name' => 'administer empty page callbacks',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'empty_page',
-  );
-
   // Exported permission: administer features
   $permissions['administer features'] = array(
     'name' => 'administer features',

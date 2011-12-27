@@ -725,5 +725,100 @@ user/*/*';
   $strongarm->value = 'disable';
   $export['read_more_placement'] = $strongarm;
 
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_default_expressions';
+  $strongarm->value = 'SyntaxHighlighter.defaults[\'class-name\'] = \'syntax-hilighted\';SyntaxHighlighter.defaults[\'tab-size\'] = 2;';
+  $export['syntaxhighlighter_default_expressions'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_enabled_languages';
+  $strongarm->value = array(
+    'shBrushCss.js' => 'shBrushCss.js',
+    'shBrushDiff.js' => 'shBrushDiff.js',
+    'shBrushJScript.js' => 'shBrushJScript.js',
+    'shBrushPhp.js' => 'shBrushPhp.js',
+    'shBrushSql.js' => 'shBrushSql.js',
+    'shBrushXml.js' => 'shBrushXml.js',
+    'shBrushAS3.js' => 0,
+    'shBrushAppleScript.js' => 0,
+    'shBrushBash.js' => 0,
+    'shBrushCSharp.js' => 0,
+    'shBrushColdFusion.js' => 0,
+    'shBrushCpp.js' => 0,
+    'shBrushDelphi.js' => 0,
+    'shBrushErlang.js' => 0,
+    'shBrushGroovy.js' => 0,
+    'shBrushJava.js' => 0,
+    'shBrushJavaFX.js' => 0,
+    'shBrushPerl.js' => 0,
+    'shBrushPlain.js' => 0,
+    'shBrushPowerShell.js' => 0,
+    'shBrushPython.js' => 0,
+    'shBrushRuby.js' => 0,
+    'shBrushSass.js' => 0,
+    'shBrushScala.js' => 0,
+    'shBrushVb.js' => 0,
+  );
+  $export['syntaxhighlighter_enabled_languages'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_inject';
+  $strongarm->value = '0';
+  $export['syntaxhighlighter_inject'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_legacy_mode';
+  $strongarm->value = '0';
+  $export['syntaxhighlighter_legacy_mode'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_lib_location';
+  $strongarm->value = 'sites/all/libraries/syntaxhighlighter_3.0.83';
+  $export['syntaxhighlighter_lib_location'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_pages';
+  $strongarm->value = 'admin
+admin/*
+user
+user/*
+imce
+imce/*
+';
+  $export['syntaxhighlighter_pages'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_tagname';
+  $strongarm->value = 'pre';
+  $export['syntaxhighlighter_tagname'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_theme';
+  $strongarm->value = 'shThemeDefault.css';
+  $export['syntaxhighlighter_theme'] = $strongarm;
+
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'syntaxhighlighter_use_autoloader';
+  $strongarm->value = 0;
+  $export['syntaxhighlighter_use_autoloader'] = $strongarm;
+
   return $export;
 }
