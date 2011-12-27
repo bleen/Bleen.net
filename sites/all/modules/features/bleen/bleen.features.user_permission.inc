@@ -16,24 +16,11 @@ function bleen_user_default_permissions() {
     'roles' => array(),
   );
 
-  // Exported permission: access devel information
-  $permissions['access devel information'] = array(
-    'name' => 'access devel information',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-    ),
-    'module' => 'devel',
-  );
-
   // Exported permission: access environment indicator
   $permissions['access environment indicator'] = array(
     'name' => 'access environment indicator',
     'roles' => array(
       0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
     ),
     'module' => 'environment_indicator',
   );
