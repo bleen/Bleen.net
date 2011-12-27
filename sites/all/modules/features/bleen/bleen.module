@@ -41,6 +41,99 @@ function bleen_block_view($delta) {
   return $block;
 }
 
+/**
+ * Implements hook_wysiwyg_editor_settings_alter().
+ * @see http://drupal.org/node/829266#comment-3978944
+ */
+function bleen_wysiwyg_editor_settings_alter(&$settings, $context) {
+
+  if ($context['profile']->editor == 'ckeditor') {
+    // The layout we'd want to use if all buttons were enabled.
+    // This example uses all buttons on one row, but separate them into groups
+    // that will wrap as one.
+    $toolbar = array(
+      array( // Row
+        array('Bold', 'Italic', 'Underline', 'Strike',), // Group
+        array('JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',),
+        array('BulletedList', 'NumberedList',),
+        array('Outdent', 'Indent',),
+        array('Undo', 'Redo',),
+        array('Link', 'Unlink', 'Anchor',),
+        array('Superscript', 'Subscript',),
+        array('Cut', 'Copy', 'Paste',),
+        array('PasteText', 'PasteFromWord',),
+        array('TextColor', 'BGColor', 'RemoveFormat',),
+        array('Format', 'Font', 'FontSize', 'Styles',),
+        array('ShowBlocks', 'SpecialChar',),
+        array('SelectAll', 'Find', 'Replace',),
+        array('Image', 'Flash', 'Smiley', 'Table', 'CreateDiv',),
+        array('Maximize', 'SpellChecker', 'Scayt',),
+        array('Blockquote', 'Source', 'HorizontalRule',),
+      ),
+    );
+
+    $original_toolbar = $settings['toolbar'][0];
+    $r_key = 0;
+    while ($r_key < count($toolbar)) {
+      $row = &$toolbar[$r_key];
+
+      // Loop through groups.
+      $g_key = 0;
+      while ($g_key < count($row)) {
+        $group = &$row[$g_key];
+        if (is_array($group)) {
+
+          // Loop through buttons.
+          $i_key = 0;
+          while ($i_key < count($group)) {
+            $item = &$group[$i_key];
+            if (($found_key = array_search($item, $original_toolbar)) !== FALSE) {
+              unset($original_toolbar[$found_key]);
+            }
+            else {
+              $cut =array_splice($toolbar[$r_key][$g_key], $i_key, 1);
+              $i_key -= 1;
+            }
+            $i_key += 1;
+          }
+
+          // Remove empty groups.
+          if (count($group) == 0) {
+            array_splice($toolbar[$r_key], $g_key, 1);
+            $g_key -= 1;
+          }
+        }
+        $g_key += 1;
+      }
+      $r_key += 1;
+    }
+
+    if (count($original_toolbar) > 0) {
+      $last_row = count($toolbar) -1;
+      $extra_group = array();
+      foreach ($original_toolbar as $item) {
+        $extra_group[] = $item;
+      }
+      array_push($toolbar[$last_row], $extra_group);
+    }
+
+    $joined_toolbar = array();
+    foreach ($toolbar as $row) {
+      foreach($row as $grp){
+        $joined_toolbar[] = $grp;
+      }
+      $joined_toolbar[] = '/';
+    }
+    array_pop($joined_toolbar);
+
+    // Replace the old toolbar with our new shiny one.
+    $settings['toolbar'] = $joined_toolbar;
+  }
+}
+
+/**
+ * Implements hook_contextual_links_view_alter().
+ */
 function bleen_contextual_links_view_alter(&$element, &$items) {
   // This hook is called for EVERY set of contextual links on a page.  We first
   // want to check the $element to make sure we are adding a link to the correct

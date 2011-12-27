@@ -322,7 +322,8 @@ h2.block-title {
   -moz-border-radius: 15px;
   border-radius: 15px;
 }
-.comment-by-author {
+.comment-by-author,
+.comment-by-node-author {
   background: #aacbcd;
   border-color: #778f90;
 }
