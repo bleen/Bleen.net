@@ -273,7 +273,7 @@ $prod_settings = array(
   // The list of modules to enable (1) or disable (0).
   'modules' => array(
     'views_ui' => 0,
-    'devel' => 0,
+    'devel' => 1,
     'environment_indicator' => 1,
     'update' => 0,
   ),
