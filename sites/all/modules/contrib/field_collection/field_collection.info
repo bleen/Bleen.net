@@ -7,9 +7,9 @@ files[] = field_collection.info.inc
 configure = admin/structure/field-collections
 package = Fields
 
-; Information added by drupal.org packaging script on 2011-12-16
+; Information added by drupal.org packaging script on 2012-01-11
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "field_collection"
-datestamp = "1323994830"
+datestamp = "1326241459"
 

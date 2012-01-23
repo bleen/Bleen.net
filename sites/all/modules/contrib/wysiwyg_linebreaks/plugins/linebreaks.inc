@@ -2,7 +2,8 @@
 
 /**
  * @file
- * Converts p and br tags to linebreaks, and vice-versa.
+ *
+ * Implement Wysiwyg module hooks.
  */
 
 /**
