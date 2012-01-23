@@ -222,6 +222,9 @@ h2.block-title {
 .social-network-links a.linkedin{
   background-image: url(../images/logo_linkedin.png);
 }
+.social-network-links a.google{
+  background-image: url(../images/logo_googleplus.png);
+}
 .social-network-links a.rss{
   background-image: url(../images/logo_rss.png);
 }
