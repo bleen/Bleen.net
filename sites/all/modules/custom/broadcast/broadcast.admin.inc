@@ -17,10 +17,10 @@ function broadcast_messages_form($form, &$form_state) {
 
   // Add existing messages to the form.
   foreach ($messages as $key => $message) {
-    _broadcast_message_form(&$form, $key, $message);
+    _broadcast_message_form($form, $key, $message);
   }
   // Add one blank set of message fields.
-  _broadcast_message_form(&$form, count($messages) + 1);
+  _broadcast_message_form($form, count($messages) + 1);
 
   $form['messages']['broadcast_more_messages'] = array(
     '#type' => 'submit',
