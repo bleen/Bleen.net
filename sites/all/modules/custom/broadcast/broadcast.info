@@ -1,0 +1,4 @@
+name = Broadcast
+description = Broadcast simple messages that others can check.
+package = Other
+core = 7.x

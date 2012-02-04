@@ -1,0 +1,89 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function broadcast_theme() {
+  $theme_hooks = array(
+    'broadcast_messages' => array(
+      'render element' => 'form',
+      'file' => 'broadcast.admin.inc',
+    ),
+  );
+
+  return $theme_hooks;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function broadcast_menu() {
+  $items['admin/config/services/broadcast'] = array(
+    'title' => t('Broadcast'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('broadcast_messages_form'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'broadcast.admin.inc',
+  );
+  $items['broadcast/get/%/%'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => t('Get Broadcast Message'),
+    'page callback' => 'broadcast_get',
+    'page arguments' => array(2),
+    'access callback' => 'broadcast_access',
+    'access arguments' => array('get', 3),
+  );
+  $items['broadcast/set/%/%/%'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => t('Set Broadcast Message'),
+    'page callback' => 'broadcast_set',
+    'page arguments' => array(2,3),
+    'access callback' => 'broadcast_access',
+    'access arguments' => array('set', 4),
+  );
+
+  return $items;
+}
+
+/**
+ * Menu access function.
+ */
+function broadcast_access($mode, $key) {
+  $stored_key = variable_get('broadcast_' . $mode . '_key', '');
+  return (empty($stored_key) || $key == $stored_key);
+}
+
+/**
+ * Get the message associated with a given name.
+ */
+function broadcast_get($message_name) {
+  $response = '';
+  $messages = variable_get('broadcast_messages');
+
+  foreach ($messages as $message) {
+    if ($message_name == $message['name']) {
+      $response = $message['message'];
+    }
+  }
+
+  print $response;
+  exit();
+}
+
+/**
+ * Set the message associated with a given name.
+ */
+function broadcast_set($message_name, $new_message) {
+  $messages = variable_get('broadcast_messages');
+
+  foreach ($messages as &$message) {
+    if ($message_name == $message['name']) {
+      $message['message'] = check_plain($new_message);
+      break;
+    }
+  }
+
+  variable_set('broadcast_messages', $messages);
+
+  exit();
+}
