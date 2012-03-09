@@ -27,7 +27,7 @@ function broadcast_messages_form($form, &$form_state) {
     '#value' => t('Add another message'),
     '#submit' => array('broadcast_more_messages_submit'),
     '#ajax' => array(
-      'callback' => 'broadcase_more_messages_js',
+      'callback' => 'broadcast_more_messages_js',
       'wrapper' => 'broadcast-messages',
       'effect' => 'fade',
     ),
@@ -149,7 +149,7 @@ function broadcast_messages_form_submit($form, $form_state) {
 }
 
 /**
- * Submit handler to add more choices to a poll form.
+ * Submit handler to add more choices to the broadcast messages form.
  */
 function broadcast_more_messages_submit($form, &$form_state) {
   $form_state['messages'] = $form_state['values']['messages'];
@@ -159,7 +159,7 @@ function broadcast_more_messages_submit($form, &$form_state) {
 /**
  * Ajax callback for adding new messages to the broadcast messages form.
  */
-function broadcase_more_messages_js($form, $form_state) {
+function broadcast_more_messages_js($form, $form_state) {
   return $form['messages'];
 }
 
