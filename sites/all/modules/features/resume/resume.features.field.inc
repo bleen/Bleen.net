@@ -322,7 +322,7 @@ function resume_field_default_fields() {
         ),
         'repeat' => 0,
         'timezone_db' => '',
-        'todate' => 'required',
+        'todate' => 'optional',
         'tz_handling' => 'none',
       ),
       'translatable' => '1',

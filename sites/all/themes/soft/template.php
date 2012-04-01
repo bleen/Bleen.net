@@ -220,3 +220,15 @@ function soft_ds_fields_info($entity_type) {
   );
   return array('node' => $fields);
 }
+
+/**
+ * Process function for date displays. This ensures that "to Present" is used on
+ * job dates fields when no "to" date is provided.
+ */
+function soft_process_date_display_combination(&$variables) {
+  $date1 = &$variables['dates']['value']['formatted'];
+  $date2 = &$variables['dates']['value2']['formatted'];
+  if ($variables['field']['field_name'] == 'field_job_dates' &&  ($date1 == $date2 || empty($date2))) {
+    $date2 = t('Present');
+  }
+}
