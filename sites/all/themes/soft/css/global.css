@@ -254,7 +254,7 @@ h2.block-title {
   clear: both;
   margin-bottom: 20px;
 }
-.node .node-body img {
+.node img {
   max-width: 100%;
 }
 .node-teaser {
