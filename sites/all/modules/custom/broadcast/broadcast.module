@@ -78,7 +78,7 @@ function broadcast_set($message_name, $new_message) {
 
   foreach ($messages as &$message) {
     if ($message_name == $message['name']) {
-      $message['message'] = check_plain($new_message);
+      $message['message'] = token_replace(check_plain($new_message));
       break;
     }
   }
