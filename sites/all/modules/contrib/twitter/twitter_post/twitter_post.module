@@ -55,6 +55,7 @@ function twitter_post_form_alter(&$form, $form_state, $form_id) {
     }
     $form['twitter'] = array(
       '#type' => 'fieldset',
+      '#group' => 'additional_settings',
       '#title' => t('Post to twitter.com'),
       '#collapsible' => TRUE,
       '#collapsed' => FALSE,
@@ -98,12 +99,12 @@ function twitter_post_node_insert($node) {
 
     $status = strtr($node->twitter['status'], $replacements);
     try {
-      $result = twitter_set_status($twitter_account, $status);
+      twitter_set_status($twitter_account, $status);
       drupal_set_message(t('Successfully posted to Twitter'));
     }
     catch (TwitterException $e) {
-      drupal_set_message(t('An error occurred when posting to twitter: %code %error',
-                           array('%code' => $result->code, '%error' => $result->error)), 'warning');
+      drupal_set_message(t('An error occurred when posting to Twitter: @message',
+                           array('@message' => $e->getMessage())), 'warning');
     }
   }
 }
@@ -114,7 +115,6 @@ function twitter_post_node_insert($node) {
 function twitter_post_node_update($node) {
   twitter_post_node_insert($node);
 }
-
 
 /**
  * Generate a twitter posting form for the given user.
@@ -154,9 +154,10 @@ function twitter_post_form($account = NULL) {
       );
     }
     else {
+      $options_keys = array_keys($options);
       $form['account'] = array(
         '#type' => 'value',
-        '#value' => array_pop(array_keys($options)),
+        '#value' => array_pop($options_keys),
       );
     }
     return $form;

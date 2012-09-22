@@ -5,63 +5,19 @@
  */
 
 /**
- * Class TwitterConfig
- *
- * Singleton which stores common configuration
- * @see http://php.net/manual/en/language.oop5.patterns.php
- */
-class TwitterConf {
-  private static $instance;
-  private $attributes = array(
-    'host'     => 'twitter.com',
-    'api'      => 'api.twitter.com',
-    'search'   => 'search.twitter.com',
-    'tiny_url' => 'tinyurl.com',
-  );
-
-  private function __construct() {}
-
-  public static function instance() {
-    if (!isset(self::$instance)) {
-      $className = __CLASS__;
-      self::$instance = new $className;
-    }
-    return self::$instance;
-  }
-
-  /**
-   * Generic getter
-   *
-   * @param $attribute
-   *   string attribute name to return
-   * @return
-   *   mixed value or NULL
-   */
-  public function get($attribute) {
-    if (array_key_exists($attribute, $this->attributes)) {
-      return $this->attributes[$attribute];
-    }
-  }
-
-  /**
-   * Generic setter
-   * @param $attribute
-   *   string attribute name to be set
-   * @param $value
-   *   mixed value
-   */
-  public function set($attribute, $value) {
-    if (array_key_exists($attribute, $this->attributes)) {
-      $this->attributes[$attribute] = $value;
-    }
-  }
-}
-
-/**
  * Exception handling class.
  */
-class TwitterException extends Exception {}
-
+class TwitterException extends Exception {
+  /**
+   * Overrides constructor to log the error.
+   */
+  public function __construct($message = NULL, $code = 0, Exception $previous = NULL) {
+    watchdog('twitter', 'Unexpected error: @message', array(
+      '@message' => $message,
+    ), WATCHDOG_ERROR);
+    parent::__construct($message, $code, $previous);
+  }
+}
 /**
  * Primary Twitter API implementation class
  * Supports the full REST API for twitter.
@@ -127,24 +83,6 @@ class Twitter {
   }
 
   /**
-   * Fetch the public timeline
-   *
-   * @see http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-statuses-public_timeline
-   */
-  public function public_timeline() {
-    return $this->get_statuses('statuses/public_timeline');
-  }
-
-  /**
-   * Fetch the authenticated user's friends timeline
-   *
-   * @see http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-statuses-friends_timeline
-   */
-  public function friends_timeline($params = array()) {
-    return $this->get_statuses('statuses/friends_timeline', $params, TRUE);
-  }
-
-  /**
    * Fetch a user's timeline
    *
    * @see http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-statuses-user_timeline
@@ -156,7 +94,6 @@ class Twitter {
     else {
       $params['screen_name'] = $id;
     }
-
     return $this->get_statuses('statuses/user_timeline', $params, $use_auth);
   }
 
@@ -178,13 +115,11 @@ class Twitter {
       $params['source'] = $this->source;
     }
     $values = $this->call('statuses/update', $params, 'POST', TRUE);
-
     return new TwitterStatus($values);
   }
 
-
   /**
-   *
+   * Returns profile information about a user.
    * @see http://apiwiki.twitter.com/Twitter-REST-API-Method%3A-users%C2%A0show
    */
   public function users_show($id, $use_auth = TRUE) {
@@ -219,17 +154,11 @@ class Twitter {
   public function call($path, $params = array(), $method = 'GET', $use_auth = FALSE) {
     $url = $this->create_url($path);
 
-    try {
-      if ($use_auth) {
-        $response = $this->auth_request($url, $params, $method);
-      }
-      else {
-        $response = $this->request($url, $params, $method);
-      }
+    if ($use_auth) {
+      $response = $this->auth_request($url, $params, $method);
     }
-    catch (TwitterException $e) {
-      watchdog('twitter', '!message', array('!message' => $e->__toString()), WATCHDOG_ERROR);
-      return FALSE;
+    else {
+      $response = $this->request($url, $params, $method);
     }
 
     if (!$response) {
@@ -252,6 +181,8 @@ class Twitter {
 
   /**
    * Perform a request
+   *
+   * @throws TwitterException
    */
   protected function request($url, $params = array(), $method = 'GET', $use_auth = FALSE) {
     $data = '';
@@ -277,9 +208,15 @@ class Twitter {
     }
     else {
       $error = $response->error;
-      $data = $this->parse_response($response->data);
-      if (isset($data['error'])) {
-        $error = $data['error'];
+      // Check if Twitter returned an error in the response data.
+      if (isset($response->data)) {
+        $data = $this->parse_response($response->data);
+        if (isset($data['errors'])) {
+          $error = $data['errors'][0]['message'];
+        }
+        elseif (isset($data['error'])) {
+          $error = $data['error'];
+        }
       }
       throw new TwitterException($error);
     }
@@ -303,8 +240,7 @@ class Twitter {
     if (is_null($format)) {
       $format = $this->format;
     }
-    $conf = TwitterConf::instance();
-    $url =  'http://'. $conf->get('api') .'/'. $path;
+    $url =  variable_get('twitter_api', TWITTER_API) .'/1/'. $path;
     if (!empty($format)) {
       $url .= '.'. $this->format;
     }
@@ -329,6 +265,27 @@ class TwitterOAuth extends Twitter {
     if (!empty($oauth_token) && !empty($oauth_token_secret)) {
       $this->token = new OAuthConsumer($oauth_token, $oauth_token_secret);
     }
+  }
+
+  /**
+   * Builds a full URL to perform an OAuth operation
+   *
+   * @param $path
+   *   string the path of the operation
+   * @param $format
+   *   string a valid format
+   * @return
+   *   string full URL
+   */
+  protected function create_url($path, $format = NULL) {
+    if (is_null($format)) {
+      $format = $this->format;
+    }
+    $url =  variable_get('twitter_api', TWITTER_API) .'/'. $path;
+    if (!empty($format)) {
+      $url .= '.'. $this->format;
+    }
+    return $url;
   }
 
   public function get_request_token() {

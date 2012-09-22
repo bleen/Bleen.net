@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Page callbacks for Twitter module.
+ */
 
 /**
  * Form builder; Twitter settings form.
@@ -41,6 +45,34 @@ function twitter_admin_form($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('OAuth Consumer secret'),
     '#default_value' => variable_get('twitter_consumer_secret', NULL),
+  );
+
+  // Twitter external APIs settings.
+  $form['twitter'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Twitter Settings'),
+    '#description' => t('The following settings connect Twitter module with external APIs. ' .
+      'Change them if, for example, you want to use Identi.ca.'),
+  );
+  $form['twitter']['twitter_host'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter host'),
+    '#default_value' => variable_get('twitter_host', TWITTER_HOST),
+  );
+  $form['twitter']['twitter_api'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter API'),
+    '#default_value' => variable_get('twitter_api', TWITTER_API),
+  );
+  $form['twitter']['twitter_search'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter search'),
+    '#default_value' => variable_get('twitter_search', TWITTER_SEARCH),
+  );
+  $form['twitter']['twitter_tinyurl'] = array(
+    '#type' => 'textfield',
+    '#title' => t('TinyURL'),
+    '#default_value' => variable_get('twitter_tinyurl', TWITTER_TINYURL),
   );
 
   return system_settings_form($form);
@@ -310,7 +342,12 @@ function twitter_account_form_submit($form, &$form_state) {
 
   $name = $form_state['values']['screen_name'];
   $twitter = new Twitter($name);
-  $account = $twitter->users_show($name, false);
+  try {
+    $account = $twitter->users_show($name, FALSE);
+  } catch (TwitterException $e) {
+    form_set_error('screen_name', t('Request failed: @message.', array('@message' => $e->getMessage())));
+    return;
+  }
   twitter_account_save($account, TRUE, user_load($form_state['values']['uid']));
 }
 
@@ -343,6 +380,10 @@ function twitter_account_oauth_validate($form, &$form_state) {
  * Wrapper to call drupal_form_submit() which wasn't required in D6.
  */
 function twitter_oauth_callback() {
+  if (isset($_GET['denied']) || empty($_GET['oauth_token'])) {
+    drupal_set_message(t('The connection to Twitter failed. Please try again.'), 'error');
+    drupal_goto('<front>');
+  }
   $form_state['values']['oauth_token'] = $_GET['oauth_token'];
   drupal_form_submit('twitter_oauth_callback_form', $form_state);
 }
@@ -414,29 +455,23 @@ function twitter_oauth_callback_form_validate($form, &$form_state) {
 /**
  * Handle a Twitter OAuth return request and store the account creds
  * in the DB. Redirects to user/%/edit/twitter
- *
- * @TODO Redirect better.
- *
- * I don't much like the use of drupal_goto() here as it might
- * interfere with other modules trying to piggyback on the form
- * submission, but setting $form['redirect'] was leaving us at the
- * twitter/oauth URL.
  */
-function twitter_oauth_callback_form_submit(&$form, &$form_state) {
+function twitter_oauth_callback_form_submit($form, &$form_state) {
   $key = variable_get('twitter_consumer_key', '');
   $secret = variable_get('twitter_consumer_secret', '');
   $response = $form_state['twitter_oauth']['response'];
 
   $twitter = new TwitterOAuth($key, $secret, $response['oauth_token'], $response['oauth_token_secret']);
-  $twitter_account = $twitter->users_show($response['screen_name']);
+  try {
+    $twitter_account = $twitter->users_show($response['screen_name']);
+  } catch (TwitterException $e) {
+    form_set_error('screen_name', t('Request failed: @message.', array('@message' => $e->getMessage())));
+    return;
+  }
   $twitter_account->set_auth($response);
   $account = $form_state['twitter_oauth']['account'];
   twitter_account_save($twitter_account, TRUE, $account);
 
-  $form['#programmed'] = FALSE;
-
-  $form_state['redirect'] = url('user/' . $account->uid . '/edit/twitter');
-  // redirect isn't firing - because we're using drupal_submit_form()?
-  // - so adding drupal_goto() here (but not liking it).
-  drupal_goto('user/' . $account->uid . '/edit/twitter');
+  $form_state['programmed'] = FALSE;
+  $form_state['redirect'] = $form_state['twitter_oauth']['destination'];
 }

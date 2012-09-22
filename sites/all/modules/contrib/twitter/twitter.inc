@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * @file
  * Twitter API functions
  */
 
@@ -14,7 +15,7 @@ function twitter_connect($account) {
     return new TwitterOAuth(variable_get('twitter_consumer_key', ''), variable_get('twitter_consumer_secret', ''),
                             $auth['oauth_token'], $auth['oauth_token_secret']);
   }
-  else if ($auth['password']) {
+  elseif ($auth['password']) {
     return new Twitter($account->screen_name, $auth['password']);
   }
   else {
@@ -97,14 +98,23 @@ function twitter_status_save($status) {
     ->key(array('twitter_id' => $status['twitter_id']))
     ->fields($status)
     ->execute();
+  // Let other modules know that an status has been just saved.
+  module_invoke_all('twitter_status_save', $status);
 }
 
 /**
  * Post a message to twitter
+ *
+ * @param $twitter_account
+ *   object with a Twitter account.
+ * @param $status
+ *   string message to publish.
+ * @return
+ *   array response from Twitter API.
  */
 function twitter_set_status($twitter_account, $status) {
   $twitter = twitter_connect($twitter_account);
-  $twitter->status_update($status);
+  return $twitter->status_update($status);
 }
 
 /**
@@ -144,26 +154,23 @@ function twitter_fetch_user_timeline($id) {
  *
  * @param $twitter_uid
  *   An integer with the Twitter UID.
- *
- * @param $screen_name
- *   Optional string with the user name.
  */
 function twitter_account_delete($twitter_uid) {
   $account = twitter_account_load($twitter_uid);
 
   // Delete from {twitter_account}.
   $query = db_delete('twitter_account');
-  $query->conditions('twitter_uid', $twitter_uid);
+  $query->condition('twitter_uid', $twitter_uid);
   $query->execute();
 
   // Delete from {twitter}.
   $query = db_delete('twitter');
-  $query->conditions('screen_name', $account->screen_name);
+  $query->condition('screen_name', $account->screen_name);
   $query->execute();
 
-  // Delete from {twitter_account}.
+  // Delete from {authmap}.
   $query = db_delete('authmap');
-  $query->conditions('authname', $twitter_uid);
-  $query->conditions('module', 'twitter');
+  $query->condition('authname', $twitter_uid);
+  $query->condition('module', 'twitter');
   $query->execute();
 }
