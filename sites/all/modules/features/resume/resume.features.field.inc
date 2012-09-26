@@ -10,7 +10,7 @@
 function resume_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'field_collection_item-field_education-field_degree'
+  // Exported field: 'field_collection_item-field_education-field_degree'.
   $fields['field_collection_item-field_education-field_degree'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -79,7 +80,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_education-field_graduation_date'
+  // Exported field: 'field_collection_item-field_education-field_graduation_date'.
   $fields['field_collection_item-field_education-field_graduation_date'] = array(
     'field_config' => array(
       'active' => '1',
@@ -89,6 +90,7 @@ function resume_field_default_fields() {
       'field_name' => 'field_graduation_date',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -166,7 +168,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_education-field_school'
+  // Exported field: 'field_collection_item-field_education-field_school'.
   $fields['field_collection_item-field_education-field_school'] = array(
     'field_config' => array(
       'active' => '1',
@@ -187,6 +189,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -235,7 +238,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_experience-field_employer'
+  // Exported field: 'field_collection_item-field_experience-field_employer'.
   $fields['field_collection_item-field_experience-field_employer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -256,6 +259,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -304,7 +308,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_experience-field_job_dates'
+  // Exported field: 'field_collection_item-field_experience-field_job_dates'.
   $fields['field_collection_item-field_experience-field_job_dates'] = array(
     'field_config' => array(
       'active' => '1',
@@ -314,6 +318,7 @@ function resume_field_default_fields() {
       'field_name' => 'field_job_dates',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'date',
       'settings' => array(
         'granularity' => array(
@@ -391,7 +396,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_experience-field_job_responsibilities'
+  // Exported field: 'field_collection_item-field_experience-field_job_responsibilities'.
   $fields['field_collection_item-field_experience-field_job_responsibilities'] = array(
     'field_config' => array(
       'active' => '1',
@@ -412,6 +417,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -458,7 +464,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_experience-field_job_title'
+  // Exported field: 'field_collection_item-field_experience-field_job_title'.
   $fields['field_collection_item-field_experience-field_job_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -479,6 +485,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -527,7 +534,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_info_list-field_info_items'
+  // Exported field: 'field_collection_item-field_info_list-field_info_items'.
   $fields['field_collection_item-field_info_list-field_info_items'] = array(
     'field_config' => array(
       'active' => '1',
@@ -548,6 +555,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(),
       'translatable' => '1',
@@ -594,7 +602,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_info_list-field_info_title'
+  // Exported field: 'field_collection_item-field_info_list-field_info_title'.
   $fields['field_collection_item-field_info_list-field_info_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -615,6 +623,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -663,7 +672,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_address'
+  // Exported field: 'node-resume-field_address'.
   $fields['node-resume-field_address'] = array(
     'field_config' => array(
       'active' => '1',
@@ -673,6 +682,7 @@ function resume_field_default_fields() {
       'field_name' => 'field_address',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'addressfield',
       'settings' => array(),
       'translatable' => '1',
@@ -742,7 +752,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_education'
+  // Exported field: 'node-resume-field_education'.
   $fields['node-resume-field_education'] = array(
     'field_config' => array(
       'active' => '1',
@@ -752,8 +762,10 @@ function resume_field_default_fields() {
       'field_name' => 'field_education',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -815,7 +827,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_email'
+  // Exported field: 'node-resume-field_email'.
   $fields['node-resume-field_email'] = array(
     'field_config' => array(
       'active' => '1',
@@ -825,6 +837,7 @@ function resume_field_default_fields() {
       'field_name' => 'field_email',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'email',
       'settings' => array(),
       'translatable' => '1',
@@ -875,7 +888,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_experience'
+  // Exported field: 'node-resume-field_experience'.
   $fields['node-resume-field_experience'] = array(
     'field_config' => array(
       'active' => '1',
@@ -885,8 +898,10 @@ function resume_field_default_fields() {
       'field_name' => 'field_experience',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -948,7 +963,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_info_list'
+  // Exported field: 'node-resume-field_info_list'.
   $fields['node-resume-field_info_list'] = array(
     'field_config' => array(
       'active' => '1',
@@ -958,8 +973,10 @@ function resume_field_default_fields() {
       'field_name' => 'field_info_list',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'field_collection',
       'settings' => array(
+        'hide_blank_items' => TRUE,
         'path' => '',
       ),
       'translatable' => '1',
@@ -1021,7 +1038,7 @@ function resume_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-resume-field_phone'
+  // Exported field: 'node-resume-field_phone'.
   $fields['node-resume-field_phone'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1042,6 +1059,7 @@ function resume_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',

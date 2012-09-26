@@ -10,7 +10,7 @@
 function bleen_ds_field_settings_info() {
   $export = array();
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'comment|comment_node_article|default';
   $ds_fieldsetting->entity_type = 'comment';
@@ -41,7 +41,7 @@ function bleen_ds_field_settings_info() {
   );
   $export['comment|comment_node_article|default'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'comment|comment_node_article|full';
   $ds_fieldsetting->entity_type = 'comment';
@@ -87,7 +87,7 @@ function bleen_ds_field_settings_info() {
   );
   $export['comment|comment_node_article|full'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|article|full';
   $ds_fieldsetting->entity_type = 'node';
@@ -136,7 +136,7 @@ function bleen_ds_field_settings_info() {
   );
   $export['node|article|full'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|article|teaser';
   $ds_fieldsetting->entity_type = 'node';
@@ -200,7 +200,7 @@ function bleen_ds_field_settings_info() {
 function bleen_ds_custom_fields_info() {
   $export = array();
 
-  $ds_field = new stdClass;
+  $ds_field = new stdClass();
   $ds_field->api_version = 1;
   $ds_field->field = 'read_on';
   $ds_field->label = 'Read on';
@@ -220,7 +220,7 @@ function bleen_ds_custom_fields_info() {
 function bleen_ds_layout_settings_info() {
   $export = array();
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'comment|comment_node_article|full';
   $ds_layout->entity_type = 'comment';
@@ -250,7 +250,7 @@ function bleen_ds_layout_settings_info() {
   );
   $export['comment|comment_node_article|full'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|article|full';
   $ds_layout->entity_type = 'node';
@@ -282,7 +282,7 @@ function bleen_ds_layout_settings_info() {
   );
   $export['node|article|full'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|article|teaser';
   $ds_layout->entity_type = 'node';

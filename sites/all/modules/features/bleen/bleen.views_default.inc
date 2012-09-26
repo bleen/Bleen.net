@@ -10,7 +10,7 @@
 function bleen_views_default_views() {
   $export = array();
 
-  $view = new view;
+  $view = new view();
   $view->name = 'site_tweets';
   $view->description = 'Displays Twitter.com status messages for users who have associated Twitter accounts.';
   $view->tag = '';
@@ -23,6 +23,7 @@ function bleen_views_default_views() {
   /* Display: Tweets */
   $handler = $view->new_display('default', 'Tweets', 'default');
   $handler->display->display_options['title'] = 'Follow';
+  $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -52,8 +53,6 @@ function bleen_views_default_views() {
       'separator' => '',
     ),
   );
-  $handler->display->display_options['style_options']['override'] = 1;
-  $handler->display->display_options['style_options']['sticky'] = 0;
   /* Field: Twitter: Profile image */
   $handler->display->display_options['fields']['profile_image_url']['id'] = 'profile_image_url';
   $handler->display->display_options['fields']['profile_image_url']['table'] = 'twitter_account';
@@ -84,6 +83,7 @@ function bleen_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'user/%/tweets';
   $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'Twitter';
@@ -91,6 +91,7 @@ function bleen_views_default_views() {
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'site_tweets_block');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['use_more'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
@@ -98,8 +99,6 @@ function bleen_views_default_views() {
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['hide_empty'] = 0;
-  $handler->display->display_options['row_options']['default_field_elements'] = 1;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Twitter: Created time */
@@ -107,26 +106,11 @@ function bleen_views_default_views() {
   $handler->display->display_options['fields']['created_time']['table'] = 'twitter';
   $handler->display->display_options['fields']['created_time']['field'] = 'created_time';
   $handler->display->display_options['fields']['created_time']['label'] = '';
-  $handler->display->display_options['fields']['created_time']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['created_time']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['created_time']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['created_time']['alter']['html'] = 0;
   $handler->display->display_options['fields']['created_time']['element_type'] = 'div';
   $handler->display->display_options['fields']['created_time']['element_class'] = 'pubdate';
   $handler->display->display_options['fields']['created_time']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created_time']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['created_time']['element_default_classes'] = 0;
-  $handler->display->display_options['fields']['created_time']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['created_time']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['created_time']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['created_time']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['created_time']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created_time']['custom_date_format'] = '<\\sp\\a\\n>M</\\sp\\a\\n> d';
   /* Field: Twitter: Message text */
@@ -134,26 +118,10 @@ function bleen_views_default_views() {
   $handler->display->display_options['fields']['text']['table'] = 'twitter';
   $handler->display->display_options['fields']['text']['field'] = 'text';
   $handler->display->display_options['fields']['text']['label'] = '';
-  $handler->display->display_options['fields']['text']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['text']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['text']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['text']['alter']['html'] = 0;
   $handler->display->display_options['fields']['text']['element_type'] = 'div';
   $handler->display->display_options['fields']['text']['element_class'] = 'tweet';
   $handler->display->display_options['fields']['text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['text']['element_wrapper_type'] = '0';
-  $handler->display->display_options['fields']['text']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['text']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['text']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['text']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['text']['link_urls'] = 1;
   $handler->display->display_options['fields']['text']['link_usernames'] = 1;
   $handler->display->display_options['fields']['text']['link_hashtags'] = 0;

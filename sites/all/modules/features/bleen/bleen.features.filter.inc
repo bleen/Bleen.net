@@ -10,7 +10,7 @@
 function bleen_filter_default_formats() {
   $formats = array();
 
-  // Exported format: Display Suite code
+  // Exported format: Display Suite code.
   $formats['ds_code'] = array(
     'format' => 'ds_code',
     'name' => 'Display Suite code',
@@ -26,7 +26,7 @@ function bleen_filter_default_formats() {
     ),
   );
 
-  // Exported format: Full HTML
+  // Exported format: Full HTML.
   $formats['full_html'] = array(
     'format' => 'full_html',
     'name' => 'Full HTML',
@@ -59,7 +59,7 @@ function bleen_filter_default_formats() {
     ),
   );
 
-  // Exported format: Plain text
+  // Exported format: Plain text.
   $formats['plain_text'] = array(
     'format' => 'plain_text',
     'name' => 'Plain text',

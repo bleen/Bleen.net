@@ -10,7 +10,7 @@
 function resume_ds_field_settings_info() {
   $export = array();
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'field_collection_item|field_education|full';
   $ds_fieldsetting->entity_type = 'field_collection_item';
@@ -44,7 +44,7 @@ function resume_ds_field_settings_info() {
   );
   $export['field_collection_item|field_education|full'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'field_collection_item|field_experience|default';
   $ds_fieldsetting->entity_type = 'field_collection_item';
@@ -83,7 +83,7 @@ function resume_ds_field_settings_info() {
   );
   $export['field_collection_item|field_experience|default'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'field_collection_item|field_experience|full';
   $ds_fieldsetting->entity_type = 'field_collection_item';
@@ -122,7 +122,7 @@ function resume_ds_field_settings_info() {
   );
   $export['field_collection_item|field_experience|full'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'field_collection_item|field_info_list|full';
   $ds_fieldsetting->entity_type = 'field_collection_item';
@@ -145,7 +145,7 @@ function resume_ds_field_settings_info() {
   );
   $export['field_collection_item|field_info_list|full'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|resume|full';
   $ds_fieldsetting->entity_type = 'node';
@@ -185,7 +185,7 @@ function resume_ds_field_settings_info() {
 function resume_ds_layout_settings_info() {
   $export = array();
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'field_collection_item|field_education|default';
   $ds_layout->entity_type = 'field_collection_item';
@@ -198,7 +198,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['field_collection_item|field_education|default'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'field_collection_item|field_education|full';
   $ds_layout->entity_type = 'field_collection_item';
@@ -224,7 +224,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['field_collection_item|field_education|full'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'field_collection_item|field_experience|default';
   $ds_layout->entity_type = 'field_collection_item';
@@ -252,7 +252,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['field_collection_item|field_experience|default'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'field_collection_item|field_experience|full';
   $ds_layout->entity_type = 'field_collection_item';
@@ -280,7 +280,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['field_collection_item|field_experience|full'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'field_collection_item|field_info_list|full';
   $ds_layout->entity_type = 'field_collection_item';
@@ -304,7 +304,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['field_collection_item|field_info_list|full'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|resume|default';
   $ds_layout->entity_type = 'node';
@@ -317,7 +317,7 @@ function resume_ds_layout_settings_info() {
   );
   $export['node|resume|default'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|resume|full';
   $ds_layout->entity_type = 'node';
