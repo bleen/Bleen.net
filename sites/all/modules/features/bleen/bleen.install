@@ -1,0 +1,6 @@
+<?php
+
+function bleen_update_7000() {
+  module_disable(array('admin'));
+  module_enable(array('admin_menu'));
+}
