@@ -49,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 26, ../sass/partials/styleguide/_style-guide.scss */
 h1 {
-  color: #919191;
+  color: rgba(0, 0, 0, 0.65);
   line-height: 1.25em;
   margin-bottom: 0;
 }
@@ -58,11 +58,121 @@ h1 {
 a, a:hover, a:link, a:visited {
   color: #cd9684;
   text-decoration: none;
+  font-weight: bold;
 }
 
-/* line 37, ../sass/partials/styleguide/_style-guide.scss */
-p:last-child {
+/* line 38, ../sass/partials/styleguide/_style-guide.scss */
+p {
+  line-height: 1.25em;
+}
+/* line 41, ../sass/partials/styleguide/_style-guide.scss */
+p:first-of-type {
+  margin-top: 0;
+}
+/* line 44, ../sass/partials/styleguide/_style-guide.scss */
+p:last-of-type {
   margin-bottom: 0;
+}
+
+/* line 4, ../sass/partials/styleguide/_forms.scss */
+input[type="search"],
+input[type="password"],
+input[type="email"],
+input[type="text"] {
+  padding: 0 15px;
+  min-height: 30px;
+  border: none;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  -webkit-box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* line 12, ../sass/partials/styleguide/_forms.scss */
+input[type="search"] {
+  margin-right: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* line 22, ../sass/partials/styleguide/_forms.scss */
+a.button,
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  border: 1px solid #c1e6e9;
+  padding: 6px 15px;
+  font-size: 0.8em;
+  color: #fff;
+  margin: 0;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.65);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.65);
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aed0d2), color-stop(100%, #778f90));
+  background: -webkit-linear-gradient(top, #aed0d2 0%, #778f90 100%);
+  background: -moz-linear-gradient(top, #aed0d2 0%, #778f90 100%);
+  background: -o-linear-gradient(top, #aed0d2 0%, #778f90 100%);
+  background: -ms-linear-gradient(top, #aed0d2 0%, #778f90 100%);
+  background: linear-gradient(top, #aed0d2 0%, #778f90 100%);
+}
+
+/* line 46, ../sass/partials/styleguide/_forms.scss */
+a.button:active,
+a.button:focus,
+a.button:hover,
+button:active,
+button:focus,
+button:hover,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="reset"]:hover,
+input[type="submit"]:active,
+input[type="submit"]:focus,
+input[type="submit"]:hover,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="button"]:hover {
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aed0d2), color-stop(80%, #778f90));
+  background: -webkit-linear-gradient(top, #aed0d2 0%, #778f90 80%);
+  background: -moz-linear-gradient(top, #aed0d2 0%, #778f90 80%);
+  background: -o-linear-gradient(top, #aed0d2 0%, #778f90 80%);
+  background: -ms-linear-gradient(top, #aed0d2 0%, #778f90 80%);
+  background: linear-gradient(top, #aed0d2 0%, #778f90 80%);
+}
+
+/* line 49, ../sass/partials/styleguide/_forms.scss */
+.form-required {
+  color: #aacbcd;
+}
+
+/* line 52, ../sass/partials/styleguide/_forms.scss */
+.form-title {
+  margin-bottom: 0;
+}
+
+/* line 55, ../sass/partials/styleguide/_forms.scss */
+.read-on {
+  color: #fff;
+}
+
+/* line 58, ../sass/partials/styleguide/_forms.scss */
+.label-inline {
+  display: inline;
+}
+
+/* line 61, ../sass/partials/styleguide/_forms.scss */
+.edit-feed-me-wrapper {
+  display: none;
 }
 
 /* line 7, ../sass/partials/styleguide/_messages.scss */
@@ -101,4 +211,77 @@ li.krumo-footnote {
 /* line 30, ../sass/partials/styleguide/_messages.scss */
 li.krumo-footnote .krumo-call {
   font-size: 8px !important;
+}
+
+/* line 11, ../sass/partials/layout/_layout.scss */
+#page {
+  position: relative;
+}
+
+/* line 15, ../sass/partials/layout/_layout.scss */
+article.node {
+  margin-bottom: 3em;
+}
+
+/* line 11, ../sass/partials/design/_design.scss */
+#page {
+  background: #fff;
+  margin: 4em auto .5em auto;
+  padding: 2%;
+  width: 100%;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* line 20, ../sass/partials/design/_design.scss */
+article.node {
+  font-size: 1.15em;
+}
+/* line 23, ../sass/partials/design/_design.scss */
+article.node h2 {
+  margin-bottom: 0;
+}
+/* line 26, ../sass/partials/design/_design.scss */
+article.node time {
+  display: block;
+  color: rgba(0, 0, 0, 0.3);
+  margin: .5em 0;
+  font-size: 0.85em;
+}
+/* line 32, ../sass/partials/design/_design.scss */
+article.node .terms {
+  margin-bottom: 1em;
+  font-size: 0.85em;
+}
+/* line 36, ../sass/partials/design/_design.scss */
+article.node .terms a {
+  padding: 0 0 0 2em;
+  display: inline-block;
+  white-space: nowrap;
+}
+/* line 41, ../sass/partials/design/_design.scss */
+article.node .terms a:first-child {
+  padding: 0;
+}
+/* line 45, ../sass/partials/design/_design.scss */
+article.node .node-body {
+  margin-bottom: .8em;
+}
+
+/* line 50, ../sass/partials/design/_design.scss */
+#hand {
+  background: url(../images/hand.png) no-repeat center center;
+  background-size: contain;
+  height: 62px;
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  width: 100px;
+  z-index: 100;
 }

@@ -4,12 +4,19 @@
 // All of your variables should go in this file.
 ////////////////////////
 
+// Compass variables
+$breakpoint-to-ems: true;
+$bkpt-small: 370px;
+$bkpt-medium: 490px;
+$bkpt-large: 865px;
+
+// Font variables
 $font-family: MyriadProLight, Helvetica, Arial, sans-serif;
 $font-family-bold: MyriadProBold, Helvetica, Arial, sans-serif;
 $font-family-italic: MyriadProItalic, Helvetica, Arial, sans-serif;
-
 $font-size: 1em;
 
-// Colors
-$color-gray: #919191;
+// Color variables
+$color-darkgray: rgba(0, 0, 0, .65);
+$color-lightgray: rgba(0, 0, 0, .3);
 $color-accent: #cd9684;

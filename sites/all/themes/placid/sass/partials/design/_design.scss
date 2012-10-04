@@ -7,3 +7,53 @@
 //
 // All styling, non box model properties go here
 ////////////////////////
+
+#page {
+  background: #fff;
+  margin: 4em auto .5em auto;
+  padding: 2%;
+  width: 100%;
+  @include border-radius(3px);
+  @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, .5));
+}
+
+article.node {
+  font-size: $font-size + .15em;
+
+  h2 {
+    margin-bottom: 0;
+  }
+  time {
+    display: block;
+    color: $color-lightgray;
+    margin: .5em 0;
+    font-size: $font-size - .15em;
+  }
+  .terms {
+    margin-bottom: 1em;
+    font-size: $font-size - .15em;
+  }
+  .terms a {
+    padding: 0 0 0 2em;
+    display: inline-block;
+    white-space: nowrap;
+
+    &:first-child {
+      padding: 0;
+    }
+  }
+  .node-body {
+    margin-bottom: .8em;
+  }
+}
+
+#hand {
+  background: url(../images/hand.png) no-repeat center center;
+  background-size: contain;
+  height: 62px;
+  position: absolute;
+  right: 10px;
+  top: -30px;
+  width: 100px;
+  z-index: 100;
+}
