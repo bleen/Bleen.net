@@ -1,0 +1,62 @@
+////////////////////////
+// Menus
+//
+// Styles for Drupal menus
+////////////////////////
+
+.main-menu {
+  padding: 3px 10px;
+  max-width: 15.5em;
+  @include background(linear-gradient(top, $color-lightgray, $color-darkgray));
+  @include border-bottom-radius(3px);
+
+  .menu {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+    }
+  }
+  a, a:hover, a:link, a:visited {
+    color: #fff;
+    padding: 0 2px;
+    margin-right: 5px;
+    top: 0;
+    position: relative;
+    @include single-transition(top, 250ms, ease);
+  }
+  a:hover {
+    top: -2px;
+    @include single-transition(top, 50ms, ease);
+  }
+  a:last-child {
+    margin-right: 0;
+  }
+}
+
+.tabs.primary {
+  margin-bottom: 10px;
+  font-size: .75em;
+  opacity: .35;
+  @include single-transition(opacity, 250ms, ease);
+
+  &:hover {
+    opacity: 1;
+    @include single-transition(opacity, 250ms, ease);
+  }
+  li {
+    margin-right: 10px;
+  }
+  li a{
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1px solid $color-lightgray;
+    @include border-radius(5px);
+    background: #eee;
+  }
+  li.active a,
+  li a:hover {
+    background: #fff;
+  }
+}

@@ -10,8 +10,8 @@
 
 #page {
   background: #fff;
-  margin: 4em auto .5em auto;
-  padding: 2%;
+  margin: 2em auto .5em auto;
+  padding: 4% 2% 2% 2%;
   width: 100%;
   @include border-radius(3px);
   @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, .5));

@@ -17,6 +17,17 @@ regions[header]         = Header
 regions[help]           = Help
 regions[highlighted]    = Highlighted
 
+; Drupal Theme Settings
+settings[toggle_logo] = '0'
+settings[toggle_name] = '0'
+settings[toggle_slogan] = '0'
+settings[toggle_node_user_picture] = '0'
+settings[toggle_comment_user_picture] = '0'
+settings[toggle_comment_user_verification] = '1'
+settings[toggle_favicon] = '1'
+settings[toggle_main_menu] = '0'
+settings[toggle_secondary_menu] = '0'
+
 ; Chrome Frame Options
 settings[aurora_enable_chrome_frame] = 1
 settings[aurora_min_ie_support] = 10
