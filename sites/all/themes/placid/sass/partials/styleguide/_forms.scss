@@ -22,13 +22,14 @@ input[type="search"] {
   width: 100%;
 }
 
+.button,
 a.button,
 button,
 input[type="reset"],
 input[type="submit"],
 input[type="button"] {
   border: 1px solid #c1e6e9;
-  padding: 6px 15px;
+  padding: .25em 1em;
   font-size: $font-size - .2em;
   color: #fff;
   margin: 0;
@@ -36,9 +37,9 @@ input[type="button"] {
   @include border-radius(15px);
   @include background(linear-gradient(top, #aed0d2 0%, #778f90 100%));
 }
-a.button:active,
-a.button:focus,
-a.button:hover,
+.button:active,
+.button:focus,
+.button:hover,
 button:active,
 button:focus,
 button:hover,

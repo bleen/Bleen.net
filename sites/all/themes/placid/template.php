@@ -117,8 +117,8 @@ function placid_pager($vars) {
         }
         if ($i == $pager_current) {
           $items[] = array(
-            'class' => array('pager-current', 'button'),
-            'data' => $i,
+            'class' => array('pager-current'),
+            'data' => '<span class="button">' . $i . '</span>',
           );
         }
         if ($i > $pager_current) {

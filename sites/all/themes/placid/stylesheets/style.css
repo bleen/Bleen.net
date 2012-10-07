@@ -203,14 +203,15 @@ input[type="search"] {
   width: 100%;
 }
 
-/* line 29, ../sass/partials/styleguide/_forms.scss */
+/* line 30, ../sass/partials/styleguide/_forms.scss */
+.button,
 a.button,
 button,
 input[type="reset"],
 input[type="submit"],
 input[type="button"] {
   border: 1px solid #c1e6e9;
-  padding: 6px 15px;
+  padding: .25em 1em;
   font-size: 0.8em;
   color: #fff;
   margin: 0;
@@ -230,10 +231,10 @@ input[type="button"] {
   background: linear-gradient(top, #aed0d2 0%, #778f90 100%);
 }
 
-/* line 53, ../sass/partials/styleguide/_forms.scss */
-a.button:active,
-a.button:focus,
-a.button:hover,
+/* line 54, ../sass/partials/styleguide/_forms.scss */
+.button:active,
+.button:focus,
+.button:hover,
 button:active,
 button:focus,
 button:hover,
@@ -254,27 +255,27 @@ input[type="button"]:hover {
   background: linear-gradient(top, #aed0d2 0%, #778f90 80%);
 }
 
-/* line 56, ../sass/partials/styleguide/_forms.scss */
+/* line 57, ../sass/partials/styleguide/_forms.scss */
 .form-required {
   color: #aacbcd;
 }
 
-/* line 59, ../sass/partials/styleguide/_forms.scss */
+/* line 60, ../sass/partials/styleguide/_forms.scss */
 .form-title {
   margin-bottom: 0;
 }
 
-/* line 62, ../sass/partials/styleguide/_forms.scss */
+/* line 63, ../sass/partials/styleguide/_forms.scss */
 .read-on {
   color: #fff;
 }
 
-/* line 65, ../sass/partials/styleguide/_forms.scss */
+/* line 66, ../sass/partials/styleguide/_forms.scss */
 .label-inline {
   display: inline;
 }
 
-/* line 68, ../sass/partials/styleguide/_forms.scss */
+/* line 69, ../sass/partials/styleguide/_forms.scss */
 .edit-feed-me-wrapper {
   display: none;
 }
@@ -303,20 +304,8 @@ input[type="button"]:hover {
   white-space: nowrap;
 }
 /* line 27, ../sass/partials/styleguide/_pagers.scss */
-.pager li.pager-current {
-  border: 1px solid #eee;
-  color: #fff;
-  padding: 5px 10px;
-  position: relative;
-  top: 2px;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
+.pager li.pager-current .button {
+  border: 1px solid #fff;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0.65)));
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.65));
   background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.65));
@@ -325,8 +314,8 @@ input[type="button"]:hover {
   background: linear-gradient(top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.65));
 }
 
-/* line 39, ../sass/partials/styleguide/_pagers.scss */
-.item-list .pager li:not(.pager-current) {
+/* line 33, ../sass/partials/styleguide/_pagers.scss */
+.item-list .pager li {
   padding: 0;
 }
 

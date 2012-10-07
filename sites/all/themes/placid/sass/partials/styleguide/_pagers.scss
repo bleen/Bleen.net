@@ -24,18 +24,12 @@
     color: $color-darkgray;
     white-space: nowrap;
   }
-  li.pager-current {
-    border: 1px solid #eee;
-    color: #fff;
-    padding: 5px 10px;
-    position: relative;
-    top: 2px;
-    @include box-shadow(0 2px 2px 0 $color-lightgray);
-    @include border-radius(15px);
+  li.pager-current .button {
+    border: 1px solid #fff;
     @include background(linear-gradient(top, $color-lightgray, $color-darkgray));
   }
 }
 
-.item-list .pager li:not(.pager-current) {
+.item-list .pager li {
   padding: 0;
 }
