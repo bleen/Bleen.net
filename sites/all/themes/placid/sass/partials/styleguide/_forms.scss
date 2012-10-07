@@ -16,9 +16,10 @@ input[type="text"] {
 }
 
 input[type="search"] {
-  margin-right: 10px;
   border: 1px solid $color-lightgray;
   color: $color-darkgray;
+  margin-right: 10px;
+  width: 100%;
 }
 
 a.button,

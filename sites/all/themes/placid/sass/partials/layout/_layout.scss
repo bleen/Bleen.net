@@ -10,13 +10,28 @@
 
 #page {
   position: relative;
+  max-width: 1440px;
 }
-
-article.node {
-  margin-bottom: 3em;
-}
-
 .main-menu {
   position: absolute;
   top: 0;
+}
+.comment-form {
+  position: relative;
+  left: -2%
+}
+
+$total-columns  : 1;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+@include breakpoint($bkpt-small) {
+  $total-columns  : 5;
+
+  #content {
+    @include span-columns(3);
+  }
+  #sidebar-first {
+    @include span-columns(2 omega);
+  }
 }

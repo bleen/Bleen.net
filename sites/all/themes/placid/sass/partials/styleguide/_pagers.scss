@@ -26,14 +26,16 @@
   }
   li.pager-current {
     border: 1px solid #eee;
-    padding: 5px 10px;
     color: #fff;
+    padding: 5px 10px;
+    position: relative;
+    top: 2px;
     @include box-shadow(0 2px 2px 0 $color-lightgray);
     @include border-radius(15px);
     @include background(linear-gradient(top, $color-lightgray, $color-darkgray));
   }
 }
 
-.item-list .pager li {
+.item-list .pager li:not(.pager-current) {
   padding: 0;
 }

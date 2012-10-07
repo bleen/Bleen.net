@@ -6,9 +6,10 @@
 
 // Compass variables
 $breakpoint-to-ems: true;
-$bkpt-small: 370px;
-$bkpt-medium: 490px;
-$bkpt-large: 865px;
+$bkpt-small: 640px;
+$bkpt-medium: 750px;
+$bkpt-large: 1024px;
+$bkpt-small-block: $bkpt-small $bkpt-medium;
 
 // Font variables
 $font-family: MyriadProLight, Helvetica, Arial, sans-serif;

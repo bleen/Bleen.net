@@ -17,6 +17,10 @@ body {
   font: $font-size $font-family;
   padding-bottom: 20px;
   background: #aacbcd url('../images/bg.png');
+
+  @include breakpoint($bkpt-large) {
+    font-size: $font-size + .5em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {

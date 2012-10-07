@@ -19,6 +19,17 @@
 
 article.node {
   font-size: $font-size + .15em;
+  margin-bottom: 3em;
+
+  &.view-mode-full {
+    margin-bottom: 1em;
+    .terms {
+      margin-top: 1em;
+    }
+    time {
+      margin-bottom: 2em;
+    }
+  }
 
   h2 {
     margin-bottom: 0;
@@ -47,13 +58,310 @@ article.node {
   }
 }
 
+article.node-resume {
+  h3 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: $font-size + .25em;
+    font-weight: normal;
+  }
+  .degree {
+    font-weight: bold;
+  }
+  .dates-of-employment,
+  .graduation-date {
+    display: block;
+    color: #999;
+    font-size: .75em;
+    margin-bottom: 10px;
+  }
+  label {
+    font-size: $font-size + .5em;
+    font-weight: bold;
+  }
+  .field-collection-item-field-info-list ul {
+    list-style: none;
+    margin: 0;
+  }
+  .group-left,
+  .group-right {
+    float: none;
+    width: 100%;
+  }
+  .drupal {
+    background: url(../images/drupalicon_mini.png) left top no-repeat;
+    padding-left: 15px;
+    position: relative;
+    left: -15px;
+  }
+}
+
 #hand {
   background: url(../images/hand.png) no-repeat center center;
   background-size: contain;
   height: 62px;
   position: absolute;
-  right: 10px;
+  right: .5em;
   top: -30px;
   width: 100px;
   z-index: 100;
+
+  @include breakpoint($bkpt-small) {
+    width: 200px;
+    height: 124px;
+    top: -60px;
+  }
+  @include breakpoint($bkpt-large) {
+    right: 3%;
+  }
 }
+
+article.comment {
+  position: relative;
+  background: #eee;
+  color: $color-darkgray;
+  padding: .5em .5em 1.75em .5em;
+  margin-bottom: 20px;
+  border: 1px dotted #ccc;
+  @include border-radius(15px);
+
+  &.comment-by-author,
+  &.comment-by-node-author {
+    background: #aacbcd;
+    border-color: #778f90;
+
+    .username {
+      color: #fff;
+    }
+  }
+  .comment-date {
+    text-align: center;
+
+    time {
+      display: block;
+      color: #fff;
+      font-family: $font-family-bold;
+      font-size: $font-size + .5em;
+      text-transform: uppercase;
+      line-height: 1em;
+      margin: 0 0 .25em 0;
+      @include text-shadow(2px 2px rgba(0, 0, 0, .1));
+    }
+    time span {
+      font-size: $font-size - .5em;
+      text-transform: lowercase;
+    }
+    @include breakpoint($bkpt-small) {
+      float: left;
+      width: 4em;
+    }
+  }
+  .comment-title {
+    color: $color-darkgray;
+    margin: 0;
+    font-size: $font-size;
+    font-family: $font-family-bold;
+  }
+  .username {
+    color: $color-lightgray;
+    display: block;
+    font-size: $font-size - .25em;
+    margin: 0 0 .5em .5em;
+  }
+  .links {
+    bottom: -.5em;
+    font-size: $font-size - .25em;
+    position: absolute;
+    right: .5em;
+  }
+  .comment-body {
+    @include breakpoint($bkpt-small) {
+      padding-left: 4em;
+    }
+  }
+}
+.comment-form {
+  background: #909090;
+  color: #fff;
+  padding: .25em 1em;
+  @include border-right-radius(10px);
+
+  input[type="text"] {
+    padding: 0;
+    width: 100%;
+    @include border-radius(0);
+    @include box-shadow(inset 2px 2px 8px 1px rgba(0, 0, 0, .2));
+  }
+  input[type="submit"] {
+    margin-right: 1em;
+  }
+  .form-title {
+    margin: .5em 0;
+  }
+  .form-item-name {
+    margin-top: 0;
+  }
+  .captcha {
+    margin: 1em 0;
+  }
+  .captcha .form-item-captcha-response {
+    margin-top: 0;
+  }
+  .captcha input[type="text"] {
+    width: auto;
+    min-width: 50%;
+  }
+}
+
+#sidebar-first :not(#block-bleen-bleen-definition).block {
+  background: #eee;
+  padding: .5em;
+  margin-bottom: 1em;
+  @include box-shadow(2px 2px 8px 1px rgba(0, 0, 0, .2));
+}
+#block-bleen-bleen-definition.block {
+  background: url(../images/fold-shadow.png) no-repeat center bottom;
+  background-size: contain;
+  display: none;
+  font-size: $font-size  - .15em;
+  padding-bottom: 24px;
+  position: relative;
+  top: -1em;
+  @include transform(rotate(-3deg));
+
+  .block-inner {
+    padding: 2em 1em .5em 1em;
+    @include background(radial-gradient(center, ellipse cover,  #fafafa 30px, #efefef 150px));
+    @include breakpoint($bkpt-medium) {
+      padding-top: .5em;
+    }
+  }
+  @include breakpoint($bkpt-small) {
+    display: block;
+  }
+}
+
+h2.block-title {
+  margin-bottom: .5em;
+  font-size: 2em;
+  @include text-shadow (-1px -1px 1px $color-lightgray);
+}
+
+#search-block-form {
+  padding-right: 5em;
+  position: relative;
+
+  .form-submit {
+    position: absolute;
+    right: 0em;
+    top: 0em;
+  }
+}
+
+.tweet-wrap {
+  border-bottom: 1px dotted $color-lightgray;
+  padding: .5em .25em;
+
+  &:first-child {
+    padding-top: 0;
+  }
+  .pubdate {
+    color: #fff;
+    float: left;
+    font-family: $font-family-bold;
+    font-size: $font-size + 1em;
+    line-height: .75em;
+    margin: 0 10px 0 0;
+    text-align: center;
+    width: 1.2em;
+    @include text-shadow(2px 2px rgba(0, 0, 0, .1));
+  }
+  .pubdate span {
+    display: block;
+    font-size: .6em;
+  }
+  .tweet {
+    padding-left: 3em;
+  }
+  @include breakpoint($bkpt-small-block) {
+    border-bottom: none;
+    .pubdate {
+      border-bottom: 1px dotted $color-lightgray;
+      float: none;
+      font-size: $font-size + .5em;
+      margin-bottom: .25em;
+      padding-bottom: .25em;
+      text-align: left;
+      width: auto;
+    }
+    .pubdate span {
+      display: inline;
+      font-size: inherit;
+    }
+    .tweet {
+      padding-left: 0;
+    }
+  }
+}
+
+.social-network-links {
+  margin-top: .25em;
+  text-align: right;
+
+  a {
+    background-size: contain;
+    display: inline-block;
+    height: 3.5em;
+    margin: .4em;
+    position: relative;
+    top: 0;
+    width: 3.5em;
+    @include single-transition(top, 150ms, ease);
+  }
+  a:hover {
+    top: -10px;
+    @include single-transition(top, 150ms, ease);
+  }
+  a.facebook{
+    @include replace-text('../images/logo_facebook.png');
+  }
+  a.twitter{
+    @include replace-text('../images/logo_twitter.png');
+  }
+  a.linkedin{
+    @include replace-text('../images/logo_linkedin.png');
+  }
+  a.google{
+    @include replace-text('../images/logo_googleplus.png');
+  }
+  a.rss{
+    @include replace-text('../images/logo_rss.png');
+  }
+
+  @include breakpoint($bkpt-small) {
+    a {
+      margin: 2.5%;
+      width: 15%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

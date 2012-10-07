@@ -28,13 +28,37 @@ function placid_preprocess_html(&$vars) {
 }
 
 /**
+ * Alter the comments form.
+ */
+function placid_form_comment_form_alter(&$form, &$form_state) {
+  $form['author']['homepage']['#access'] = FALSE;
+  $form['author']['name']['#required'] = TRUE;
+  $form['author']['mail']['#description'] = '';
+  $form['#after_build'][] = 'placid_form_comment_form_afterbuild';
+}
+
+/**
+ * Comment form afterbuild function.
+ */
+function placid_form_comment_form_afterbuild(&$form, $form_state) {
+  $form['comment_body'][LANGUAGE_NONE][0]['format']['#access'] = FALSE;
+
+  $form['title'] = array(
+    '#markup' => '<h2 class="form-title">' . t('Leave a comment') . '</h3>',
+    '#weight' => -100,
+  );
+
+  return $form;
+}
+
+/**
  * Theme override function.
  */
-function placid_pager($variables) {
-  $tags = $variables['tags'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $quantity = $variables['quantity'];
+function placid_pager($vars) {
+  $tags = $vars['tags'];
+  $element = $vars['element'];
+  $parameters = $vars['parameters'];
+  $quantity = $vars['quantity'];
   global $pager_page_array, $pager_total;
 
   // Calculate various markers within this pager piece:
@@ -129,12 +153,12 @@ function placid_pager($variables) {
 /**
  * Theme override function.
  */
-function placid_pager_link($variables) {
-  $text = $variables['text'];
-  $page_new = $variables['page_new'];
-  $element = $variables['element'];
-  $parameters = $variables['parameters'];
-  $attributes = $variables['attributes'];
+function placid_pager_link($vars) {
+  $text = $vars['text'];
+  $page_new = $vars['page_new'];
+  $element = $vars['element'];
+  $parameters = $vars['parameters'];
+  $attributes = $vars['attributes'];
 
   $page = isset($_GET['page']) ? $_GET['page'] : '';
   if ($new_page = implode(',', pager_load_array($page_new[$element], $element, explode(',', $page)))) {
@@ -175,8 +199,8 @@ function placid_pager_link($variables) {
 /**
  * Theme override function.
  */
-function placid_captcha(&$variables) {
-  $element = $variables['element'];
+function placid_captcha(&$vars) {
+  $element = $vars['element'];
 
   if (!empty($element['#description']) && isset($element['captcha_widgets'])) {
     $element['captcha_widgets']['captcha_response']['#title'] = $element['#description'];
@@ -195,4 +219,16 @@ function placid_ds_fields_info($entity_type) {
     'field_type' => DS_FIELD_TYPE_PREPROCESS,
   );
   return array('node' => $fields);
+}
+
+/**
+ * Process function for date displays. This ensures that "to Present" is used on
+ * job dates fields when no "to" date is provided.
+ */
+function placid_process_date_display_combination(&$vars) {
+  $date1 = &$vars['dates']['value']['formatted'];
+  $date2 = &$vars['dates']['value2']['formatted'];
+  if ($vars['field']['field_name'] == 'field_job_dates' &&  ($date1 == $date2 || empty($date2))) {
+    $date2 = t('Present');
+  }
 }
