@@ -256,10 +256,13 @@ function bleen_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'article';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'html5_1col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
+    'classes' => array(),
+    'hide_page_title' => '1',
+    'page_option_title' => '',
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
@@ -276,9 +279,6 @@ function bleen_ds_layout_settings_info() {
       'field_tags' => 'ds_content',
       'comments' => 'ds_content',
     ),
-    'classes' => array(),
-    'hide_page_title' => '1',
-    'page_option_title' => '',
   );
   $export['node|article|full'] = $ds_layout;
 

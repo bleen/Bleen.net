@@ -396,6 +396,29 @@ li.krumo-footnote .krumo-call {
   }
 
   /* line 34, ../sass/partials/layout/_layout.scss */
+  .node-type-resume #content {
+    width: 100%;
+    float: left;
+    margin-right: 4.16667%;
+    display: inline;
+  }
+  /* line 37, ../sass/partials/layout/_layout.scss */
+  .node-type-resume #content .group-left {
+    width: 58.33333%;
+    float: left;
+    margin-right: 4.16667%;
+    display: inline;
+  }
+  /* line 40, ../sass/partials/layout/_layout.scss */
+  .node-type-resume #content .group-right {
+    width: 37.5%;
+    float: right;
+    margin-right: 0;
+    #margin-left: -1em;
+    display: inline;
+  }
+
+  /* line 44, ../sass/partials/layout/_layout.scss */
   #sidebar-first {
     width: 37.5%;
     float: right;

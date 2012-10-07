@@ -7,3 +7,48 @@
 //
 // All styling, non box model properties go here
 ////////////////////////
+
+#skip-link,
+#tabs,
+#header,
+#aurora-debug {
+  display: none;
+}
+
+#page {
+  @include border-radius(0);
+  @include box-shadow(0);
+}
+.node-resume .experience .job-title {
+  border-bottom: 1px dotted $color-lightgray;
+}
+.node-resume .experience .employer {
+  float: left;
+  margin-top: 0;
+  padding-left: 1em;
+  width: 70%;
+}
+.node-resume .experience ul {
+  clear: both;
+}
+
+.node-resume div.education {
+  background: #eee;
+  border: 1px solid #ccc;
+  margin-bottom: 2em;
+  padding: 1em;
+  @include clearfix();
+  @include border-radius(5px);
+}
+.node-resume .education label {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.node-resume .education .field-collection-item-field-education {
+  margin: .5em 0 1em 0;
+  width: 50%;
+  float: left;
+}
+.node-resume .education .school {
+  font-weight: bold;
+}
