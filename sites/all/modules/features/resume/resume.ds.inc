@@ -166,6 +166,9 @@ function resume_ds_field_settings_info() {
     'field_experience' => array(
       'ft' => array(
         'func' => 'theme_ds_field_expert',
+        'ow' => TRUE,
+        'ow-el' => 'div',
+        'ow-cl' => 'experience',
       ),
     ),
     'field_info_list' => array(
@@ -230,24 +233,10 @@ function resume_ds_layout_settings_info() {
   $ds_layout->entity_type = 'field_collection_item';
   $ds_layout->bundle = 'field_experience';
   $ds_layout->view_mode = 'default';
-  $ds_layout->layout = 'ds_1col';
+  $ds_layout->layout = 'html5_1col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 0,
     'hide_sidebars' => 0,
-    'regions' => array(
-      'ds_content' => array(
-        0 => 'field_job_title',
-        1 => 'field_employer',
-        2 => 'field_job_dates',
-        3 => 'field_job_responsibilities',
-      ),
-    ),
-    'fields' => array(
-      'field_job_title' => 'ds_content',
-      'field_employer' => 'ds_content',
-      'field_job_dates' => 'ds_content',
-      'field_job_responsibilities' => 'ds_content',
-    ),
     'classes' => array(),
   );
   $export['field_collection_item|field_experience|default'] = $ds_layout;
@@ -323,7 +312,7 @@ function resume_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'resume';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_2col';
+  $ds_layout->layout = 'html5_2col';
   $ds_layout->settings = array(
     'hide_empty_regions' => 1,
     'hide_sidebars' => 1,
