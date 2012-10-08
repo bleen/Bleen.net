@@ -1,0 +1,118 @@
+/* line 8, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/toolkit-0.1.15/stylesheets/toolkit/_border-box.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 4, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/toolkit-0.1.15/stylesheets/toolkit/_fluid-media.scss */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* line 12, ../sass/partials/styleguide/_print-style-guide.scss */
+body {
+  max-width: 8in;
+  font-size: 0.5em;
+}
+
+/* line 15, ../sass/partials/layout/_print-layout.scss */
+#page {
+  position: relative;
+  max-width: 8in;
+}
+
+/* line 19, ../sass/partials/layout/_print-layout.scss */
+.node-type-resume #content {
+  width: 100%;
+  float: left;
+  margin-right: 4.16667%;
+  display: inline;
+}
+/* line 22, ../sass/partials/layout/_print-layout.scss */
+.node-type-resume #content .group-left {
+  width: 58.33333%;
+  float: left;
+  margin-right: 4.16667%;
+  display: inline;
+}
+/* line 25, ../sass/partials/layout/_print-layout.scss */
+.node-type-resume #content .group-right {
+  width: 37.5%;
+  float: right;
+  margin-right: 0;
+  #margin-left: -1em;
+  display: inline;
+}
+
+/* line 14, ../sass/partials/design/_print-design.scss */
+#skip-link,
+#tabs,
+#header,
+#aurora-debug {
+  display: none;
+}
+
+/* line 18, ../sass/partials/design/_print-design.scss */
+#page {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+}
+
+/* line 22, ../sass/partials/design/_print-design.scss */
+.node-resume .experience .job-title {
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+}
+
+/* line 25, ../sass/partials/design/_print-design.scss */
+.node-resume .experience .employer {
+  float: left;
+  margin-top: 0;
+  padding-left: 1em;
+  width: 70%;
+}
+
+/* line 31, ../sass/partials/design/_print-design.scss */
+.node-resume .experience ul {
+  clear: both;
+}
+
+/* line 35, ../sass/partials/design/_print-design.scss */
+.node-resume div.education {
+  background: #eee;
+  border: 1px solid #ccc;
+  margin-bottom: 2em;
+  padding: 1em;
+  overflow: hidden;
+  *zoom: 1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 43, ../sass/partials/design/_print-design.scss */
+.node-resume .education label {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+/* line 47, ../sass/partials/design/_print-design.scss */
+.node-resume .education .field-collection-item-field-education {
+  margin: .5em 0 1em 0;
+  width: 50%;
+  float: left;
+}
+
+/* line 52, ../sass/partials/design/_print-design.scss */
+.node-resume .education .school {
+  font-weight: bold;
+}

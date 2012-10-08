@@ -1,0 +1,60 @@
+////////////////////////
+// Style Guide Partials
+//
+// Write a Style Guide for your website, building sub folders and partials
+//  in this folder, with everything being imported, in casading order,
+//  into this file.
+//
+// All Style Guide selectors should go in here, regardless of layout or design
+//  (but separating the two in here is a good idea).
+////////////////////////
+
+@include font-face("MyriadProLight", font-files('myriadpro-light-webfont.woff', 'myriadpro-light-webfont.ttf', 'myriadpro-light-webfont.svg'), 'myriadpro-light-webfont.eot', 'normal', 'normal');
+@include font-face("MyriadProItalic", font-files('myriadpro-it-webfont.woff', 'myriadpro-it-webfont.ttf', 'myriadpro-it-webfont.svg'), 'myriadpro-it-webfont.eot', 'normal', 'italic');
+@include font-face("MyriadProBold", font-files('myriadpro-semibold-webfont.woff', 'myriadpro-semibold-webfont.ttf', 'myriadpro-semibold-webfont.svg'), 'myriadpro-semibold-webfont.eot', 'bold', 'normal');
+
+body {
+  font: $font-size $font-family;
+  padding-bottom: 20px;
+  background: #aacbcd url('../images/bg.png');
+
+  @include breakpoint($bkpt-large) {
+    font-size: $font-size + .5em;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family;
+}
+
+h1 {
+  color: $color-darkgray;
+  line-height: $font-size + .25em;
+  margin-bottom: 0;
+}
+
+a, a:hover, a:link, a:visited {
+  color: $color-accent;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p {
+  line-height: $font-size + .25em;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.syntax-hilighted {
+  font-size: $font-size - .25em !important;
+}
+
+@import 'menus';
+@import 'forms';
+@import 'pagers';
+@import 'messages';

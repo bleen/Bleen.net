@@ -1,0 +1,17 @@
+name = Aurora
+description = Lightweight Responsive Optimized HTML5 base theme
+core = 7.x
+
+regions[sidebar_first]  = Primary Sidebar
+regions[sidebar_second] = Secondary Sidebar
+regions[content]        = Content
+regions[footer]         = Footer
+regions[header]         = Header
+regions[help]           = Help
+regions[highlighted]    = Highlighted
+; Information added by drupal.org packaging script on 2012-09-12
+version = "7.x-1.5"
+core = "7.x"
+project = "aurora"
+datestamp = "1347475616"
+

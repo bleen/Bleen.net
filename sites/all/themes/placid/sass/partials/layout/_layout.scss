@@ -1,0 +1,47 @@
+////////////////////////
+// Layout Partials
+//
+// Seperate your layout from design, building sub folders and partials
+//  in this folder, with everything being imported, in casading order,
+//  into this file.
+//
+// All box model properties go here
+////////////////////////
+
+#page {
+  position: relative;
+  max-width: 1440px;
+}
+.main-menu {
+  position: absolute;
+  top: 0;
+}
+.comment-form {
+  position: relative;
+  left: -2%
+}
+
+$total-columns  : 1;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+@include breakpoint($bkpt-small) {
+  $total-columns  : 5;
+
+  #content {
+    @include span-columns(3);
+  }
+  .node-type-resume #content {
+    @include span-columns(5);
+
+    .group-left {
+      @include span-columns(3);
+    }
+    .group-right {
+      @include span-columns(2 omega);
+    }
+  }
+  #sidebar-first {
+    @include span-columns(2 omega);
+  }
+}

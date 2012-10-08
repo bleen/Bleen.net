@@ -1,0 +1,35 @@
+////////////////////////
+// Pagers
+//
+// Styles for Drupal pagers
+////////////////////////
+
+.pager {
+  .button {
+    padding: 5px 10px;
+  }
+  li {
+    background-image: none;
+    margin-left: .5em;
+
+    a {
+      color: #fff;
+    }
+  }
+  li.pager-previous{
+    margin-left: 0;
+  }
+  li.pager-previous a,
+  li.pager-next a {
+    color: $color-darkgray;
+    white-space: nowrap;
+  }
+  li.pager-current .button {
+    border: 1px solid #fff;
+    @include background(linear-gradient(top, $color-lightgray, $color-darkgray));
+  }
+}
+
+.item-list .pager li {
+  padding: 0;
+}

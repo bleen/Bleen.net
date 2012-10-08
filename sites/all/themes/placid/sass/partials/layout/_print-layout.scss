@@ -1,0 +1,29 @@
+////////////////////////
+// Print Layout Partials
+//
+// Seperate your layout from design, building sub folders and partials
+//  in this folder, with everything being imported, in casading order,
+//  into this file. This is for Print files.
+//
+// All box model properties go here
+////////////////////////
+
+$total-columns  : 5;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+#page {
+  position: relative;
+  max-width: 8in;
+}
+.node-type-resume #content {
+  @include span-columns(5);
+
+  .group-left {
+    @include span-columns(3);
+  }
+  .group-right {
+    @include span-columns(2 omega);
+  }
+}
+

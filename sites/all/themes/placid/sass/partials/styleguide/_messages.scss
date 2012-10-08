@@ -1,0 +1,33 @@
+////////////////////////
+// Messages
+//
+// Styles for the standard Drupal messages
+////////////////////////
+
+.messages {
+  border: 1px solid #fff;
+  font-family: $font-family-bold;
+  margin: 0 0 10px 0;
+  min-height: 25px;
+  padding: 10px 5px 5px 40px;
+  @include border-radius(5px);
+  @include box-shadow(0 0 5px rgba(50, 0, 0, 0.5));
+
+  &.status {
+    background: #b6fab5 url(/misc/message-24-ok.png) 5px 5px no-repeat;
+  }
+  &.warning {
+    background: #fff992 url(/misc/message-24-warning.png) 5px 5px no-repeat;
+  }
+  &.error {
+    background: #fcc url(/misc/message-24-error.png) 5px 5px no-repeat;
+  }
+}
+
+li.krumo-footnote {
+  overflow: hidden;
+
+  .krumo-call {
+    font-size: 8px !important;
+  }
+}
