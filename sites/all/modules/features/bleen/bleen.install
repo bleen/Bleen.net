@@ -1,6 +1,104 @@
 <?php
 
+/**
+ * Replacing the admin module with the admin_menu module.
+ */
 function bleen_update_7000() {
   module_disable(array('admin'));
   module_enable(array('admin_menu'));
 }
+
+/**
+ * Switching the site to the new responsive theme.
+ */
+function bleen_update_7001() {
+  // Enable/disable some modules.
+  module_enable(array('block_class'));
+  module_disable(array('delta', 'showcase'));
+  theme_enable(array('placid'));
+
+  // Set some block classes.
+  db_insert('block_class')
+    ->fields(array(
+      'module' => 'system',
+      'delta' => 'main-menu',
+      'css_class' => 'main-menu',
+    ))
+    ->execute();
+  db_insert('block_class')
+    ->fields(array(
+      'module' => 'views',
+      'delta' => 'site_tweets-site_tweets_block ',
+      'css_class' => 'follow',
+    ))
+    ->execute();
+
+  // Set block positions for the placid theme.
+  db_update('block')
+    ->fields(array(
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'weight' => -13,
+      'cache' => 8,
+    ))
+    ->condition('theme', 'placid')
+    ->condition('module', 'bleen')
+    ->condition('delta', 'bleen_definition')
+    ->execute();
+  db_update('block')
+    ->fields(array(
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'weight' => -12,
+    ))
+    ->condition('theme', 'placid')
+    ->condition('module', 'search')
+    ->condition('delta', 'form')
+    ->execute();
+  db_update('block')
+    ->fields(array(
+      'status' => 1,
+      'region' => 'sidebar_first',
+      'title' => '<none>',
+      'weight' => -11,
+    ))
+    ->condition('theme', 'placid')
+    ->condition('module', 'views')
+    ->condition('delta', 'site_tweets-site_tweets_block')
+    ->execute();
+  db_update('block')
+    ->fields(array(
+      'status' => 1,
+      'region' => 'header',
+      'title' => '<none>',
+      'weight' => -1,
+    ))
+    ->condition('theme', 'placid')
+    ->condition('module', 'system')
+    ->condition('delta', 'main-menu')
+    ->execute();
+  db_update('block')
+    ->fields(array(
+      'status' => 1,
+      'region' => 'content',
+      'title' => '<none>',
+      'weight' => 0,
+    ))
+    ->condition('theme', 'placid')
+    ->condition('module', 'system')
+    ->condition('delta', 'main')
+    ->execute();
+
+  // Hide the "projects" menu item.
+  db_update('menu_links')
+    ->fields(array(
+      'hidden' => 1,
+    ))
+    ->condition('link_title', 'Projects')
+    ->execute();
+
+  // Set "placid" as the default theme.
+  variable_set('theme_default', 'placid');
+  theme_disable(array('soft', 'omega', 'alpha'));
+}
+
