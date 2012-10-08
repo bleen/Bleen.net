@@ -15,6 +15,9 @@
   width: 100%;
   @include border-radius(3px);
   @include box-shadow(0 2px 2px 0 rgba(0, 0, 0, .5));
+  @include breakpoint($bkpt-small) {
+    margin-top: 3em;
+  }
 }
 
 article.node {

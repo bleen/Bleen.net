@@ -10,13 +10,12 @@ input[type="email"],
 input[type="text"] {
   padding: 0 15px;
   min-height: 30px;
-  border: none;
+  border: 1px solid $color-lightgray;
   @include border-radius(15px);
   @include box-shadow(inset 2px 2px 8px 1px rgba(0, 0, 0, .2));
 }
 
 input[type="search"] {
-  border: 1px solid $color-lightgray;
   color: $color-darkgray;
   margin-right: 10px;
   width: 100%;
