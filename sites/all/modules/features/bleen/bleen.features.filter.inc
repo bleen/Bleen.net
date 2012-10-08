@@ -76,7 +76,7 @@ function bleen_filter_default_formats() {
         'weight' => '1',
         'status' => '1',
         'settings' => array(
-          'filter_url_length' => '50',
+          'filter_url_length' => '25',
         ),
       ),
       'filter_autop' => array(
