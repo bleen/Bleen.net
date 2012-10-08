@@ -80,6 +80,11 @@ p:last-of-type {
   margin-bottom: 0;
 }
 
+/* line 53, ../sass/partials/styleguide/_style-guide.scss */
+.syntax-hilighted {
+  font-size: 0.75em !important;
+}
+
 /* line 7, ../sass/partials/styleguide/_menus.scss */
 .main-menu {
   padding: 3px 10px;

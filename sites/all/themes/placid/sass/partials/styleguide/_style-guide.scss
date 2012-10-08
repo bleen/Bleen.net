@@ -50,6 +50,10 @@ p {
   }
 }
 
+.syntax-hilighted {
+  font-size: $font-size - .25em !important;
+}
+
 @import 'menus';
 @import 'forms';
 @import 'pagers';
