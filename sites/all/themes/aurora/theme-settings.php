@@ -26,6 +26,7 @@ function aurora_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
   '#weight' => -100,
   '#attributes' => array('class' => array('aurora-row-left')),
   '#prefix' => '<span class="aurora-settigns-row">',
+  '#parents' => array('vtb'),
   );
 
   $form['chromeframe']['aurora_enable_chrome_frame'] = array(
@@ -37,6 +38,7 @@ function aurora_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
       'wrapper' => 'cf-settings',
       'method' => 'replace'
     ),
+    
    );
  
   $form['chromeframe']['aurora_min_ie_support'] = array(
@@ -142,40 +144,61 @@ function aurora_form_system_theme_settings_alter(&$form, &$form_state, $form_id 
     '#description' => t('Enable <a href="!link" target="_blank">LiveReload</a> to refresh your browser without you needing to. Awesome for designing in browser.', array('!link' => 'http://livereload.com/')),
     '#weight' => 200,
   );
-	
-	$form['development']['aurora_viewport_width'] = array(
-		'#type' => 'checkbox',
-		'#title' => t('Enable Viewport Width Indicator'),
-		'#default_value' => theme_get_setting('aurora_viewport_width'),
-		'#ajax' => array(
-	      'callback' => 'aurora_ajax_settings_save'
-	    ),
-	    '#description' => t('Displays an indicator of the viewport. Tap/click to toggle between <em>em</em> and <em>px</em>/'),
-	    '#weight' => 225,
-	);
-	
-	$form['development']['aurora_modernizr_debug'] = array(
-		'#type' => 'checkbox',
-		'#title' => t('Enable Modernizr Indicator'),
-		'#default_value' => theme_get_setting('aurora_modernizr_debug'),
-		'#ajax' => array(
-	      'callback' => 'aurora_ajax_settings_save'
-	    ),
-	    '#description' => t('Displays an indicator of <a href="!link" target="_blank">Modernizr</a> detected features. Tap/click to toggle display of all of the available features.', array('!link' => 'http://modernizr.com/')),
-	    '#weight' => 250,
-	);
+  
+  $form['development']['aurora_viewport_width'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Viewport Width Indicator'),
+    '#default_value' => theme_get_setting('aurora_viewport_width'),
+    '#ajax' => array(
+      'callback' => 'aurora_ajax_settings_save'
+    ),
+    '#description' => t('Displays an indicator of the viewport. Tap/click to toggle between <em>em</em> and <em>px</em>/'),
+    '#weight' => 225,
+  );
+  
+  $form['development']['aurora_modernizr_debug'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Modernizr Indicator'),
+    '#default_value' => theme_get_setting('aurora_modernizr_debug'),
+    '#ajax' => array(
+      'callback' => 'aurora_ajax_settings_save'
+    ),
+    '#description' => t('Displays an indicator of <a href="!link" target="_blank">Modernizr</a> detected features. Tap/click to toggle display of all of the available features.', array('!link' => 'http://modernizr.com/')),
+    '#weight' => 250,
+  );
   
   //////////////////////////////
-  // Logo/Favicon Grouping
+  // Theme Settings Update
   //////////////////////////////
+  unset($form['theme_settings']['toggle_main_menu']);
+  unset($form['theme_settings']['toggle_secondary_menu']);
+  $form['theme_settings']['toggle_breadcrumbs'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Breadcrumbs'),
+    '#default_value' => theme_get_setting('toggle_breadcrumbs'),
+  );
   
+  $form['theme_settings']['toggle_logo']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_name']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_slogan']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_node_user_picture']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_comment_user_picture']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_comment_user_verification']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_favicon']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  $form['theme_settings']['toggle_breadcrumbs']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
+  
+  //////////////////////////////
+  // Logo and Favicon
+  //////////////////////////////
   $form['logo']['#weight'] = 10;
   $form['logo']['#attributes']['class'][] = 'aurora-row-left';
   $form['logo']['#prefix'] = '<span class="aurora-settigns-row">';
+  $form['logo']['default_logo']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
   
   $form['favicon']['#weight'] = 11;
   $form['favicon']['#attributes']['class'][] = 'aurora-row-right';
   $form['favicon']['#suffix'] = '</span>';
+  $form['favicon']['default_favicon']['#ajax'] = array('callback' => 'aurora_ajax_settings_save');
 }
 
 function aurora_chromeframe_options($form, $form_state) {

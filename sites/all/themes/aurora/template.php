@@ -39,6 +39,8 @@
  *   http://drupal.org/project/aurora
  */
 
+require_once dirname(__FILE__) . '/includes/scripts.inc';
+
 // Auto-rebuild the theme registry during theme development.
 if (theme_get_setting('aurora_rebuild_registry') && !defined('MAINTENANCE_MODE')) {
   // Rebuild .info data.
@@ -46,6 +48,60 @@ if (theme_get_setting('aurora_rebuild_registry') && !defined('MAINTENANCE_MODE')
   // Rebuild theme registry.
   drupal_theme_rebuild();
 }
+
+//////////////////////////////
+// Absolutely Amazing Omega Sideport
+//////////////////////////////
+
+/**
+  * Implements hook_theme_registry_alter
+  */
+function aurora_theme_registry_alter(&$registry) {
+  // Override template_process_html() in order to add support for all of the Awesome.
+  // Again, huge, amazing ups to the wizard Sebastian Siemssen (fubhy) for showing me how to do this.
+  if (($index = array_search('template_process_html', $registry['html']['process functions'], TRUE)) !== FALSE) {
+    array_splice($registry['html']['process functions'], $index, 1, 'aurora_template_process_html_override');
+  }
+}
+
+/**
+  * Overrides template_process_html() in order to provide support for awesome new stuffzors!
+  * 
+  * Huge, amazing ups to the wizard Sebastian Siemssen (fubhy) for showing me how to do this.
+  */
+function aurora_template_process_html_override(&$variables) {
+  // Render page_top and page_bottom into top level variables.
+  $variables['page_top'] = drupal_render($variables['page']['page_top']);
+  $variables['page_bottom'] = drupal_render($variables['page']['page_bottom']);
+  // Place the rendered HTML for the page body into a top level variable.
+  $variables['page'] = $variables['page']['#children'];
+  $variables['page_bottom'] .= aurora_get_js('footer');
+
+  $variables['head'] = drupal_get_html_head();
+  $variables['css'] = drupal_add_css();
+  $variables['styles']  = drupal_get_css();
+  $variables['scripts'] = aurora_get_js();
+}
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function aurora_element_info_alter(&$elements) {
+  // if (theme_get_setting('aurora_toggle_extension_css') && theme_get_setting('aurora_media_queries_inline') && variable_get('preprocess_css', FALSE) && (!defined('MAINTENANCE_MODE') || MAINTENANCE_MODE != 'update')) {
+  //   array_unshift($elements['styles']['#pre_render'], 'aurora_css_preprocessor');
+  // }
+
+  $elements['scripts'] = array(
+    '#items' => array(),
+    '#pre_render' => array('aurora_pre_render_scripts'),
+    '#group_callback' => 'aurora_group_js',
+    '#aggregate_callback' => 'aurora_aggregate_js',
+  );
+}
+
+//////////////////////////////
+// HTML5 Project Sideport
+//////////////////////////////
 
 /**
  * Implements hook_preprocess_html()
@@ -74,6 +130,11 @@ function aurora_preprocess_html(&$vars) {
     
     // Chrome Frome
     $chromeframe['wrapper'] = '<!--[if lt IE ' . theme_get_setting('aurora_min_ie_support') . ' ]>';
+    
+    // Chrome Frame
+    $chromeframe['redirect'] = 'http://browsehappy.com/';
+    $chromeframe['url'] = 'http://www.google.com/chromeframe/?redirect=true';
+    
     $chromeframe['include']['element'] = array(
       '#tag' => 'script',
       '#attributes' => array(
@@ -83,7 +144,7 @@ function aurora_preprocess_html(&$vars) {
     $chromeframe['launch']['element'] = array(
       '#tag' => 'script',
       '#attributes' => array(),
-      '#value' => 'window.attachEvent(\'onload\',function(){CFInstall.check({mode:\'overlay\'})})',
+      '#value' => 'window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"});})',
     );
 
     $vars['chromeframe_array'] = $chromeframe;
@@ -140,8 +201,10 @@ function aurora_process_html(&$vars) {
   if (theme_get_setting('aurora_enable_chrome_frame')) {
     $cf_array = $vars['chromeframe_array'];
     $cf = $cf_array['wrapper'] . theme_html_tag($cf_array['include']) . theme_html_tag($cf_array['launch']) . '<![endif]-->';
-
-    $vars['page_top'] .= $cf;
+    
+    $cf_link = $cf_array['wrapper'] . '<p class="chromeframe">' . t('You are using an outdated browser! !upgrade or !install to better experience this site.', array('!upgrade' => l(t('Upgrade your browser today'), $cf_array['redirect']), '!install' => l(t('install Google Chrome Frame'), $cf_array['url']))) . '<![endif]-->';
+    
+    $vars['page_top'] .= $cf_link;
   }
   
   //////////////////////////////
@@ -172,6 +235,25 @@ function aurora_process_html(&$vars) {
   $vars['html_attributes'] = drupal_attributes($vars['html_attributes_array']);
   $vars['body_attributes'] = drupal_attributes($vars['body_attributes_array']);
 }
+/**
+ * Return a themed breadcrumb trail.
+ *
+ * @param $variables
+ *   - title: An optional string to be used as a navigational heading to give
+ *     context for breadcrumb links to screen-reader users.
+ *   - title_attributes_array: Array of HTML attributes for the title. It is
+ *     flattened into a string within the theme function.
+ *   - breadcrumb: An array containing the breadcrumb links.
+ * @return
+ *   A string containing the breadcrumb output.
+ *
+ * Lifted from Zen, because John is the man.
+ */
+function aurora_breadcrumb(&$vars) {
+  if (theme_get_setting('toggle_breadcrumbs')) {
+    return theme_breadcrumb($vars);
+  }
+}
 
 /**
   * Implements hook_process_html_tag
@@ -188,22 +270,6 @@ function aurora_process_html_tag(&$vars) {
     // Remove media="all" but leave others unaffected.
     if (isset($el['#attributes']['media']) && $el['#attributes']['media'] === 'all') {
       unset($el['#attributes']['media']);
-    }
-  }
-}
-
-/**
- * Implements hook_js_alter().
- */
-function aurora_js_alter(&$javascript) {
-  if (theme_get_setting('aurora_footer_js')) {
-    foreach ($javascript as &$js) {
-      if (empty($js['force header']) || !$js['force header']) {
-        $js['scope'] = 'footer';
-      }
-      else {
-        $js['scope'] = 'header';
-      }
     }
   }
 }
@@ -242,9 +308,10 @@ function aurora_preprocess_user_profile_category(&$variables) {
  */
 function aurora_css_alter(&$css) {
   // Path to the theme's CSS directory.
-  $dir = drupal_get_path('theme', 'html5') . '/css';
+  $dir = drupal_get_path('theme', 'aurora') . '/css';
 
-  // Swap out aggregator.css with the aggregator.theme.css provided by this theme.
+  // Swap out aggregator.css with the aggregator.theme.css provided by this
+  // theme.
   $aggregator = drupal_get_path('module', 'aggregator');
   if (isset($css[$aggregator . '/aggregator.css'])) {
     $css[$aggregator . '/aggregator.css']['data'] = $dir . '/aggregator/aggregator.theme.css';
@@ -279,4 +346,14 @@ function aurora_css_alter(&$css) {
 function aurora_preprocess_node(&$variables) {
   // Add article ARIA role.
   $variables['attributes_array']['role'] = 'article';
+}
+
+/**
+  * Implements hook_js_alter
+  */
+function aurora_js_alter(&$js) {
+  // Forces Modernizr to header if the Modernizr module is enabled.
+  if (module_exists('modernizr')) {
+    $js[modernizr_get_path()]['force header'] = true;
+  }
 }

@@ -67,7 +67,7 @@
  */
 ?>
 
-  <div id="page">
+  <div id="page" role="document">
     <header id="header" role="banner" class="clearfix">
 
       <?php if ($logo): ?>
@@ -77,45 +77,37 @@
       <?php endif; ?>
 
       <?php if ($site_name || $site_slogan): ?>
-        <div id="name-and-slogan">
+        <hgroup id="name-and-slogan">
           <?php if ($site_name): ?>
-            <?php if ($title): ?>
-              <p id="site-name"><strong>
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-              </strong></p>
-            <?php else: /* Use h1 when the content title is empty */ ?>
-              <h1 id="site-name">
-                <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
-              </h1>
-            <?php endif; ?>
+            <h1 id="site-name">
+              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><?php print $site_name; ?></a>
+            </h1>
           <?php endif; ?>
 
           <?php if ($site_slogan): ?>
-            <p id="site-slogan"><?php print $site_slogan; ?></p>
+            <h3 id="site-slogan"><?php print $site_slogan; ?></h3>
           <?php endif; ?>
-        </div><!-- #name-and-slogan -->
+        </hgroup><!-- #name-and-slogan -->
       <?php endif; ?>
 
       <?php print render($page['header']); ?>
 
     </header>
-
-    <?php if ($main_menu || $secondary_menu): ?>
-      <nav role="navigation">
-        <?php print theme('links__system_main_menu', array('links' => $main_menu, 'attributes' => array('id' => 'main-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Main menu'))); ?>
-        <?php print theme('links__system_secondary_menu', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary-menu', 'class' => array('links', 'inline', 'clearfix')), 'heading' => t('Secondary menu'))); ?>
-      </nav>
+    
+    <!-- #content-prefix -->
+    <?php if ($page['main_prefix']) :?>
+      <?php print render($page['main_prefix']); ?>
     <?php endif; ?>
 
     <?php print $breadcrumb; ?>
 
     <?php if ($messages): ?>
-      <div id="messages"><?php print $messages; ?></div>
+      <div id="messages" role="alertdialog"><?php print $messages; ?></div>
     <?php endif; ?>
 
     <div id="main" role="main" class="clearfix">
 
-      <div id="content" class="column">
+      <div id="content" role="article" class="column">
         <?php if ($page['highlighted']): ?><div id="highlighted"><?php print render($page['highlighted']); ?></div><?php endif; ?>
         <a id="main-content"></a>
         <?php print render($title_prefix); ?>
@@ -129,18 +121,23 @@
       </div>
 
       <?php if ($page['sidebar_first']): ?>
-        <div id="sidebar-first" class="column sidebar">
+        <aside id="sidebar-first" role="complementary" class="column sidebar">
           <?php print render($page['sidebar_first']); ?>
-        </div><!-- #sidebar-first -->
+        </aside><!-- #sidebar-first -->
       <?php endif; ?>
 
       <?php if ($page['sidebar_second']): ?>
-        <div id="sidebar-second" class="column sidebar">
+        <aside id="sidebar-second" role="complementary" class="column sidebar">
           <?php print render($page['sidebar_second']); ?>
-        </div><!-- #sidebar-second -->
+        </aside><!-- #sidebar-second -->
       <?php endif; ?>
 
     </div><!-- #main -->
+    
+    <!-- #content-suffix -->
+    <?php if ($page['main_suffix']) :?>
+      <?php print render($page['main_suffix']); ?>
+    <?php endif; ?>
 
     <footer id="footer" role="contentinfo">
       <?php print render($page['footer']); ?>
