@@ -316,7 +316,6 @@ function entity_views_plugins() {
     $base_tables = $data->data;
   }
   else {
-    $base_tables = array();
     foreach (views_fetch_data() as $table => $data) {
       if (!empty($data['table']['entity type']) && !empty($data['table']['base'])) {
         $base_tables[] = $table;
