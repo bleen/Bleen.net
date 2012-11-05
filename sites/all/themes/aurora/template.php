@@ -39,7 +39,12 @@
  *   http://drupal.org/project/aurora
  */
 
+// We set a specific group for jquery, so our CDN work actually works.
+define('JS_JQUERY', -10000);
+
+require_once dirname(__FILE__) . '/includes/common.inc';
 require_once dirname(__FILE__) . '/includes/scripts.inc';
+
 
 // Auto-rebuild the theme registry during theme development.
 if (theme_get_setting('aurora_rebuild_registry') && !defined('MAINTENANCE_MODE')) {
@@ -56,13 +61,32 @@ if (theme_get_setting('aurora_rebuild_registry') && !defined('MAINTENANCE_MODE')
 /**
   * Implements hook_theme_registry_alter
   */
-function aurora_theme_registry_alter(&$registry) {
+function aurora_theme_registry_alter(&$registry) {  
   // Override template_process_html() in order to add support for all of the Awesome.
   // Again, huge, amazing ups to the wizard Sebastian Siemssen (fubhy) for showing me how to do this.
   if (($index = array_search('template_process_html', $registry['html']['process functions'], TRUE)) !== FALSE) {
     array_splice($registry['html']['process functions'], $index, 1, 'aurora_template_process_html_override');
   }
+  if (($index = array_search('template_process_maintenance_page', $registry['maintenance_page']['process functions'], TRUE)) !== FALSE) {
+    array_splice($registry['maintenance_page']['process functions'], $index, 1, 'aurora_template_process_maintenance_page_override');
+  }
 }
+
+function aurora_preprocess_maintenance_page(&$vars, $hook) {
+  // When a variable is manipulated or added in preprocess_html or
+  // preprocess_page, that same work is probably needed for the maintenance page
+  // as well, so we can just re-use those functions to do that work here.
+  aurora_preprocess_html($vars);
+}
+
+function aurora_process_maintenance_page(&$vars, $hook) {
+  // When a variable is manipulated or added in preprocess_html or
+  // preprocess_page, that same work is probably needed for the maintenance page
+  // as well, so we can just re-use those functions to do that work here.
+  aurora_process_html($vars);
+}
+
+
 
 /**
   * Overrides template_process_html() in order to provide support for awesome new stuffzors!
@@ -80,7 +104,15 @@ function aurora_template_process_html_override(&$variables) {
   $variables['head'] = drupal_get_html_head();
   $variables['css'] = drupal_add_css();
   $variables['styles']  = drupal_get_css();
-  $variables['scripts'] = aurora_get_js();
+  $variables['scripts'] = aurora_get_js('header');
+}
+
+function aurora_template_process_maintenance_page_override(&$vars) {
+  $vars['scripts'] = aurora_get_js();
+  $vars['page_bottom'] = aurora_get_js('footer');
+  $vars['css'] = drupal_add_css();
+  $vars['styles'] = drupal_get_css();
+  $vars['head'] = drupal_get_html_head();
 }
 
 /**
@@ -96,6 +128,7 @@ function aurora_element_info_alter(&$elements) {
     '#pre_render' => array('aurora_pre_render_scripts'),
     '#group_callback' => 'aurora_group_js',
     '#aggregate_callback' => 'aurora_aggregate_js',
+    '#type' => 'scripts'
   );
 }
 
@@ -204,7 +237,12 @@ function aurora_process_html(&$vars) {
     
     $cf_link = $cf_array['wrapper'] . '<p class="chromeframe">' . t('You are using an outdated browser! !upgrade or !install to better experience this site.', array('!upgrade' => l(t('Upgrade your browser today'), $cf_array['redirect']), '!install' => l(t('install Google Chrome Frame'), $cf_array['url']))) . '<![endif]-->';
     
-    $vars['page_top'] .= $cf_link;
+    if (!empty($vars['page_top'])) {
+      $vars['page_top'] .= $cf_link;
+    }
+    else {
+      $vars['page_top'] = $cf_link;
+    }
   }
   
   //////////////////////////////
@@ -222,7 +260,13 @@ function aurora_process_html(&$vars) {
     }
     
     $debug_output .= '</div>';
-    $vars['page_bottom'] .= $debug_output;
+    
+    if (!empty($vars['page_bottom'])) {
+      $vars['page_bottom'] .= $debug_output;
+    }
+    else {
+      $vars['page_bottom'] = $debug_output;
+    }
   }
   
   //////////////////////////////
@@ -334,7 +378,14 @@ function aurora_css_alter(&$css) {
   if (isset($css[$color . '/color-rtl.css'])) {
     $css[$color . '/color-rtl.css']['data'] = $dir . '/color/color.admin-rtl.css';
   }
-
+  
+  if (theme_get_setting('aurora_remove_core_css')) {
+    foreach ($css as $key => $value) {
+      if (strpos($key, 'modules/') === 0) {
+        unset($css[$key]);
+      }
+    }
+  }
 }
 
 /**
@@ -352,8 +403,53 @@ function aurora_preprocess_node(&$variables) {
   * Implements hook_js_alter
   */
 function aurora_js_alter(&$js) {
+  global $base_url;
   // Forces Modernizr to header if the Modernizr module is enabled.
   if (module_exists('modernizr')) {
     $js[modernizr_get_path()]['force header'] = true;
+  }
+
+  // Updates jQuery and loads it from a CDN if wanted.
+  // Partially pulled from jquery_update module.
+  $version = theme_get_setting('aurora_jquery_version');
+  $cdn = theme_get_setting('aurora_jquery_cdn');
+  if ($cdn != 0 && $version == '1.4.4') {
+    return;
+  }
+
+  $path_to_theme = $base_url . '/' . drupal_get_path('theme', 'aurora');
+  $js['misc/jquery.js']['version'] = $version;
+
+  if ($cdn !== '0') {
+    $js['misc/jquery.js']['type'] = 'external';
+    $js['misc/jquery.js']['group'] = JS_JQUERY;
+
+    switch ($cdn) {
+      case 'google':
+        $js['misc/jquery.js']['data'] = "//ajax.googleapis.com/ajax/libs/jquery/$version/jquery.min.js";
+      break;
+      case 'microsoft':
+        $js['misc/jquery.js']['data'] = "http://ajax.aspnetcdn.com/ajax/jquery/jquery-$version.min.js";
+      break;
+      case 'jquery':
+        $js['misc/jquery.js']['data'] = "http://code.jquery.com/jquery-$version.min.js";
+      break;
+    }
+    // Now add code to fall back on if the CDN is unavailable.
+    $js['misc/jquery-fallback.js'] = array(
+      'group' => $js['misc/jquery.js']['group'],
+      'weight' => $js['misc/jquery.js']['weight'] + 2,
+      'every_page' => TRUE,
+      'type' => 'inline',
+      'scope' => $js['misc/jquery.js']['scope'],
+      'cache' => FALSE,
+      'defer' => FALSE,
+      'force header' => $js['misc/jquery.js']['force header'],
+      'data' => 'window.jQuery || document.write(\'<script type="text/javascript" src="' . $path_to_theme . '/js/jquery-' . $version . '.min.js"><\/script>\')'
+    );
+  }
+  else {
+    // If a CDN is not selected, but an updated version still wants to be used.
+    $js['misc/jquery.js']['data'] = "$path_to_theme/js/jquery-$version.min.js";
   }
 }
