@@ -33,7 +33,7 @@ function entity_metadata_book_get_properties($node, array $options, $name, $enti
 function entity_metadata_comment_get_properties($comment, array $options, $name) {
   switch ($name) {
     case 'name':
-      return $name = ($comment->uid == 0) ? variable_get('anonymous', t('Anonymous')) : $comment->name;
+      return $comment->name;
 
     case 'mail':
       if ($comment->uid != 0) {
@@ -292,10 +292,11 @@ function entity_metadata_taxonomy_term_get_properties($term, array $options, $na
 function entity_metadata_taxonomy_term_setter($term, $name, $value) {
   switch ($name) {
     case 'vocabulary':
-      // Make sure to also update the taxonomy bundle key.
-      $vocabulary = taxonomy_vocabulary_load($value);
+      // Make sure to update the taxonomy bundle key, so load the vocabulary.
+      // Support both, loading by name or ID.
+      $vocabulary = is_numeric($value) ? taxonomy_vocabulary_load($value) : taxonomy_vocabulary_machine_name_load($value);
       $term->vocabulary_machine_name = $vocabulary->machine_name;
-      return $term->vid = $value;
+      return $term->vid = $vocabulary->vid;
     case 'parent':
       return $term->parent = $value;
   }
@@ -509,7 +510,7 @@ function entity_metadata_field_verbatim_set($entity, $name, $items, $langcode, $
 function entity_metadata_field_get_language($entity_type, $entity, $field, $langcode = LANGUAGE_NONE, $fallback = FALSE) {
   // Try to figure out the default language used by the entity.
   // @todo: Update once http://drupal.org/node/1260640 has been fixed.
-  $default_langcode = isset($entity->language) ? $entity->language : LANGUAGE_NONE;
+  $default_langcode = !empty($entity->language) ? $entity->language : LANGUAGE_NONE;
 
   // Determine the right language to use.
   if ($default_langcode != LANGUAGE_NONE && field_is_translatable($entity_type, $field)) {
@@ -605,7 +606,14 @@ function entity_metadata_field_file_validate_item($items, $context) {
  */
 function entity_metadata_no_hook_node_access($op, $node = NULL, $account = NULL) {
   if (isset($node)) {
-    return node_access($op, $node, $account);
+    // If a non-default revision is given, incorporate revision access.
+    $default_revision = node_load($node->nid);
+    if ($node->vid != $default_revision->vid) {
+      return _node_revision_access($node, $op);
+    }
+    else {
+      return node_access($op, $node, $account);
+    }
   }
   // Is access to all nodes allowed?
   if (!user_access('access content', $account)) {
@@ -688,6 +696,26 @@ function entity_metadata_taxonomy_access($op, $entity = NULL, $account = NULL, $
   }
   return FALSE;
 }
+
+/**
+ * Access callback for file entities.
+ */
+function entity_metadata_file_access($op, $file = NULL, $account = NULL, $entity_type) {
+  // We can only check access for the current user, so return FALSE on other accounts.
+  global $user;
+  if ($op == 'view' && isset($file) && (!isset($account) || $user->uid == $account->uid)) {
+    // Invoke hook_file_download() to obtain access information.
+    foreach (module_implements('file_download') as $module) {
+      $result = module_invoke($module, 'file_download', $file->uri);
+      if ($result == -1) {
+        return FALSE;
+      }
+    }
+    return TRUE;
+  }
+  return FALSE;
+}
+
 
 /**
  * Callback to determine access for properties which are fields.
