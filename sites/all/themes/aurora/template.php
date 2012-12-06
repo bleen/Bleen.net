@@ -467,7 +467,9 @@ function aurora_js_alter(&$js) {
   }
   else {
     // If a CDN is not selected, but an updated version still wants to be used.
-    $js['misc/jquery.js']['data'] = "$path_to_theme/js/jquery-$version.min.js";
+    if ($version != '1.4.4') {
+      $js['misc/jquery.js']['data'] = "$path_to_theme/js/jquery-$version.min.js";
+    }
   }
 }
 
