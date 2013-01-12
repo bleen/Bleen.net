@@ -120,7 +120,6 @@ features[variable][] = googleanalytics_trackfiles
 features[variable][] = googleanalytics_trackfiles_extensions
 features[variable][] = googleanalytics_trackmailto
 features[variable][] = googleanalytics_trackoutbound
-features[variable][] = googleanalytics_trackoutboundaspageview
 features[variable][] = googleanalytics_visibility_pages
 features[variable][] = googleanalytics_visibility_roles
 features[variable][] = image_captcha_background_color

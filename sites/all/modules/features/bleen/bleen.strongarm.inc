@@ -14,7 +14,7 @@ function bleen_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_article';
-  $strongarm->value = 'edit-comment';
+  $strongarm->value = 'edit-scheduler';
   $export['additional_settings__active_tab_article'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -489,13 +489,6 @@ user/*/*';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'googleanalytics_trackoutboundaspageview';
-  $strongarm->value = 0;
-  $export['googleanalytics_trackoutboundaspageview'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'googleanalytics_visibility_pages';
   $strongarm->value = '0';
   $export['googleanalytics_visibility_pages'] = $strongarm;
@@ -688,8 +681,9 @@ user/*/*';
   $strongarm->api_version = 1;
   $strongarm->name = 'mollom_servers';
   $strongarm->value = array(
-    0 => 'http://174.37.205.152',
-    1 => 'http://67.228.84.11',
+    0 => 'http://174.37.205.126',
+    1 => 'http://173.193.242.188',
+    2 => 'http://174.37.205.152',
   );
   $export['mollom_servers'] = $strongarm;
 
