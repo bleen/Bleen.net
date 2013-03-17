@@ -21,7 +21,7 @@ function bleen_user_default_permissions() {
   $permissions['access environment indicator'] = array(
     'name' => 'access environment indicator',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'environment_indicator',
   );
@@ -30,7 +30,7 @@ function bleen_user_default_permissions() {
   $permissions['add twitter accounts'] = array(
     'name' => 'add twitter accounts',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'twitter',
   );
@@ -39,7 +39,7 @@ function bleen_user_default_permissions() {
   $permissions['admin_display_suite'] = array(
     'name' => 'admin_display_suite',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'ds',
   );
@@ -48,7 +48,7 @@ function bleen_user_default_permissions() {
   $permissions['admin_fields'] = array(
     'name' => 'admin_fields',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'ds',
   );
@@ -57,7 +57,7 @@ function bleen_user_default_permissions() {
   $permissions['admin_view_modes'] = array(
     'name' => 'admin_view_modes',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'ds',
   );
@@ -66,7 +66,7 @@ function bleen_user_default_permissions() {
   $permissions['administer breadcrumbs'] = array(
     'name' => 'administer breadcrumbs',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'disable_breadcrumbs',
   );
@@ -75,7 +75,7 @@ function bleen_user_default_permissions() {
   $permissions['administer features'] = array(
     'name' => 'administer features',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -84,7 +84,7 @@ function bleen_user_default_permissions() {
   $permissions['administer google analytics'] = array(
     'name' => 'administer google analytics',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'googleanalytics',
   );
@@ -93,7 +93,7 @@ function bleen_user_default_permissions() {
   $permissions['administer pathauto'] = array(
     'name' => 'administer pathauto',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'pathauto',
   );
@@ -109,7 +109,7 @@ function bleen_user_default_permissions() {
   $permissions['disable node breadcrumbs'] = array(
     'name' => 'disable node breadcrumbs',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'disable_breadcrumbs',
   );
@@ -118,34 +118,16 @@ function bleen_user_default_permissions() {
   $permissions['execute php code'] = array(
     'name' => 'execute php code',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'devel',
-  );
-
-  // Exported permission: import own tweets.
-  $permissions['import own tweets'] = array(
-    'name' => 'import own tweets',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'twitter',
-  );
-
-  // Exported permission: make twitter accounts global.
-  $permissions['make twitter accounts global'] = array(
-    'name' => 'make twitter accounts global',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'twitter',
   );
 
   // Exported permission: manage features.
   $permissions['manage features'] = array(
     'name' => 'manage features',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'features',
   );
@@ -154,7 +136,7 @@ function bleen_user_default_permissions() {
   $permissions['notify of path changes'] = array(
     'name' => 'notify of path changes',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'pathauto',
   );
@@ -163,7 +145,7 @@ function bleen_user_default_permissions() {
   $permissions['opt-in or out of tracking'] = array(
     'name' => 'opt-in or out of tracking',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'googleanalytics',
   );
@@ -172,7 +154,7 @@ function bleen_user_default_permissions() {
   $permissions['switch users'] = array(
     'name' => 'switch users',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'devel',
   );
@@ -181,18 +163,9 @@ function bleen_user_default_permissions() {
   $permissions['use PHP for tracking visibility'] = array(
     'name' => 'use PHP for tracking visibility',
     'roles' => array(
-      0 => 'administrator',
+      'administrator' => 'administrator',
     ),
     'module' => 'googleanalytics',
-  );
-
-  // Exported permission: use global twitter account.
-  $permissions['use global twitter account'] = array(
-    'name' => 'use global twitter account',
-    'roles' => array(
-      0 => 'administrator',
-    ),
-    'module' => 'twitter',
   );
 
   return $permissions;
