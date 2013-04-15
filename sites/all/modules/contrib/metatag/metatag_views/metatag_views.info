@@ -1,9 +1,12 @@
-name = Meta tags: Context
-description = "Assigned Meta tags using Context definitions, allowing them to be assigned by path and other criteria."
+name = Meta tags: Views
+description = Provides Meta tags integration within the Views interface.
 package = Meta tags
 core = 7.x
-dependencies[] = context
+
 dependencies[] = metatag
+dependencies[] = views
+
+files[] = metatag_views_plugin_display_extender_metatags.inc
 
 ; Information added by drupal.org packaging script on 2013-04-14
 version = "7.x-1.0-beta6"
