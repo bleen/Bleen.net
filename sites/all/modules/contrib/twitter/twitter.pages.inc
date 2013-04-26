@@ -89,7 +89,8 @@ function twitter_admin_form($form, &$form_state) {
 function twitter_user_settings($account = NULL) {
   // Verify OAuth keys.
   if (!twitter_api_keys()) {
-    $output = t('<p>You need to authenticate at least one Twitter account in order to use the Twitter API. Please fill out the OAuth fields at <a href="/admin/config/services/twitter/settings">Twitter Settings</a> and then return here.</p>');
+    $variables = array('@twitter-settings' => url('admin/config/services/twitter/settings'));
+    $output = '<p>' . t('You need to authenticate at least one Twitter account in order to use the Twitter API. Please fill out the OAuth fields at <a href="@twitter-settings">Twitter Settings</a> and then return here.', $variables) . '</p>';
   }
   else {
     module_load_include('inc', 'twitter');
@@ -103,18 +104,20 @@ function twitter_user_settings($account = NULL) {
     $output = array();
     if (count($twitter_accounts)) {
       // List Twitter accounts.
-      $output['header']['#markup'] = '';
+      $output['header']['#markup'] = '<p>';
       if (user_access('administer site configuration')) {
-        $output['header']['#markup'] = t('<p>Tweets are pulled from Twitter by ' .
-            '<a href="/admin/reports/status/run-cron?destination=admin/config/services/twitter">running cron</a>. ');
+        $variables = array('@run-cron' => url('admin/reports/status/run-cron', array('query' => array('destination' => 'admin/config/services/twitter'))));
+        $output['header']['#markup'] .= t('Tweets are pulled from Twitter by <a href="@run-cron">running cron</a>.', $variables) . ' ';
       }
-      $output['header']['#markup'] .= t('You can view the full list of tweets at the <a href="/tweets">Tweets</a> view.</p>');
+      $variables = array('@tweets' => url('tweets'));
+      $output['header']['#markup'] .= t('You can view the full list of tweets at the <a href="@tweets">Tweets</a> view.', $variables);
+      $output['header']['#markup'] .= '</p>';
       $output['list_form'] = drupal_get_form('twitter_account_list_form', $twitter_accounts);
     }
     else {
       // No accounts added. Inform about how to add one.
       $output['header'] = array(
-        '#markup' => t('<p>No Twitter accounts have been added yet. Click on the following button to add one.</p>'),
+        '#markup' => '<p>' . t('No Twitter accounts have been added yet. Click on the following button to add one.') . '</p>',
       );
     }
 
@@ -418,7 +421,8 @@ function twitter_oauth_callback_form_validate($form, &$form_state) {
   module_load_include('inc', 'twitter');
 
   if ($twitter = new Twitter($key, $secret, $token['oauth_token'], $token['oauth_token_secret'])) {
-    if ($response = $twitter->get_access_token()) {
+    //Collect oauth_verifier from url
+    if ($response = $twitter->get_access_token($_GET['oauth_verifier'])) {
       $form_state['twitter_oauth']['response'] = $response;
     }
     else {
