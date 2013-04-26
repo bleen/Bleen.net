@@ -1,0 +1,17 @@
+.my-sticky-element {
+  background-color: white;
+  border-bottom: 1px #ccc solid;
+  border-top: 1px #ccc solid;
+  bottom: -8px;
+  margin-bottom: 20px;
+  margin-top: -11px;
+  padding-top: 11px;
+  position: fixed;
+  width: 100%;
+}
+
+.my-sticky-element.unstuck {
+  border-bottom: none;
+  border-top: none;
+  position: static;
+}
