@@ -17,17 +17,20 @@
       $('.vertical-tab-button a').click(function() {
         $.waypoints('refresh');
       });
-      // Set width of .my-sticky-element to that of .sticky-wrapper. We must do
+      // Set dimensions of .my-sticky-element. We must do
       // this because once we 'position: fixed' in CSS it comes out of the DOM
       // flow and is uncontrollable by percentage.
-      function setStickyElementWidth() {
-        var stickyWidth = $('.sticky-wrapper').width();
-        $('.my-sticky-element').width(stickyWidth);
+      function setStickyElementWidthAndParentHeight() {
+        $('.my-sticky-element').each(function (e) {
+          $this = $(this);
+          $this.width( $this.parent().width() );
+          $this.parent().height( $this.outerHeight() );
+        });
       }
-      // First set it on page load.
-      setStickyElementWidth();
-      // Then continue to set the width on resize events.
-      $(window).resize(setStickyElementWidth);
+      // First set dimensions on page load.
+      setStickyElementWidthAndParentHeight();
+      // Then continue to set the dimensions on resize events.
+      $(window).resize(setStickyElementWidthAndParentHeight);
     }
   };
 
@@ -35,7 +38,7 @@
    * OVERRIDING this function from collapse.js so we can add some
    * callbacks to slideDown & slideUp(). The .click() handler will not work on
    * fieldsets.
-   * 
+   *
    * Toggle the visibility of a fieldset using smooth animations.
    */
   Drupal.toggleFieldset = function (fieldset) {

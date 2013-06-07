@@ -3,9 +3,9 @@ description = Sticks the edit action buttons to the bottom of the form when desi
 core = 7.x
 package = Administration
 
-; Information added by drupal.org packaging script on 2013-03-14
-version = "7.x-1.x-dev"
+; Information added by drupal.org packaging script on 2013-06-05
+version = "7.x-1.0+0-dev"
 core = "7.x"
 project = "sticky_edit_actions"
-datestamp = "1363225594"
+datestamp = "1370449218"
 
