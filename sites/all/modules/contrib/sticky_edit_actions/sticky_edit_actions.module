@@ -27,3 +27,16 @@ function sticky_edit_actions_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['#attributes']['class'][] = 'my-sticky-element';
   }
 }
+
+/**
+ * Implements hook_media_edit_multiple_form_alter().
+ */
+function sticky_edit_actions_media_edit_multiple_form_alter(&$form) {
+  $form['actions'] = $form['buttons'];
+  $form['actions']['#type'] = 'actions';
+  unset($form['buttons']);
+
+  $form_state = array();
+
+  sticky_edit_actions_form_alter($form, $form_state, 'media_edit_multiple_form');
+}
