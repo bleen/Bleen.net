@@ -34,5 +34,8 @@ function environment_indicator_settings() {
  * Submit callback for the environment_indicator_settings form.
  */
 function environment_indicator_settings_submit($form, $form_state) {
-  admin_menu_flush_caches();
+  if (module_exists('admin_menu')) {
+    // Clear admin menu caches.
+    admin_menu_flush_caches();
+  }
 }
