@@ -1,4 +1,4 @@
-name = Wysiwyg Force Linebreaks
+name = Wysiwyg Linebreaks
 description = Plugin to allow legacy content editing and more sane formatting in wysiwyg editors.
 package = User interface
 core = 7.x
@@ -8,9 +8,9 @@ dependencies[] = wysiwyg
 files[] = wysiwyg_linebreaks.module
 files[] = plugins/linebreaks.inc
 
-; Information added by drupal.org packaging script on 2013-02-06
-version = "7.x-1.5"
+; Information added by Drupal.org packaging script on 2013-12-12
+version = "7.x-1.6"
 core = "7.x"
 project = "wysiwyg_linebreaks"
-datestamp = "1360171184"
+datestamp = "1386881606"
 

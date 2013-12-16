@@ -18,7 +18,7 @@ Drupal.wysiwyg.plugins.linebreaks = {
 
   // Clean up content for saving or turning off WYSIWYG.
   linebreaks_detach : function(content) {
-    var blocklist1, blocklist2;
+    var blocklist1, blocklist2, blocklist3;
 
     // Protect pre|script tags.
     content = content.replace(/<(pre|script)[^>]*>[\s\S]+?<\/\1>/g, function(a) {
