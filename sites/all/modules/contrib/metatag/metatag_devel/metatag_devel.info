@@ -1,7 +1,8 @@
-name = Metatag: Open Graph
-description = Provides support for open graph meta tags.
-package = SEO
+name = Metatag:Devel
+description = Provides development / debugging functionality for the Metatag module. Integrates with Devel Generate.
+package = Development
 core = 7.x
+tags[] = developer
 dependencies[] = metatag
 
 ; Information added by Drupal.org packaging script on 2014-01-16
