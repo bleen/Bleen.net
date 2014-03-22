@@ -10,9 +10,9 @@ dependencies[] = menu
 
 configure = admin/config/user-interface/coffee
 
-; Information added by drupal.org packaging script on 2013-02-27
-version = "7.x-2.0"
+; Information added by Drupal.org packaging script on 2014-03-21
+version = "7.x-2.1"
 core = "7.x"
 project = "coffee"
-datestamp = "1361998837"
+datestamp = "1395405859"
 
