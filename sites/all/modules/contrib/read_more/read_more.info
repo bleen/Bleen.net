@@ -5,9 +5,9 @@ core = 7.x
 
 files[] = read_more.install
 files[] = read_more.module
-; Information added by drupal.org packaging script on 2013-10-01
-version = "7.x-1.x-dev"
+; Information added by Drupal.org packaging script on 2014-05-13
+version = "7.x-1.01"
 core = "7.x"
 project = "read_more"
-datestamp = "1380624920"
+datestamp = "1399964928"
 
