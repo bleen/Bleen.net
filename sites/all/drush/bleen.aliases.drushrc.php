@@ -2,7 +2,6 @@
 
 /* ==========================  L O C A L  ========================= */
 $aliases['local'] = array(
-  'parent' => '@parent',
   'env' => 'local',
   '%dump-dir' => '/tmp/php',
 );
@@ -10,13 +9,12 @@ $aliases['local'] = array(
 
 /* ===========================  P R O D  ========================== */
 $aliases['prod'] = array(
-  'parent' => '@parent',
-  'env' => 'dev',
+  'env' => 'prod',
   'root' => '/home/alexross/sites/bleen.net/docroot',
   'path-aliases' => array(
     '%dump-dir' => '/tmp',
-    '%drush' => '/home/alexross/bin/drush',
-    '%drush-script' => '/home/alexross/bin/drush/drush',
+    '%drush' => '/home/alexross/.composer/vendor/bin',
+    '%drush-script' => '/home/alexross/.composer/vendor/bin/drush',
   ),
   'remote-host' => 'bleen.net',
   'remote-user' => 'alexross',
