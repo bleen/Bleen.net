@@ -102,3 +102,23 @@ function bleen_update_7001() {
   theme_disable(array('soft', 'omega', 'alpha'));
 }
 
+/**
+ * Replacing Drupal comments with Disqus.
+ */
+function bleen_update_7002() {
+  // Enable the disqus module
+  module_enable(array('disqus'));
+
+  // Set some config variables.
+  variable_set('disqus_domain','bleen-net');
+  variable_set('disqus_nodetypes', array('article' => 'Article'));
+  varibale_set('disqus_location', 'block');
+}
+
+/**
+ * Disable overlay.
+ */
+function bleen_update_7003() {
+  // Disable overlay module
+  module_disable(array('overlay'));
+}

@@ -94,8 +94,13 @@ function bleen_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'article';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'disqus' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
-      'weight' => '1',
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
@@ -104,13 +109,8 @@ function bleen_ds_field_settings_info() {
         'class' => 'node-title',
       ),
     ),
-    'comments' => array(
-      'weight' => '5',
-      'label' => 'hidden',
-      'format' => 'default',
-    ),
     'post_date' => array(
-      'weight' => '2',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'ds_post_date_long',
       'ft' => array(
@@ -202,6 +202,20 @@ function bleen_ds_custom_fields_info() {
 
   $ds_field = new stdClass();
   $ds_field->api_version = 1;
+  $ds_field->field = 'disqus';
+  $ds_field->label = 'Disqus';
+  $ds_field->field_type = 6;
+  $ds_field->entities = array(
+    'node' => 'node',
+  );
+  $ds_field->properties = array(
+    'block' => 'disqus|disqus_comments',
+    'block_render' => '3',
+  );
+  $export['disqus'] = $ds_field;
+
+  $ds_field = new stdClass();
+  $ds_field->api_version = 1;
   $ds_field->field = 'read_on';
   $ds_field->label = 'Read on';
   $ds_field->field_type = 3;
@@ -260,16 +274,13 @@ function bleen_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'hide_empty_regions' => 1,
     'hide_sidebars' => 0,
-    'classes' => array(),
-    'hide_page_title' => '1',
-    'page_option_title' => '',
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
         1 => 'post_date',
         2 => 'body',
         3 => 'field_tags',
-        4 => 'comments',
+        4 => 'disqus',
       ),
     ),
     'fields' => array(
@@ -277,8 +288,11 @@ function bleen_ds_layout_settings_info() {
       'post_date' => 'ds_content',
       'body' => 'ds_content',
       'field_tags' => 'ds_content',
-      'comments' => 'ds_content',
+      'disqus' => 'ds_content',
     ),
+    'classes' => array(),
+    'hide_page_title' => '1',
+    'page_option_title' => '',
   );
   $export['node|article|full'] = $ds_layout;
 
