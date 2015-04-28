@@ -112,7 +112,7 @@ function bleen_update_7002() {
   // Set some config variables.
   variable_set('disqus_domain','bleen-net');
   variable_set('disqus_nodetypes', array('article' => 'Article'));
-  varibale_set('disqus_location', 'block');
+  variable_set('disqus_location', 'block');
 }
 
 /**
