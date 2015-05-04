@@ -48,7 +48,8 @@ EOT;
       continue;
     }
 
-    $url = "http://bleen.net/" . drupal_get_path_alias("node/" . $node->nid);
+    $alias = drupal_get_path_alias("node/" . $node->nid);
+    $url = "http://bleen.net/" . $alias;
     $tid = "node-{$node->nid}";
     $date = gmdate('Y-m-d H:i:s', $node->created);
     $content = substr($node->teaser,0,100);
@@ -58,14 +59,14 @@ EOT;
       <title>{$node->title}</title>
       <link>$url</link>
       <content:encoded><![CDATA[{$content}]]></content:encoded>
-      <dsq:thread_identifier>$tid</dsq:thread_identifier>
+      <dsq:thread_identifier>$alias</dsq:thread_identifier>
       <wp:post_date_gmt>$date</wp:post_date_gmt>
       <wp:comment_status>open</wp:comment_status>
 EOT;
 
     foreach ($comments as $c) {
       $comment = comment_load($c->cid);
-      $user_url = url("user/{$comment->uid}", array('absolute' => TRUE, 'alias' => TRUE));
+      $user_url = "http://bleen.net/" . "user/{$comment->uid}";
       $ip = $comment->hostname ? $comment->hostname : '127.0.0.1';
       $date = gmdate('Y-m-d H:i:s', $comment->created);
       $approved = 1;
@@ -73,7 +74,7 @@ EOT;
       $mail = (!empty($comment->mail) ? $comment->mail : $c->usermail);
       $name = (!empty($comment->name) ? $comment->name : $c->username);
 
-      $mail = $name == 'bleen' ? 'disqus.119x@bleen.net' : $mail;
+      //$mail = $name == 'bleen' ? 'disqus.119x@bleen.net' : $mail;
       $mail = !empty($mail) ? $mail : 'anon@anonymous.com';
       $name = !empty($name) ? $name : 'Anonymous';
 
