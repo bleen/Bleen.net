@@ -1,3 +1,10 @@
+Twitter 7.x-5.10, 2015-09-04
+----------------------------
+#2560911 by mkolar: Regression to custom OAuth path functionality.
+#2561255 by DamienMcKenna: Fixes for tests.
+#2561609 by DamienMcKenna: Fixed wrong function used to load a user object.
+
+
 Twitter 7.x-5.9, 2015-08-30
 ---------------------------
 #2005516 by Elijah Lynn: Fix invalid arg to foreach @
