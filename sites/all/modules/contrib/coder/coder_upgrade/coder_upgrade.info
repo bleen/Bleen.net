@@ -1,12 +1,9 @@
-name = "Coder Upgrade"
-
-description = "Module conversion suite -- generates code to assist with the upgrade of
-               contributed 6.x modules to version 7.x modules.
-               WARNING: Use only on contributed modules."
-
+name = Coder Upgrade
+description = Modifies source code to assist with the upgrade of a module for changes to a relied upon API.
 package = Development
-;dependencies[] = coder ; Not a dependency
-dependencies[] = gplib
+core = 7.x
+
+dependencies[] = gplib (<2.0)
 
 ; only list files with class declarations
 ;files[] = coder_upgrade.help.inc
@@ -27,11 +24,9 @@ files[] = coder_upgrade.test
 
 configure = admin/config/development/coder/upgrade/settings
 
-core = 7.x
-
-; Information added by drupal.org packaging script on 2011-08-17
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2016-07-12
+version = "7.x-1.3"
 core = "7.x"
 project = "coder"
-datestamp = "1313611616"
+datestamp = "1468343428"
 
